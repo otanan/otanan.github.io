@@ -1,0 +1,18 @@
+__pycache__
+# MacOS files
+.DS_STORE
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# LaTeX build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdfsync
+*.run.xml
+*.synctex.gz
