@@ -16,3 +16,6 @@ __pycache__
 *.pdfsync
 *.run.xml
 *.synctex.gz
+
+# Ignore Google Form
+*.gform
