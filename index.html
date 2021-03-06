@@ -10,6 +10,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
 	</head>
 	<body class="is-preload">
 
@@ -25,19 +29,10 @@
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="stochthermo.html">Stochastic Thermodynamics</a></li>
-								<li><a href="qinfo.html">Quantum Information Theory</a></li>
-								<!-- <li><a href="elements.html">Elements</a></li> -->
-								<li><a href="#">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
-							</ul>
-						</div>
+					<nav id='menu'>
+						<!-- Navigation placeholder -->
 					</nav>
+
 
 				<!-- Main -->
 					<div id="main">
@@ -46,11 +41,11 @@
 							<section id="banner">
 								<header>
 									<h2>Jonathan Delgado</h2>
-									<p>Researcher, PhD student in Mathematics @</p>
+									<p>PhD student in Mathematics, researcher</p>
 								</header>
 								<footer>
 									<ul class="actions special">
-										<li><a href="#" class="button large">Get Started</a></li>
+										<li><a href="#" class="button large">Coming soon</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -83,9 +78,15 @@
 
 						<!-- Two -->
 							<section id="two" class="spotlight">
-								<div class="image"><img src="images/green-group-photo.jpg" alt="" /></div><div class="content">
+								<div class="image">
+									<a href='https://www.jasonrgreen.net/members' target='_blank'>
+										<img src="images/green-group-photo.jpg" alt="" />
+									</a>
+								</div>
+
+								<div class="content">
 									<h2><a href="stochthermo.html">
-										Stochastic Thermo & Information
+										Stochastic Thermodynamics & Information
 									</a></h2>
 									<p> My work here focuses on the second law of thermodynamics and measuring time-reversal asymmetry through information-theoretic quantities. The centerpiece of my work is an algebraic relationship between information rates and physical observables that quantify the amount of irreversible entropy produced in time-evolution of a thermodynamic process.
 									</p>
@@ -94,22 +95,21 @@
 
 						<!-- Three -->
 							<section id="three" class="spotlight alt">
-								<div class="image"><img src="images/doped-clifford-state.png" alt="" /></div><div class="content">
+								<div class="image">
+									<a href='https://www.quantumphysics.fun/team-1' target='_blank'>
+										<img src="images/haar-state.png" alt="" />
+									</a>
+								</div>
+
+								<div class="content">
 									<h2><a href="qinfo.html">
 										Machine Learning Quantum
 									</a></h2>
-									<p>My work here focuses on the effects of doping Clifford random quantum circuits with Universal gates. The Universal gates generate the group of all possible quantum logic gates but are costly to implement with current technology. I constructed a pipeline to manipulate quantum states and circuits in Python for classification by a machine learning algorithm to gain insight on the structure of quantum complexity.
+									<p>
+										My work here focuses on the effects of doping Clifford random quantum circuits with Universal gates. The Universal gates generate the group of all possible quantum logic gates but are costly to implement with current technology. I constructed a pipeline to manipulate quantum states and circuits in Python for classification by a machine learning algorithm to gain insight on the structure of quantum complexity.
 									</p>
 								</div>
 							</section>
-
-						<!-- Four -->
-<!-- 							<section id="four" class="spotlight">
-								<div class="image"><img src="images/pic03.jpg" alt="" /></div><div class="content">
-									<h2>Porta vestibulum</h2>
-									<p>Praesent egestas quam at lorem imperdiet lobortis. Mauris condimentum et euismod ipsum, at ullamcorper libero dolor auctor sit amet. Proin vulputate amet sem ut tempus. Donec quis ante viverra, suscipa facilisis at, vestibulum id urna. Lorem ipsum dolor sit amet sollicitudin.</p>
-								</div>
-							</section> -->
 
 						<!-- Five -->
 							<section id="five" class="cta">
@@ -127,45 +127,21 @@
 
 				<!-- Footer -->
 					<section id="footer">
-						<div class="inner">
-							<section class="about">
-								<h3>Proin sed ultricies</h3>
-								<p>Praesent egestas quam at lorem imperdiet lobortis. Mauris condimentum et euismod ipsum, at ullamcorper libero dolor auctor sit amet. Proin vulputate.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Learn More</a></li>
-								</ul>
-							</section>
-							<section>
-								<h3>Contact</h3>
-								<ul class="contact">
-									<li class="icon solid fa-phone">(000) 000-0000</li>
-									<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-									<li class="icon brands fa-twitter"><a href="#">@untitled-tld</a></li>
-									<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled</a></li>
-								</ul>
-							</section>
-							<section>
-								<h3>Mailing Address</h3>
-								<p>Untitled Corp<br />
-								1234 Fictional Road<br />
-								Suite 5432<br />
-								Nashville, TN 00000<br />
-								USA</p>
-							</section>
-						</div>
-						<div class="copyright">
-							<p>Copyright &copy; Untitled Corp. All rights reserved.</p>
-						</div>
+						<!-- Footer placeholder -->
 					</section>
 
 			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
+
+			<!-- Custom scripts -->
+			<script src='assets/js/templates.js'></script>
+			
+			<!-- Template scripts -->
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>
