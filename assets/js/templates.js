@@ -81,9 +81,7 @@ var footer_template = `
 `
 
 
-
 /*---------------------- Insert code ----------------------*/
-
 
 // Insert the menu
 $('#menu').replaceWith(nav_template)
