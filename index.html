@@ -6,18 +6,20 @@
 -->
 <html>
 <head>
-	
+
 	<title>Jonathan Delgado</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/main.css" />
 	<!-- Icons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
 	<!-- iMessage link preview metadata -->
 	<meta property="og:title" content="Jonathan Delgado - Home" />
-	<meta property="og:image" content="https://jdelgado.net/images/green-group-photo.jpg" />
+	<meta property="og:image" content="images/jdelgado.jpeg" />
 
 </head>
 
@@ -29,10 +31,10 @@
 		<!-- Header -->
 		<header id="header">
 
-	    	<h1><a href="index.html">Jonathan Delgado
-	    	<span>
-	        	Home
-	    	</span></a></h1>
+	    	<h1>
+	    		<a href="index.html">Jonathan Delgado
+	    		<span>Home</span></a>
+	    	</h1>
 
 	    	<nav>
 	        	<a href="#menu">Menu</a>
@@ -57,22 +59,25 @@
 				</header>
 				<footer>
 					<ul class="actions special">
-						<li><a href="#" class="button large">Coming soon</a></li>
+						<li><a href="#" class="button large">New Sections Coming soon</a></li>
 					</ul>
 				</footer>
 			</section>
 
-			<!-- 3 part section -->
-			<section id="one" class="features">
+			<!-- Selected publications -->
+			<!-- <section id="one" class="features">
 				<header class="major">
-					<h2>Selected Publications</h2>
-					<p>Mauris lectus odio, mattis nec velit eu, luctus dictum diam. Quis<br />
-					tempus que ornare purus a bibendum ultricies.</p>
+					<a href='publications.html'>
+						<h2>Selected Publications</h2>
+						<p>Read more about my work here.
+							<br />
+						Click me to see all of my publications.</p>
+					</a>
 				</header>
 				<div class="content">
 					<section class="feature">
 						<span class="icon major fa-gem"></span>
-						<h3>Etiam sed feugiat</h3>
+						<h3>Finite-time decomposition of stochastic entropy production.</h3>
 						<p>Praesent egestas quam at lorem imperdiet lobortis. Mauris condimentum et euismod ipsum, at ullamcorper libero dolor auctor sit amet. Proin vulputate amet sem ut tempus. Donec quis ante viverra, suscipit euismod habitant lorem ipsum dolor.</p>
 					</section>
 					<section class="feature">
@@ -86,7 +91,7 @@
 						<p>Praesent egestas quam at lorem imperdiet lobortis. Mauris condimentum et euismod ipsum, at ullamcorper libero dolor auctor sit amet. Proin vulputate amet sem ut tempus. Donec quis ante viverra, suscipit euismod habitant lorem ipsum dolor.</p>
 					</section>
 				</div>
-			</section>
+			</section> -->
 
 			<!-- First main block - Stoch thermo -->
 			<section id="two" class="spotlight">
@@ -100,7 +105,7 @@
 					<h2><a href="stochthermo.html">
 						Stochastic Thermodynamics & Information
 					</a></h2>
-					<p> My work here focuses on the second law of thermodynamics and measuring time-reversal asymmetry through information-theoretic quantities. The centerpiece of my work is an algebraic relationship between information rates and physical observables that quantify the amount of irreversible entropy produced in time-evolution of a thermodynamic process.
+					<p> My work here focuses on the second law of thermodynamics and measuring time-reversal asymmetry through information-theoretic quantities. The centerpiece of my work is an algebraic relationship between information rates and physical observables that quantify the amount of irreversible entropy produced in the time-evolution of a thermodynamic process.
 					</p>
 				</div>
 			</section>
@@ -118,22 +123,10 @@
 							Machine Learning Quantum
 						</a></h2>
 						<p>
-							My work here focuses on the effects of doping Clifford random quantum circuits with Universal gates. The Universal gates generate the group of all possible quantum logic gates but are costly to implement with current technology. I constructed a pipeline to manipulate quantum states and circuits in Python for classification by a machine learning algorithm to gain insight on the structure of quantum complexity.
+							My work here focuses on the effects of doping Clifford random quantum circuits with Universal gates. The Universal gates generate the group of all possible quantum logic gates but are costly to implement with current technology. I've constructed a pipeline to manipulate quantum states and circuits for classification by a machine learning algorithm to gain insight on the structure of quantum complexity.
 						</p>
 					</div>
 				</section>
-
-			<!-- Bottom section -->
-			<section id="five" class="cta">
-				<header>
-					<h2>Sed euismod nullam</h2>
-					<p>Odio mattis nec velit eu, luctus dictum diam. Quis<br />
-					tempus que ornare purus a bibendum ultricies</p>
-				</header>
-				<ul class="actions special">
-					<li><a href="#" class="button large">Get Started</a></li>
-				</ul>
-			</section>
 
 		</div>
 
@@ -148,7 +141,7 @@
 	<script src="assets/js/jquery.min.js"></script>
 
 	<!-- Custom scripts -->
-	<script src='assets/js/templates.js'></script>
+	<script src='js/templates.js'></script>
 	
 	<!-- Template scripts -->
 	<script src="assets/js/browser.min.js"></script>

@@ -1,0 +1,16 @@
+/* Index changes */
+
+/* Remove the dotted underline on links */
+a:link {
+    border-bottom:none;
+}
+
+/* Increase font size in spotlight sections */
+div.content > p {
+    font-size:15px;
+}
+
+/* Make links stand out from text in bodys */
+div.content > p > a {
+    text-decoration:underline;
+}
