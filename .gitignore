@@ -17,5 +17,6 @@ __pycache__
 *.run.xml
 *.synctex.gz
 
-# Ignore Google Form
+# Ignore Google Docs (forms and sheets)
 *.gform
+*.gsheet
