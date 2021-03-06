@@ -9,7 +9,6 @@ var nav_template = `
             <li><a href="stochthermo.html">Stochastic Thermodynamics</a></li>
             <li><a href="qinfo.html">Quantum Information Theory</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="template_elements.html">Elements</a></li>
         </ul>
     </div>
 </nav>

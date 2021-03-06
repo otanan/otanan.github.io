@@ -48,25 +48,23 @@
 
 								<section>
 									<!-- Form -->
+
 									<h4>Contact me</h4>
-									<form method="post" action="contact.php">
+									<!-- Ties to Google form -->
+									<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSc9sgT3y5uujtiRKdxEqTJXUUlwcqUKggGP2tJIWDBKcFuezQ/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
-												<input type="text" name="Name" id="Name" value="" placeholder="Name" />
+												<!-- Name field -->
+												<input type="text" name="entry.1925537724" id="entry.1925537724" value="" placeholder="Name" />
 											</div>
 											<div class="col-6 col-12-xsmall">
-												<input type="email" name="Email" id="Email" value="" placeholder="Email" />
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
+												<!-- Email field -->
+												<input type="email" name="entry.1938098279" id="entry.1938098279" value="" placeholder="Email" />
 											</div>
 											<div class="col-12">
-												<textarea name="Message" id="Message" placeholder="Enter your message" rows="6"></textarea>
+												<!-- Message field -->
+												<textarea name="entry.255023413" id="entry.255023413" placeholder="Enter your message" rows="6" style="resize: none;"></textarea>
 											</div>
 											<div class="col-12">
 												<ul class="actions">
@@ -76,6 +74,10 @@
 											</div>
 										</div>
 									</form>
+
+									<!-- Cancels redirect -->
+									<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
 								</section>
 
 
@@ -99,6 +101,8 @@
 
 			<!-- Custom scripts -->
 			<script src='assets/js/templates.js'></script>
+			<!-- Contact form code -->
+			<script src='assets/js/contact.js'></script>
 
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
