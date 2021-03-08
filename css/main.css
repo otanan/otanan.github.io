@@ -14,3 +14,25 @@ div.content > p {
 div.content > p > a {
     text-decoration:underline;
 }
+
+/* Allow for footer text to be placed in bottom corner.*/
+section.spotlight {
+    position:relative;
+}
+
+section.spotlight > footer {
+    position:absolute;
+    bottom:5px;
+    right:10px;
+}
+
+section.spotlight.alt > footer {
+    position:absolute;
+    bottom:5px;
+    left:10px;
+}
+
+section.spotlight > footer > a {
+    font-style:italic;
+    text-decoration:underline;
+}

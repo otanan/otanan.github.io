@@ -6,8 +6,10 @@ var nav_template = `
         <h2>Menu</h2>
         <ul class="links">
             <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
             <li><a href="stochthermo.html">Stochastic Thermodynamics</a></li>
             <li><a href="qinfo.html">Quantum Information Theory</a></li>
+            <!-- Publications -->
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
@@ -66,16 +68,13 @@ var footer_template = `
 <section id="footer">
     <div class="inner">
         <section class="about">
-            <h3>Proin sed ultricies</h3>
+            <h3>Acknowledgments</h3>
             <p>Praesent egestas quam at lorem imperdiet lobortis. Mauris condimentum et euismod ipsum, at ullamcorper libero dolor auctor sit amet. Proin vulputate.</p>
             <ul class="actions">
                 <li><a href="#" class="button">Learn More</a></li>
             </ul>
         </section>
         ` + pages + mailing_address + `
-    </div>
-    <div class="copyright">
-        <p>Copyright &copy; Untitled Corp. All rights reserved.</p>
     </div>
 </section>
 `
