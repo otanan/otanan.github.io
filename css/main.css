@@ -40,3 +40,11 @@ section.spotlight > div.content > footer > a {
     font-style:italic;
     text-decoration:underline;
 }
+
+/* For mobile images */
+/*section.spotlight > div.image > img.mobile { 
+}
+
+
+section.spotlight > div.image > img.normal { 
+}*/
