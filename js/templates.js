@@ -19,18 +19,6 @@ var nav_template = `
 
 /*---------------------- Footer ----------------------*/
 
-
-var mailing_address = `
-<section>
-    <h3>Mailing Address</h3>
-    <p>Jonathan Delgado<br />
-    1234 Fictional Road<br />
-    Suite 5432<br />
-    Nashville, TN 00000<br />
-    USA</p>
-</section>
-`
-
 var pages = `
 <section>
     <h3>Pages</h3>
@@ -64,17 +52,39 @@ var pages = `
 </section>
 `
 
+
+// var mailing_address = `
+// <section>
+//     <h3>Mailing Address</h3>
+//     <p>Jonathan Delgado<br />
+//     1234 Fictional Road<br />
+//     Suite 5432<br />
+//     Nashville, TN 00000<br />
+//     USA</p>
+// </section>
+// `
+
+// Temporary empty section to flush pages to right until office address is
+    // available
+var mailing_address = '<section></section>'
+
+// Temporarily place pages to right of mailing_address until office address 
+    // is ready
 var footer_template = `
 <section id="footer">
     <div class="inner">
         <section class="about">
-            <h3>Acknowledgments</h3>
-            <p>Praesent egestas quam at lorem imperdiet lobortis. Mauris condimentum et euismod ipsum, at ullamcorper libero dolor auctor sit amet. Proin vulputate.</p>
+            <!-- <h3>Acknowledgments</h3> -->
+            
+            <p>
+                <!-- Acknowledgments here -->
+            </p>
+            
             <ul class="actions">
-                <li><a href="#" class="button">Learn More</a></li>
+                <!-- <li><a href="#" class="button">Learn More</a></li> -->
             </ul>
         </section>
-        ` + pages + mailing_address + `
+        `  + mailing_address + pages + `
     </div>
 </section>
 `
