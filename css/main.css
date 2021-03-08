@@ -20,19 +20,23 @@ section.spotlight {
     position:relative;
 }
 
-section.spotlight > footer {
+section.spotlight > div.content > footer {
     position:absolute;
-    bottom:5px;
-    right:10px;
+    bottom:0;
+    right:0;
+    text-align:right;
 }
 
-section.spotlight.alt > footer {
+/* Have faculty page link in bottom left for right image spotlight */
+section.spotlight.alt > div.content > footer {
     position:absolute;
-    bottom:5px;
-    left:10px;
+    bottom:0;
+    left:0;
+    text-align:left;
 }
 
-section.spotlight > footer > a {
+/* Style faculty page links */
+section.spotlight > div.content > footer > a {
     font-style:italic;
     text-decoration:underline;
 }

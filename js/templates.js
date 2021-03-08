@@ -9,7 +9,7 @@ var nav_template = `
             <li><a href="about.html">About Me</a></li>
             <li><a href="stochthermo.html">Stochastic Thermodynamics</a></li>
             <li><a href="qinfo.html">Quantum Information Theory</a></li>
-            <!-- Publications -->
+            <!-- <li><a href="publications.html">Publications</a></li> -->
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
@@ -36,15 +36,15 @@ var pages = `
     <h3>Pages</h3>
     <ul class="contact">
 
-        <a href='https://www.overleaf.com/read/fysdgddkgprx' target='_blank'>
-            <li class="icon solid fa-file-code">
-                Curriculum Vitae
-            </li>
-        </a>
-        
         <a href="contact.html">
             <li class="icon solid fa-envelope">
                 Email
+            </li>
+        </a>
+
+        <a href='https://www.overleaf.com/read/fysdgddkgprx' target='_blank'>
+            <li class="icon solid fa-file-code">
+                Curriculum Vitae
             </li>
         </a>
 
