@@ -30,7 +30,7 @@ var pages = `
             </li>
         </a>
 
-        <a href='https://www.overleaf.com/read/fysdgddkgprx' target='_blank'>
+        <a href='about.html#cv'>
             <li class="icon solid fa-file-code">
                 Curriculum Vitae
             </li>
