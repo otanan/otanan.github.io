@@ -50,44 +50,43 @@
                     <h2>About Me</h2>
                     <p>"This is the about me page."<br />
                     –Jonathan Delgado.</p>
+
+                    <!-- CV -->
+                    <footer style='margin-bottom:-40px'>
+                        <ul class="actions special">
+                            <li id='cvbutton'><a href="#cv" class="button large">
+                                Curriculum Vitae
+                            </a></li>
+                        </ul>
+                    </footer>
+
                 </header>
 
                 <div class="content">
 
                     <h3></h3>
                     <p>
-                        <span class="image left">
+                        <!-- <span class="image left">
                             <img src="images/jdelgado.jpeg" alt="" style='border-radius: 2%;'/>
-                        </span>
-                        I am a PhD student at _____. I was born and raised in Massachusetts. My mother is Colombian and my father is Cuban. I grew up in a household speaking English and Spanish, and have come to defend myself in Italian.
+                        </span> -->
+                        <!-- I am a PhD student at _____. -->
+                        I was born and raised in Massachusetts. My mother is Colombian and my father is Cuban. I grew up in a household speaking English and Spanish, and have come to defend myself in Italian.
                     </p>
                     
                     <p>
-                        All areas of mathematics interest me but I am particularly excited by the intersection of physics and mathematics. More specifically...
+                        All areas of mathematics interest me but I am particularly excited by the intersection of physics and mathematics.
+                        <!-- More specifically... -->
                     </p>
-
-
-                    <p>
-                        You can contact me at: jonathan.delgado AT umb.edu, or via my <a href='contact.html'>contact page</a>. The code for most of my projects is public on my
-                        <a href="https://github.com/otanan" target='_blank' style='text-decoration:none'>
-                        <span class="icon brands fa-github"> GitHub</span></a>.
-                    </p>
-
-                    <p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
 
                     <hr />
 
-                    <h4>Feugiat aliquam</h4>
-                    <p>Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat.</p>
-
-                    <p>Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui, at vestibulum sit amet, auctor bibendum neque.</p>
-
                     <!-- CV -->
-                    <div id='cv'>
+                    <div id='cv' style='display:none'>
+                    <!-- <div id='cv'> -->
                         <!-- Anchor for linking -->
                         <a name='cv'></a>
 
-                        <iframe src="https://drive.google.com/file/d/1GLepoj9Y9OIvv1xzhpMdp85YL6zR63EN/preview" width="100%" height="640"></iframe>
+                        <iframe src="https://drive.google.com/file/d/1GLepoj9Y9OIvv1xzhpMdp85YL6zR63EN/preview" width="100%" height="800"></iframe>
                         
                     </div>
 
@@ -109,6 +108,13 @@
 
     <!-- Custom scripts -->
     <script src='js/templates.js'></script>
+
+    <script>
+        // Animate revealing the Cv
+        $('#cvbutton').click(function() {
+            $('#cv').slideDown('slow');
+        });
+    </script>
 
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>

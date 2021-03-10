@@ -6,10 +6,15 @@ var nav_template = `
         <h2>Menu</h2>
         <ul class="links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
+
+            <li><a href="about.html">About</a></li>
+
             <li><a href="stochthermo.html">Stochastic Thermodynamics</a></li>
+
             <li><a href="qinfo.html">Quantum Information Theory</a></li>
+
             <!-- <li><a href="publications.html">Publications</a></li> -->
+
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
@@ -30,7 +35,7 @@ var pages = `
             </li>
         </a>
 
-        <a href='about.html#cv'>
+        <a href='about.html'>
             <li class="icon solid fa-file-code">
                 Curriculum Vitae
             </li>

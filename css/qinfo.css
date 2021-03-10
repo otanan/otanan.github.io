@@ -1,0 +1,9 @@
+/* Select the first heading element that follows the content div */
+div + h3 {
+    margin-top:-12px;
+}
+
+/* Style the floating images */
+span.image img, span.image img {
+    border-radius:2%;
+}
