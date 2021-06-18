@@ -2959,7 +2959,8 @@ input, select, textarea {
 
 	#banner {
 		position: relative;
-		background-image: url("../../images/banner.jpg");
+		/*background-image: url("../../images/banner.jpg");*/
+		background-image: url("../../images/banner.webp");
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
