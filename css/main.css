@@ -1,4 +1,7 @@
-/* Index changes */
+/* Smooth scrolling to anchors on page */
+html {
+  scroll-behavior: smooth;
+}
 
 /* Remove the dotted underline on links */
 a:link {

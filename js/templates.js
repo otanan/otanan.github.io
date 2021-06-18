@@ -35,7 +35,7 @@ var pages = `
             </li>
         </a>
 
-        <a href='about.html'>
+        <a href='about.html#cv'>
             <li class="icon solid fa-file-code">
                 Curriculum Vitae
             </li>
@@ -95,9 +95,23 @@ var footer_template = `
 `
 
 
-/*---------------------- Insert code ----------------------*/
+/*---------------------- Insert templates ----------------------*/
 
 // Insert the menu
 $('#menu').replaceWith(nav_template)
 // Insert the footer
 $('#footer').replaceWith(footer_template)
+
+// Opens CV automatically from footer click
+$(function() {
+
+    // Detect URL hash changes for CV event
+    $(window).bind("hashchange", showCV());
+    
+});
+
+// Helps to show the CV when linking to the About page through the CV button
+function showCV() {
+    if (window.location.hash == "#cv") 
+        $('#cv').slideDown('slow');
+}
