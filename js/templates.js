@@ -15,6 +15,8 @@ var nav_template = `
 
             <!-- <li><a href="publications.html">Publications</a></li> -->
 
+            <li><a href="codingprojects.html">Coding Projects</a></li>
+
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
