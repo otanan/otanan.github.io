@@ -5,19 +5,19 @@ var nav_template = `
     <div class='inner'>
         <h2>Menu</h2>
         <ul class="links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
 
-            <li><a href="about.html">About</a></li>
+            <li><a href="about">About</a></li>
 
-            <li><a href="stochthermo.html">Stochastic Thermodynamics</a></li>
+            <li><a href="stochthermo">Stochastic Thermodynamics</a></li>
 
-            <li><a href="qinfo.html">Quantum Information Theory</a></li>
+            <li><a href="qinfo">Quantum Information Theory</a></li>
 
-            <!-- <li><a href="publications.html">Publications</a></li> -->
+            <!-- <li><a href="publications">Publications</a></li> -->
 
-            <li><a href="codingprojects.html">Coding Projects</a></li>
+            <li><a href="codingprojects">Coding Projects</a></li>
 
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact">Contact</a></li>
         </ul>
     </div>
 </nav>
@@ -31,13 +31,13 @@ var pages = `
     <h3>Pages</h3>
     <ul class="contact">
 
-        <a href="contact.html">
+        <a href="contact">
             <li class="icon solid fa-envelope">
                 Email
             </li>
         </a>
 
-        <a href='about.html#cv'>
+        <a href='about#cv'>
             <li class="icon solid fa-file-code">
                 Curriculum Vitae
             </li>
