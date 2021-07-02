@@ -7,15 +7,15 @@ var nav_template = `
         <ul class="links">
             <li><a href="/">Home</a></li>
 
-            <li><a href="about">About</a></li>
+            <li><a href="about-me">About Me</a></li>
 
-            <li><a href="stochthermo">Stochastic Thermodynamics</a></li>
+            <li><a href="stochastic-thermodynamics">Stochastic Thermodynamics</a></li>
 
-            <li><a href="qinfo">Quantum Information Theory</a></li>
+            <li><a href="quantum-information-theory">Quantum Information Theory</a></li>
 
             <!-- <li><a href="publications">Publications</a></li> -->
 
-            <li><a href="codingprojects">Coding Projects</a></li>
+            <li><a href="coding-projects">Coding Projects</a></li>
 
             <li><a href="contact">Contact</a></li>
         </ul>
@@ -37,7 +37,7 @@ var pages = `
             </li>
         </a>
 
-        <a href='about#cv'>
+        <a href='about-me#cv'>
             <li class="icon solid fa-file-code">
                 Curriculum Vitae
             </li>

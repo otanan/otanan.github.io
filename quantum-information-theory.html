@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+	<title>Jonathan Delgado</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/qinfo.css" />
+	<!-- Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+
+    <!-- iMessage link preview metadata -->
+    <!-- Open Graph metadata (such as for Discord) and more. -->
+
+    <meta name="description" content="Read about my undergraduate research in quantum information theory.">
+
+    <!-- Works on Discord (used as backup if OG isn't available) -->
+    <meta name="twitter:image" content="https://jdelgado.net/images/quantum-information-theory/haar-state.jpg" />
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Jonathan Delgado - Quantum Information Theory">
+    <meta property="twitter:url" content="https://jdelgado.net/quantum-information-theory">
+    <meta property="twitter:description" content="Read about my undergraduate research in quantum information theory.">
+
+    <!-- Works on Discord -->
+    <!-- Discord does not support .webp format! -->
+    <meta property="og:image" content="https://jdelgado.net/images/quantum-information-theory/haar-state.jpg" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jonathan Delgado - Quantum Information Theory">
+    <meta property="og:url" content="https://jdelgado.net/quantum-information-theory">
+    <meta property="og:description" content="Read about my undergraduate research in quantum information theory.">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1>
+                <a href="/">Jonathan Delgado
+				<span>Machine Learning Quantum</span></a>
+			</h1>
+
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id='menu'>
+			<!-- Navigation placeholder -->
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Header -->
+			<section id="content" class="default">
+				<header class="major">
+					<h2>Machine Learning & Quantum Computing</h2>
+					<p>"Observations not only disturb what is to be measured, they produce it."
+						<br />
+					–Pascual Jordan.</p>
+				</header>
+
+				<!-- Body -->
+				<div class="content" style="padding-top:18px">
+					<!-- Leave in-line styling since .css is not working for this element for some reason -->
+
+					<!-- Gif -->
+					<div class="box alt">
+						<div class="row gtr-uniform"><div class="col-12"><span class="image fit">
+							<a href='https://github.com/otanan/IntQC' target='_blank'>
+								<img src="images/quantum-information-theory/randqc-demo.gif" alt="" />
+							</a>
+						</span></div></div>
+					</div>
+
+					<!-- Heading -->
+					<h3>On quantum computation</h3>
+
+					<p>
+						The advent of quantum computing places us on the forefront of a revolution in computational power and capability. Quantum computation will have direct impacts on cryptography and cyber-security, the development of pharmaceutical drugs, sustainable energy, novel quantum materials, meteorological forecasting, and more. The greatest obstacle for the construction and use of quantum computers lies in system decoherence–environmental noise and interactions challenge our ability to construct quantum systems with many qubits (> 40). A quantum computer can be built within a circuit model by having access to a minimal “universal” set of gates. Scalable universal quantum computation hinges on the possibility of keeping the error rate of such gates below a certain threshold that is currently hard to achieve (10-6). In contrast, Clifford gates are elements of a group of quantum gates that can be implemented with arbitrarily high precision. Not surprisingly, they do not allow for universal quantum computation. Moreover, Clifford circuits can be efficiently simulated on a classical computer, showing that quantum advantage lies outside the Clifford gate model. Since Clifford gates are not universal by themselves, understanding in which ways they fail to be is paramount to understanding to what extent non-Clifford gates are needed.
+					</p>
+					
+					<h3>Haar Versus Clifford</h3>
+
+					<p>
+						<span class="image left">
+							<img src="images/quantum-information-theory/clifford-state.webp" alt=""/>
+						</span>
+						Universal and Clifford circuits exhibit remarkably different behavior. This can be easily seen by representing a Clifford state via the image on the left. This image immediately reveals a large amount of structure that a Clifford state has. Simply put, universal circuits show chaotic behavior and their outputs are random states in a Hilbert space. Instead, Clifford circuits fail to be ergodic and their outputs cover a tiny (finite) portion of the Hilbert space. The chaotic/non-chaotic behavior can be revealed by several properties: Entanglement Spectrum Statistics (ESS), response to disentangling algorithms, or the adherence to moments of the probability distribution over the Haar measure. My work aims to understand the transition between outputs of universal circuits and Clifford circuits by studying how statistics on random quantum circuits affect these figures of merit as functions of the impurity of Clifford circuits through strategic doping of universal gates. I want to improve the understanding on the number and placement of universal gates needed in a quantum circuit to improve resource management and reduce the overall impact of decoherence.
+					</p>
+					
+					<p>
+						A better understanding of this transition has both long-term theoretical significance and immediate practical significance. Chaotic behavior from quantum systems is known to emerge from this transition of Clifford to universal circuits, and a better understanding of this phenomenon will shed light on irreversibility at the quantum level.
+						This work will also improve our understanding of intelligent circuit design and resource management of the, otherwise difficult to implement, universal gates, while improving stability against decoherence for our quantum computers.
+					</p>
+
+					<h3>Interactive Quantum Circuits</h3>
+
+					<p>
+						To better understand how these states are affected by random quantum circuits I've written an Interactive Quantum Circuit (IntQC) visualizer. You can download and use this visualizer through my
+                        <a href='https://github.com/otanan/IntQC' target='_blank' style='text-decoration:none'>
+                        	<!-- Keep in-line styling since css will not work for it -->
+                        <span class="icon brands fa-github"> GitHub repo</span></a>, or demo it directly on my <a href='codingprojects.html'>coding projects page</a>.
+					</p>
+
+					<div class="col-12"><span class="image fit">
+						<img id='intqc' src="images/quantum-information-theory/intqc.webp" alt="" />
+					</span></div>
+
+
+					<!-- Redirect -->
+					<p>
+						You can learn more about this research and the Hamma research group on quantum information theory at UMass Boston by going to
+						<a href='https://www.quantumphysics.fun/' target='_blank'>Professor Hamma's research page.</a>
+					</p>
+
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<section id="footer">
+			<!-- Footer placeholder -->
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+
+	<!-- Custom scripts -->
+	<script src='js/templates.js'></script>
+
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>

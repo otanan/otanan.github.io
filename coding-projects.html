@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+	<title>Jonathan Delgado</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/main.css" />
+	<!-- Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+
+    <!-- iMessage link preview metadata -->
+    <!-- Open Graph metadata (such as for Discord) and more. -->
+
+    <meta name="description" content="Read (and demo) some of my side coding projects on concepts in mathematics and physics straight from your browser.">
+
+    <!-- Works on Discord (used as backup if OG isn't available) -->
+    <meta name="twitter:image" content="https://jdelgado.net/images/quantum-information-theory/intqc.jpg" />
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Jonathan Delgado - Coding Projects">
+    <meta property="twitter:url" content="https://jdelgado.net/coding-projects">
+    <meta property="twitter:description" content="Read (and demo) some of my side coding projects on concepts in mathematics and physics straight from your browser.">
+
+    <!-- Works on Discord -->
+    <!-- Discord does not support .webp format! -->
+    <meta property="og:image" content="https://jdelgado.net/images/quantum-information-theory/intqc.jpg" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jonathan Delgado - Coding Projects">
+    <meta property="og:url" content="https://jdelgado.net/coding-projects">
+    <meta property="og:description" content="Read (and demo) some of my side coding projects on concepts in mathematics and physics straight from your browser.">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+	    	<h1>
+                <a href="/">Jonathan Delgado
+	    		<span>Coding Projects</span></a>
+	    	</h1>
+
+	    	<nav>
+	        	<a href="#menu">Menu</a>
+	    	</nav>
+
+		</header>
+
+		<!-- Menu -->
+		<nav id='menu'>
+			<!-- Navigation placeholder -->
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Content -->
+			<section id="content" class="default">
+				<header class="major">
+					<h2>Coding Projects</h2>
+					<p>“Software is like entropy: It is difficult to grasp, weighs nothing, and obeys the Second Law of Thermodynamics; i.e., it always increases.”
+						<br />
+					– Norman Augustine.</p>
+				</header>
+				<div class="content">
+
+					<h1>Coding Projects</h1>
+
+					<p>
+						On this page you can get some more information about some of my coding projects and even demo them from your browser. If you're interested in playing with these demos more, or even building off of them, I encourage you to clone them directly from my
+						<a href="https://github.com/otanan" target='_blank' style='text-decoration:none'>
+                        <span class="icon brands fa-github"> GitHub</span></a>. Feel free to
+				        <a href="contact" target='_blank' style='text-decoration:none'>
+				            <span class="icon solid fa-envelope">
+				                contact me
+				            </span>
+				        </a>
+				        with any questions or suggestions.
+
+					</p>
+					<p>
+						Keep in mind that these are side projects intended as fun illustrations of various concepts.
+				        <strong>They are not software engineering samples</strong> and will break if you to try to break them.
+					</p>
+
+					<h1>About Replit</h1>
+
+					<p>
+						<a href='https://replit.com/~' target='_blank'>Replit</a> is an online IDE that makes cloning these projects from my
+						<a href="https://github.com/otanan" target='_blank' style='text-decoration:none'>
+                        <span class="icon brands fa-github"> GitHub</span></a>
+                        easy and intuitive. Replit does this by running the code from a virtual machine. As a result, the program is a bit slow and their embedding interface does lack some customization. If you're interested in a speedier version I encourage you to clone them directly.
+					</p>
+
+					<p><a class='anchor' id='replit_compatibility'></a>
+						From my own testing the plotting through Replit only seems to work on recent desktop versions of Google Chrome (not Incognito mode) and Firefox. You may also have better luck in some cases running the program directly from <a href='https://replit.com/@otanan' target='_blank'>my Replit page</a>.
+					</p>
+
+					<hr />
+
+					<h1>Rearrangements</h1>
+
+					<p>
+						The <a href='https://en.wikipedia.org/wiki/Riemann_series_theorem' target='_blank'>Riemann series theorem</a> (or Riemann rearrangement theorem) loosely states that for any conditionally convergent series, and any [extended] real number, there exists a rearrangement of the series that converges to the given real number. The proof of this beautiful theorem given in <a href='https://www.amazon.com/Principles-Mathematical-Analysis-International-Mathematics/dp/007054235X' target='_blank'>Rudin's book</a> on analysis actually gives an algorithm for constructing the desired rearrangement. Here, I implement this algorithm and plot the progression of the partial sums of the rearranged series using a few options for conditionally convergent series.
+					</p>
+
+					<p>
+						<strong>To run the code</strong> make sure you're on a <a href='#replit_compatibility'>compatible browser</a>, and that the <span style='font-family: "Courier New", monospace;'><strong>[Console]</strong></span> tab is active. Press play, type your inputs into the console, and follow the instructions given in the console. Note that for real numbers larger than (more negative than) 8 (-8) the simulation can take a very long time to converge.
+					</p>
+
+					<!-- Repl.it -->
+            		<iframe frameborder="0" width="100%" height="800px" src="https://repl.it/@otanan/Rearrangements?embed=true&outputonly=1"></iframe>
+
+					<!-- Padding -->
+					<hr />
+
+					<h3 id='IntQC'>Interactive Quantum Circuits</h3>
+
+					<p>
+						Through my work with <a href='https://www.quantumphysics.fun/' target='_blank'>Professor Hamma</a> on quantum information theory (which you can read more about <a href='qinfo' target='_blank'>here</a>), I studied the effects of random quantum circuits on quantum states. One tool used to study these states is by visualizing them, and the effects that circuits have on them, as images. Interactive Quantum Circuits (IntQC) is meant to demo this.
+					</p>
+
+					<p>
+						IntQC is a simple visualizer that lets you vary parameters such as the number of qubits in the system, the circuit used on the system, the input state to the circuit, and more. IntQC is written with an older, now outdated version of my custom library: Random Quantum Circuits (RandQC). The modern version of RandQC is planned to be made public in the future.
+					</p>
+
+					<p>
+						<strong>To run the code</strong> make sure you're on a <a href='#replit_compatibility'>compatible browser</a>, ensure you're on the <span style='font-family: "Courier New", monospace;'><strong>[Output]</strong></span> tab at all times, and press play. This simulation takes quite a bit of time to start up, especially for the first time, on the Replit virtual machine (it has to install dependencies with each clone).
+					</p>
+
+					<!-- Repl.it -->
+            		<iframe frameborder="0" width="100%" height="800px" src="https://repl.it/@otanan/IntQC?embed=true&outputonly=1"></iframe>
+
+					<!-- Redirect -->
+					<p style='padding-top:15px'>
+						You can learn more about this research and the Hamma research group on quantum information theory at UMass Boston by going to
+						<a href='https://www.quantumphysics.fun/' target='_blank'>Professor Hamma's research page</a>.
+					</p>
+
+
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<section id="footer">
+			<!-- Footer placeholder -->
+		</section>
+
+	</div>
+
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+
+	<!-- Custom scripts -->
+	<script src='js/templates.js'></script>
+
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>

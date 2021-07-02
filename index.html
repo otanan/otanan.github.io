@@ -12,15 +12,26 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
-	<!-- iMessage link preview metadata -->
-	<meta property="og:title" content="Jonathan Delgado - Home" />
-	<meta property="og:image" content="images/jdelgado.webp" />
-	<!-- Open Graph and other metadata (such as for Discord) -->
-	<meta property="twitter:card" content="summary_large_image">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://jdelgado.net/">
-	<meta property="og:description" content="Jonathan Delgado's homepage.">
-	<meta name="description" content="Jonathan Delgado's homepage.">
+
+    <!-- iMessage link preview metadata -->
+    <!-- Open Graph metadata (such as for Discord) and more. -->
+
+    <meta name="description" content="Jonathan Delgado's homepage.">
+
+    <!-- Works on Discord (used as backup if OG isn't available) -->
+    <meta name="twitter:image" content="https://jdelgado.net/images/jdelgado.jpg" />
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Jonathan Delgado - Home">
+    <meta property="twitter:url" content="https://jdelgado.net/">
+    <meta property="twitter:description" content="Jonathan Delgado's homepage.">
+
+    <!-- Works on Discord -->
+    <!-- Discord does not support .webp format! -->
+    <meta property="og:image" content="https://jdelgado.net/images/jdelgado.jpg" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jonathan Delgado - Home">
+    <meta property="og:url" content="https://jdelgado.net/">
+    <meta property="og:description" content="Jonathan Delgado's homepage.">
 
 </head>
 <body class="is-preload">
@@ -54,7 +65,7 @@
 			<!-- Banner -->
 			<section id="banner">
 				<header>
-					<h2><a href='about'>
+					<h2><a href='about-me'>
 						Jonathan Delgado
 					</a></h2>
 					<p>
@@ -63,7 +74,7 @@
 				</header>
 				<footer>
 					<ul class="actions special">
-						<li><a href="about" class="button large">
+						<li><a href="about-me" class="button large">
 							About
 						</a></li>
 						<li><a href="contact" class="button large">
@@ -101,23 +112,24 @@
 			</section> -->
 
 
-			<!-- First main block - Stoch thermo -->
+			<!-- First main block - Stochastic Thermodynamics -->
 			<section id="two" class='spotlight'>
 				<div class="image">
-					<!-- Support for mobile screens -->
+					<!-- Adds support for mobile screens -->
 					<picture>
+						<!-- Desktop photo -->
 					  <source 
 					    media="(min-width: 975px)"
-					    srcset="images/green-group-photo.webp">
+					    srcset="images/stochastic-thermodynamics/green-group-photo.webp">
 					  <img 
-					    src="images/green-group-photo-mobile.webp"
+					    src="images/stochastic-thermodynamics/green-group-photo-mobile.webp"
 					    alt="">
 					</picture>
 				</div>
 
 				<div class="content">
 
-					<h2><a href="stochthermo">
+					<h2><a href="stochastic-thermodynamics">
 						Stochastic Thermodynamics & Information
 					</a></h2>
 					<p>
@@ -140,11 +152,11 @@
 			<!-- Second main block - QInfo -->
 			<section id="three" class="spotlight alt">
 				<div class="image">
-					<img src="images/haar-state.png" alt="" />
+					<img src="images/quantum-information-theory/haar-state.webp" alt="" />
 				</div>
 
 				<div class="content">
-					<h2><a href="qinfo">
+					<h2><a href="quantum-information-theory">
 						Machine Learning Quantum
 					</a></h2>
 					<p>
