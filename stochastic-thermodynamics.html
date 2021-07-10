@@ -19,7 +19,8 @@
     <meta name="description" content="Read about my undergraduate research in stochastic thermodynamics.">
 
     <!-- Works on Discord (used as backup if OG isn't available) -->
-    <meta name="twitter:image" content="https://jdelgado.net/images/stochastic-thermodynamics/typical-set.jpg" />
+<!--     <meta name="twitter:image" content="https://jdelgado.net/images/stochastic-thermodynamics/typical-set.jpg" /> -->
+    <meta name="twitter:image" content="https://jdelgado.net/images/stochastic-thermodynamics/ts_hist_animation.gif" />
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Jonathan Delgado - Stochastic Thermodynamics">
     <meta property="twitter:url" content="https://jdelgado.net/stochastic-thermodynamics">
@@ -27,7 +28,8 @@
 
     <!-- Works on Discord -->
     <!-- Discord does not support .webp format! -->
-    <meta property="og:image" content="https://jdelgado.net/images/stochastic-thermodynamics/typical-set.jpg" />
+<!--     <meta property="og:image" content="https://jdelgado.net/images/stochastic-thermodynamics/typical-set.jpg" /> -->
+    <meta property="og:image" content="https://jdelgado.net/images/stochastic-thermodynamics/ts_hist_animation.gif" />
     <meta property="og:type" content="website">
     <meta property="og:title" content="Jonathan Delgado - Stochastic Thermodynamics">
     <meta property="og:url" content="https://jdelgado.net/stochastic-thermodynamics">
@@ -74,7 +76,10 @@
 					<h3>Overview</h3>
 					<p>
 						<span class="image left">
-							<img src="images/stochastic-thermodynamics/typical-set.webp" alt=""/>
+							<img src="images/stochastic-thermodynamics/ts_hist_animation.gif" alt=""/>
+							<span class='caption'>
+								The distribution of states for typical and atypical paths of a particular model.
+							</span>
 						</span>
 						Since the seminal work of Claude Shannon and his Shannon entropy, there has been progress relating information theory to thermodynamics. The Shannon entropy, and its relationship to the thermodynamic entropy, is at the core of this. Given the deep connections between information theory and thermodynamics, an important question can be asked: do there exist decompositions of thermodynamic observables into information-theoretic quantities? My work provides an answer this question by demonstrating information-theoretic decompositions of thermodynamic observables that track the reversible exchange of entropy between a system and its environment, the irreversible internal production of entropy within a system, and the total change of entropy from these two contributions. My resulting decomposition is entirely in terms of information-theoretic quantities known as finite-time entropy rates. This connection between information theory and thermodynamics holds arbitrarily far from equilibrium and even in the presence of external forces. 
 					</p>
@@ -83,12 +88,27 @@
 						Since my work focuses on the irreversible production of entropy, it is naturally related to the second law of thermodynamics. I have shown that this irreversible component of the entropy can be seen as a (pre)-measure of time-reversal asymmetry even in the case of discrete-time. I have also illustrated how this decomposition sheds light on ensemble averages versus experimental realizations by building on previous work regarding the typicality of particular paths (i.e. a cup of hot coffee in a room will almost always cool down, but, by the second law, will virtually never heat up).
 					</p>
 
+					<h3>Stochastic Thermodynamics in Python (STP)</h3>
+
+					<p>
+						<span class="image right">
+							<img src="images/stochastic-thermodynamics/typical-set.webp" alt=""/>
+							<span class='caption'>
+								A typical set sampled using STP.
+							</span>
+						</span>
+						To facilitate my work, I've written Stochastic Thermodynamics in Python (STP), a Python library meant to construct random quantities and track their information-theoretic properties. These objects include continuous time rate matrices, discrete time transition matrices, and matrices representing 3-state self assembly models. STP also facilitates calculating information-theoretic quantities such as path entropies, entropy rates, the entropy production, and even a typical set on sampled path spaces.
+					</p>
+					<p>
+						STP is available at <a href='https://pypi.org/project/stp/', target='_blank'>PyPi</a>, documentation is available at <a href='https://stochastic-thermodynamics-in-python.readthedocs.io/en/latest/' target='_blank'>ReadTheDocs</a>. The code is also available directly from my
+						<a href="https://github.com/otanan/STP" target='_blank' style='text-decoration:none'><span class="icon brands fa-github"> GitHub</span></a>.
+					</p>
+
 					<!-- Redirect -->
 					<p>
 						You can learn more about this research and the Green research group on information theory and stochastic thermodynamics at UMass Boston by going to
 						<a href='https://www.jasonrgreen.net/' target='_blank'>Professor Green's research page</a>.
 					</p>
-
 				</div>
 			</section>
 
