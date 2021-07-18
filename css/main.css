@@ -3,6 +3,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Make certain text and images unselectable  */
+.unselectable, span.image > img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 /* Offset to account for header on anchors */
 .anchor {
     display: block;
@@ -66,3 +76,13 @@ span.image > span.caption {
     font-size: 12px;
     line-height: 1.1;
 }
+
+
+/* Testing image placement for view from smartphone */
+/*@media screen and (max-width: 980px) {
+
+    section.test p {
+        color: red;
+    }
+
+}*/
