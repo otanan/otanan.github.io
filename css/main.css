@@ -1,4 +1,9 @@
- Smooth scrolling to anchors on page */
+/********** Everywhere **********/
+/* 980px is the width for most content changes */
+/* Use 981px min for desktop, 980px max for mobile */
+
+
+/* Smooth scrolling to anchors on page */
 html {
   scroll-behavior: smooth;
 }
@@ -13,10 +18,11 @@ html {
     user-select: none;
 }
 
-/* Offset to account for header on anchors */
+/* Anchor placement anywhere */
 .anchor {
     display: block;
     position: relative;
+    /* Offset to account for header affecting anchor placement */
     top: -80px;
     visibility: hidden;
 }
@@ -26,12 +32,16 @@ a:link {
     border-bottom: none;
 }
 
+
+/********** Homepage **********/
+
+
 /* Increase font size in spotlight sections */
 div.content > p {
     font-size: 15px;
 }
 
-/* Make links stand out from text in bodys */
+/* Make links stand out from text in body */
 div.content > p > a {
     text-decoration: underline;
 }
@@ -62,34 +72,69 @@ section.spotlight > div.content > footer > a {
     text-decoration: underline;
 }
 
-/* Temporary, for testing  */
-/*span.image {
-    border: 3px solid red;
-}*/
+
+/*** Homepage Green research section ***/
+
+/* Desktop */
+@media screen and (min-width: 981px) {
+    /* Hide the normal image */
+    section#two div.image img {
+        display: none;
+    }
+
+    section#two {
+        background-image: url(https://jdelgado.net/images/stochastic-thermodynamics/long-ts.webp);
+        height: 370px;
+        background-size: 1280px 370px;
+        background-position: 0px 100%;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 980px) {
+
+    section#two {
+        /* Take away the background image on mobile */
+        background-image: none;
+    }
+
+    div.content > p {
+        /* Testing */
+        /*color: red;*/
+    }
+
+    /* For image elements in body */
+/*    span.image img {
+        min-width: 400px;
+        border: 3px solid green;
+    }
+
+    span.image.left img {
+        float: left;
+        display: inline-block;
+        margin-right: 5000px;
+    }
+
+    span.image.right img {
+        float: right;
+        margin-left: 100px;
+    }*/
+
+}
+
+
+/********** Pages **********/
+
 
 /* Captions to images */
 span.image > span.caption {
     display: block;
     text-align: center;
-    /*border: 3px solid green;*/
     font-style: italic;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.1;
-}
-
-/* Homepage Green research section */
-section#two {
-    background-image: url(https://jdelgado.net/images/stochastic-thermodynamics/long-ts.webp);
-    height: 370px;
-    background-size: 1280px 370px;
-    background-position: 0px 100%;
-}
-
-/* Testing image placement for view from smartphone */
-/*@media screen and (max-width: 980px) {
-
-    section.test p {
-        color: red;
-    }
-
+    /* Separate caption from image */
+    padding-top: 12px;
+    /* For testing */
+    /*border: 3px solid green;*/
 }
