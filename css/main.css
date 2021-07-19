@@ -1,10 +1,10 @@
-/* Smooth scrolling to anchors on page */
+ Smooth scrolling to anchors on page */
 html {
   scroll-behavior: smooth;
 }
 
 /* Make certain text and images unselectable  */
-.unselectable, span.image > img {
+.unselectable, span.image > img, section.spotlight > div.image {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -77,6 +77,13 @@ span.image > span.caption {
     line-height: 1.1;
 }
 
+/* Homepage Green research section */
+section#two {
+    background-image: url(https://jdelgado.net/images/stochastic-thermodynamics/long-ts.webp);
+    height: 370px;
+    background-size: 1280px 370px;
+    background-position: 0px 100%;
+}
 
 /* Testing image placement for view from smartphone */
 /*@media screen and (max-width: 980px) {
@@ -85,4 +92,4 @@ span.image > span.caption {
         color: red;
     }
 
-}*/
+}
