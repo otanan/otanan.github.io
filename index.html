@@ -116,13 +116,10 @@
 			<section id="two" class='spotlight'>
                 <div class="image">
                     <picture>
+		                <!-- No image for desktop since we use background -->
+		                <source media="(min-width: 979px)" srcset="">
 		                <!-- Mobile photo -->
-		                <source 
-			                media="(max-width: 980px)"
-			                srcset="images/stochastic-thermodynamics/long-ts.webp"
-		                >
-		                <!-- No image fallback since we use background -->
-		                <img src="" alt="" />
+		                <img src="images/stochastic-thermodynamics/long-ts.webp" alt="" />
                     </picture>
                 </div>
 
