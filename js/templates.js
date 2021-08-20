@@ -15,6 +15,8 @@ var nav_template = `
 
             <!-- <li><a href="publications">Publications</a></li> -->
 
+            <li><a href="notes">Notes</a></li>
+
             <li><a href="coding-projects">Coding Projects</a></li>
 
             <li><a href="contact">Contact</a></li>
@@ -116,4 +118,6 @@ $(function() {
 function showCV() {
     if (window.location.hash == "#cv") 
         $('#cv').slideDown('slow');
+    else if (window.location.hash == "#analysis") 
+        $('#analysis').slideDown('slow');
 }

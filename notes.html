@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Publications - Jonathan Delgado</title>
+    <title>Jonathan Delgado</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -17,22 +17,22 @@
     <!-- iMessage link preview metadata -->
     <!-- Open Graph metadata (such as for Discord) and more. -->
 
-    <meta name="description" content="Read some of my featured publications.">
+    <meta name="description" content="My notes on various topics.">
 
     <!-- Works on Discord (used as backup if OG isn't available) -->
     <meta name="twitter:image" content="https://jdelgado.net/images/jdelgado.jpg" />
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Jonathan Delgado - Publications">
-    <meta property="twitter:url" content="https://jdelgado.net/publications">
-    <meta property="twitter:description" content="Read some of my featured publications.">
+    <meta property="twitter:title" content="Jonathan Delgado - Notes">
+    <meta property="twitter:url" content="https://jdelgado.net/about">
+    <meta property="twitter:description" content="My notes on various topics.">
 
     <!-- Works on Discord -->
     <!-- Discord does not support .webp format! -->
     <meta property="og:image" content="https://jdelgado.net/images/jdelgado.jpg" />
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Jonathan Delgado - Publications">
-    <meta property="og:url" content="https://jdelgado.net/publications">
-    <meta property="og:description" content="Read some of my featured publications.">
+    <meta property="og:title" content="Jonathan Delgado - Notes">
+    <meta property="og:url" content="https://jdelgado.net/about">
+    <meta property="og:description" content="My notes on various topics.">
 
 </head>
 <body class="is-preload">
@@ -44,13 +44,12 @@
         <header id="header">
             <h1>
                 <a href="/">Jonathan Delgado
-                <span>Publications</span></a>
+                    <span>Notes</span></a>
             </h1>
-
+            
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
-
         </header>
 
         <!-- Menu -->
@@ -63,19 +62,39 @@
 
             <!-- Content -->
             <section id="content" class="default">
+
                 <header class="major">
-                    <h2>Publications</h2>
-                    <p>"I'm working on it mom."
-                        <br />
-                    –Jonathan Delgado.</p>
+                    <h2>Notes</h2>
+                    <p>"A mathematician who is not also something of a poet will never be a complete mathematician."<br />
+                    –Karl Weierstrass.</p>
                 </header>
+
                 <div class="content">
 
-                    <img style='display: block; margin-left: 25%;' src="images/paper1.jpg" alt="">
+                    <h1>This Page</h1>
+                    <p>
+                        On this page you can read some of my notes on some areas of mathematics.
+                    </p>
+
+                    <!-- Button for revealing analysis -->
+                    <ul class="actions special">
+                        <li id='analysisButton'><a href="#analysis" class="button large">
+                            Real Analysis
+                        </a></li>
+                    </ul>
+                    <!-- Analysis -->
+                    <div id='analysis' style='display:none'>
+                        <!-- Anchor for linking -->
+                        <a name='analysis'></a>
+
+                        <iframe src="https://drive.google.com/file/d/1Nqon7plJyFdRLnGbLr4t-oCl0mr7OnkI/preview" width="100%" height="800"></iframe>
+                        
+                    </div>
+
 
                 </div>
             </section>
-
+            
         </div>
 
         <!-- Footer -->
@@ -85,7 +104,6 @@
 
     </div>
 
-
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
 
@@ -94,8 +112,8 @@
 
     <script>
         // Animate revealing the Cv
-        $('#cvbutton').click(function() {
-            $('#cv').slideDown('slow');
+        $('#analysisButton').click(function() {
+            $('#analysis').slideDown('slow');
         });
     </script>
 

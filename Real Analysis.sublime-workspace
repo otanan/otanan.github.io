@@ -1,0 +1,1315 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"template",
+				"template-file"
+			],
+			[
+				"quantum",
+				"quantum-information-theory"
+			],
+			[
+				"stochast",
+				"stochastic-thermodynamics"
+			],
+			[
+				"stochasti",
+				"stochastic-thermodynamics"
+			],
+			[
+				"coment",
+				"comment-section\tMakes a comment to separate sections of code"
+			],
+			[
+				"invalid",
+				"invalid_state_count\tstatement"
+			],
+			[
+				"state_",
+				"state_classification"
+			],
+			[
+				"parse",
+				"parse_T_gate_placements\tfunction"
+			],
+			[
+				"tempalte",
+				"template-preamble-notebook\tA template for the generation of a separate preamble.sty file to separate the preamble from the main body of the LaTeX document."
+			],
+			[
+				"staes",
+				"states_in_direc\tstatement"
+			],
+			[
+				"comment-",
+				"comment-medium_section\tMakes a medium comment to separate subsections of code"
+			],
+			[
+				"templ",
+				"template-README\tTemplate for GitHub README files."
+			],
+			[
+				"regular",
+				"regularizer"
+			],
+			[
+				"regul",
+				"regularizers\tstatement"
+			],
+			[
+				"equa",
+				"equal_num_states"
+			],
+			[
+				"comment",
+				"comment-function\tCreates a template for function descriptions."
+			],
+			[
+				"get_entropy",
+				"get_entropy_file_path"
+			],
+			[
+				"id",
+				"identifier\tparam"
+			],
+			[
+				"num_",
+				"num_clif_like_vs_T"
+			],
+			[
+				"num_clif_",
+				"num_clif_like_vs_T\tstatement"
+			],
+			[
+				"prit",
+				"print_available_state_count\tfunction"
+			],
+			[
+				"commen",
+				"comment-medium_section\tMakes a medium comment to separate subsections of code"
+			],
+			[
+				"cmmen",
+				"comment-function\tCreates a template for function descriptions."
+			],
+			[
+				"commn",
+				"comment-function\tCreates a template for function descriptions."
+			],
+			[
+				"comm",
+				"comment-function\tCreates a template for function descriptions."
+			],
+			[
+				"input_s",
+				"input_state_label=\tparam"
+			],
+			[
+				"re",
+				"regularize\tmodule"
+			],
+			[
+				"get_scored",
+				"get_scored_randomly_doped_states"
+			],
+			[
+				"get_equal",
+				"get_equal_gap_states\tfunction"
+			],
+			[
+				"get_trick",
+				"get_trick_states\tfunction"
+			],
+			[
+				"confu",
+				"confused_instructions\tstatement"
+			],
+			[
+				"get_",
+				"get_transition_state_instructions\tfunction"
+			],
+			[
+				"good",
+				"good_states"
+			],
+			[
+				"dist",
+				"distance_haar_col\tstatement"
+			],
+			[
+				"distan",
+				"distance_col"
+			],
+			[
+				"t_gate",
+				"t_gate_placements\tparam"
+			],
+			[
+				"first_",
+				"first_block_n_T\tstatement"
+			],
+			[
+				"clif",
+				"clif_gate_placements"
+			],
+			[
+				"firs",
+				"first_block_n_T\tstatement"
+			],
+			[
+				"n_T",
+				"n_T_first_block\tstatement"
+			],
+			[
+				"n_",
+				"n_T_first_block\tstatement"
+			],
+			[
+				"posi",
+				"possible_placements"
+			],
+			[
+				"check",
+				"check_cluster_parameters\tfunction"
+			],
+			[
+				"get_cluster_",
+				"get_cluster_doped_states\tfunction"
+			],
+			[
+				"instructions",
+				"instructions_generator"
+			],
+			[
+				"t_",
+				"t_gate_placements\tstatement"
+			],
+			[
+				"renyi",
+				"renyi_parameter\tparam"
+			],
+			[
+				"get_save_state",
+				"get_save_state_file_name"
+			],
+			[
+				"get_save_st",
+				"get_save_state_file_name\tfunction"
+			],
+			[
+				"get_rna",
+				"get_randomly_doped_state_path"
+			],
+			[
+				"tg",
+				"t_gate_placement\tstatement"
+			],
+			[
+				"random",
+				"random_gate_configurations\tstatement"
+			],
+			[
+				"cliffo",
+				"clifford_states\tstatement"
+			],
+			[
+				"ream",
+				"remaining_trials\tstatement"
+			],
+			[
+				"renyi_par",
+				"renyi_parmeter"
+			],
+			[
+				"thermal",
+				"thermalization_convergence\tfunction"
+			],
+			[
+				"therma",
+				"thermalization_convergence"
+			],
+			[
+				"instruci",
+				"instructions_collection\tstatement"
+			],
+			[
+				"t_g",
+				"t_gate_placement\tstatement"
+			],
+			[
+				"max",
+				"max_progress_value\tstatement"
+			],
+			[
+				"haar",
+				"haar_scores\tstatement"
+			],
+			[
+				"states",
+				"states_in_direc\tstatement"
+			],
+			[
+				"comen",
+				"comment-function\tCreates a template for function descriptions."
+			],
+			[
+				"fan",
+				"fname_template\tstatement"
+			],
+			[
+				"input",
+				"input_state\tparam"
+			],
+			[
+				"fna",
+				"fname_template\tstatement"
+			],
+			[
+				"come",
+				"comment-function\tCreates a template for function descriptions."
+			],
+			[
+				"instru",
+				"instructions_string\tparam"
+			],
+			[
+				"inp",
+				"input_state\tparam"
+			],
+			[
+				"get",
+				"get_type_of_circuit\tfunction"
+			],
+			[
+				"sco",
+				"score_collection"
+			],
+			[
+				"score",
+				"score_collection\tstatement"
+			],
+			[
+				"inde",
+				"indeterminate_mode\tfunction"
+			],
+			[
+				"commne",
+				"comment-mini_section\tMakes a mini comment to separate sub-subsections of code"
+			],
+			[
+				"filter",
+				"filtered_instructions_indices\tstatement"
+			],
+			[
+				"squa",
+				"squared_singular_values\tstatement"
+			],
+			[
+				"state_block",
+				"state_block_entry\tstatement"
+			],
+			[
+				"_state_",
+				"_updated_state_block"
+			],
+			[
+				"initial_state",
+				"initial_state_label"
+			],
+			[
+				"entrop",
+				"entropy_curve_counter\tstatement"
+			],
+			[
+				"initial_stae",
+				"initial_state_button_var\tstatement"
+			],
+			[
+				"entropy",
+				"entropy_curves_slider\tstatement"
+			],
+			[
+				"comman",
+				"comment-small_section\tMakes a small comment to separate subsections of code"
+			],
+			[
+				"initial_st",
+				"initial_state_matrix\tstatement"
+			],
+			[
+				"visual",
+				"_update_visual_map"
+			],
+			[
+				"current",
+				"current_state_matrix\tstatement"
+			],
+			[
+				"initial",
+				"initial_state_matrix\tstatement"
+			],
+			[
+				"block",
+				"block_num\tstatement"
+			],
+			[
+				"_update",
+				"_update_state_view\tfunction"
+			],
+			[
+				"_init",
+				"_INITIALIZED\tstatement"
+			],
+			[
+				"PROG",
+				"PROGRESS_BAR_LEN\tstatement"
+			],
+			[
+				"_progress",
+				"_progress_bar_len\tstatement"
+			],
+			[
+				"eval",
+				"eval_circuit_new\tfunction"
+			],
+			[
+				"experime",
+				"_experimental_rand_state"
+			],
+			[
+				"percent",
+				"percent_for_thermalization"
+			],
+			[
+				"succes",
+				"success_rates\tstatement"
+			],
+			[
+				"num",
+				"num_clifford_tail"
+			],
+			[
+				"perc",
+				"percent_for_thermalization"
+			],
+			[
+				"cmap",
+				"cmap_choice\tparam"
+			],
+			[
+				"prod",
+				"prod_state_button\tstatement"
+			],
+			[
+				"com",
+				"comment-small_section\tMakes a small comment to separate subsections of code"
+			],
+			[
+				"commenet",
+				"comment-mini_section\tMakes a mini comment to separate sub-subsections of code"
+			],
+			[
+				"get_save",
+				"get_save_state_file_path\tfunction"
+			],
+			[
+				"experimenta",
+				"experimental_rand_unitary_method\tfunction"
+			],
+			[
+				"qobj",
+				"qobj_from_array\tfunction"
+			],
+			[
+				"clifo",
+				"cliffordScores\tstatement"
+			],
+			[
+				"comme",
+				"comment-mini_section\tMakes a mini comment to separate sub-subsections of code"
+			],
+			[
+				"temp",
+				"template-file\tThe file template including a comment at the top of the file providing description."
+			],
+			[
+				"frame",
+				"frame\tTemplate for generating a new frame in a Beamer document."
+			],
+			[
+				"Cl_",
+				"Cl_gates_used\tstatement"
+			],
+			[
+				"q0",
+				"q0_label\tparam"
+			],
+			[
+				"U2",
+				"U2_Cls\tparam"
+			],
+			[
+				"save_post",
+				"save_post_circuit_flag\tparam"
+			],
+			[
+				"instructino",
+				"instructions_string\tstatement"
+			],
+			[
+				"instr",
+				"instructions_string\tstatement"
+			],
+			[
+				"inst",
+				"instructions_string\tstatement"
+			],
+			[
+				"eig",
+				"eigphases_haar"
+			],
+			[
+				"circuit",
+				"circuit_length\tstatement"
+			],
+			[
+				"rand_unita",
+				"rand_unitary_clifford\tfunction"
+			],
+			[
+				"rand_unitary_",
+				"rand_unitary_haar\tfunction"
+			],
+			[
+				"rando",
+				"random_circuit_from_instructions\tfunction"
+			],
+			[
+				"input_state",
+				"input_state_label"
+			],
+			[
+				"parti",
+				"partition_state\tfunction"
+			],
+			[
+				"state",
+				"state_to_matrix\tfunction"
+			],
+			[
+				"stae",
+				"state_as_image\tparam"
+			],
+			[
+				"load_data",
+				"load_data_set_raw\tfunction"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/otanan/Google Drive/Academia/Real Analysis/Notebook/notebook.tex",
+			"settings":
+			{
+				"buffer_size": 3750,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/Python-conda_env-main.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/Python-conda_env-main.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/Python3.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/Python3.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"PdfLaTeX"
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				],
+				[
+					"Packages/User/Python3.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"PdfLaTeX"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/Python3.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/Python3.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/ShellScript/ShellScript.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Python3.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/ShellScript/ShellScript.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Python3.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/LaTeX.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"remove packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"instll pack",
+				"Package Control: Install Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
+			[
+				"remove p",
+				"Package Control: Remove Package"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"instlal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"sele",
+				"UI: Select Theme"
+			],
+			[
+				"rmeove",
+				"Package Control: Remove Channel"
+			],
+			[
+				"seleth",
+				"UI: Select Theme"
+			],
+			[
+				"select color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"removepack",
+				"Package Control: Remove Package"
+			],
+			[
+				"select",
+				"UI: Select Theme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"them",
+				"UI: Select Theme"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"th",
+				"UI: Select Theme"
+			],
+			[
+				"ui",
+				"UI: Select Theme"
+			],
+			[
+				"selec",
+				"UI: Select Theme"
+			],
+			[
+				"select ",
+				"UI: Select Color Scheme"
+			],
+			[
+				"u",
+				"UI: Select Color Scheme"
+			],
+			[
+				"ui ",
+				"UI: Select Theme"
+			],
+			[
+				"remove pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"intall",
+				"Package Control: Install Package"
+			],
+			[
+				"instlal pacak",
+				"Package Control: Install Package"
+			],
+			[
+				"instlal ",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"the",
+				"UI: Select Theme"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 259.0,
+		"history":
+		[
+			"randqc.py",
+			"python --version",
+			"python3 --version",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/otanan/Google Drive/Academia/Real Analysis",
+		"/Users/otanan/Google Drive/Academia/Real Analysis/Notebook"
+	],
+	"file_history":
+	[
+		"/Users/otanan/Google Drive/Programming/Website/Real Analysis.sublime-project",
+		"/Users/otanan/Google Drive/Programming/Website/docs/stp/html/index.html",
+		"/Users/otanan/Google Drive/Programming/Website/js/templates.js",
+		"/Users/otanan/Google Drive/Programming/Website/docs/.nojekyll",
+		"/Users/otanan/Google Drive/Programming/Website/css/main.css",
+		"/Users/otanan/Google Drive/Programming/Website/about-me.html",
+		"/Users/otanan/Google Drive/Programming/Website/stochastic-thermodynamics.html",
+		"/Users/otanan/Google Drive/Programming/Website/publications.html",
+		"/Users/otanan/Google Drive/Programming/Website/contact.html",
+		"/Users/otanan/Google Drive/Programming/Website/coding-projects.html",
+		"/Users/otanan/Google Drive/Programming/Website/quantum-information-theory.html",
+		"/Users/otanan/Google Drive/Programming/Website/index.html",
+		"/Users/otanan/Google Drive/Programming/Website/CNAME",
+		"/Users/otanan/Google Drive/Programming/Website/stochthermo.html",
+		"/Users/otanan/Google Drive/Programming/Website/codingprojects.html",
+		"/Users/otanan/Google Drive/Programming/Website/about.html",
+		"/Users/otanan/Google Drive/Programming/Website/qinfo.html",
+		"/Users/otanan/Google Drive/Programming/Website/tes/about copy.html",
+		"/Users/otanan/Google Drive/Programming/HTML5/Templates/custom-magnetic-templates/elements.html",
+		"/Users/otanan/Google Drive/Programming/Website/css/qinfo.css",
+		"/Users/otanan/Library/Application Support/Sublime Text 3/Packages/User/Projects & Workspaces/Website.sublime-project",
+		"/Users/otanan/Google Drive/Programming/Website/assets/css/main.css",
+		"/Users/otanan/Google Drive/Programming/Website/assets/sass/components/_image.scss",
+		"/Users/otanan/Google Drive/Programming/Website/assets/js/util.js",
+		"/Users/otanan/Google Drive/Programming/Website/assets/js/main.js",
+		"/Users/otanan/Google Drive/Programming/Website/assets/css/images/header-bg.svg",
+		"/Users/otanan/Google Drive/Programming/Website/js/contact.js",
+		"/Users/otanan/Google Drive/Programming/Website/js/cv.js",
+		"/Users/otanan/Google Drive/Programming/HTML5/Templates/custom-magnetic-templates/generic.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/css/main.css",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/about.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/contact.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/qinfo.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/index.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/stochthermo.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/js/templates.js",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/js/template.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/.gitignore",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/template_elements.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/template_generic.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/publications.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/assets/js/templates.js",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/assets/js/contact.js",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/CNAME",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/contact.php",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/images/icons/site.webmanifest",
+		"/Users/otanan/Downloads/favicon_io/site.webmanifest",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/assets/js/main.js",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/assets/js/test.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/templates/nav.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/assets/js/nav.html",
+		"/Users/otanan/Google Drive/Programming/Research-CV Website/assets/css/fontawesome-all.min.css",
+		"/Users/otanan/Library/Application Support/Sublime Text 3/Packages/View In Browser/View In Browser.sublime-settings",
+		"/Users/otanan/Library/Application Support/Sublime Text 3/Packages/User/View In Browser.sublime-settings",
+		"/Users/otanan/Google Drive/Programming/Sublime Text 3/Chrome.sublime-build",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/preamble.sty",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/notebook.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/cluster_jobs.sh",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/cluster/gibbs_pull.sh",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/cluster_jobs.sh",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/tools/parser.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/loader.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/qc.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/classifier.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/gate_classifier.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/scaling_function.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/tools/paths.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/machine_learning/scaling_function.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/cluster.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/cluster/cluster_pull.sh",
+		"/Users/otanan/Downloads/rand_doping available.txt",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/vary_regularizers.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/regularizer_pairs.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/classifier_plotter.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/machine_learning/classifier_plotter.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/data/gate_classifiers/shannon_fastvar/N(6)-n_T(6)-dataset-id(shannon_fastvar).csv",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/haar_like_rates.zip",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/machine_learning/classifier.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/cluster/cluster_jobs.sh",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/cluster.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/data/classify_sets/N(6)-n_T(2)-num_gates=1500-id(shannon_fastvar_vn_renyi2_ess).txt",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/machine_learning/vary_regularizers.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/entropy.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/sftp-config.json",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/data/classifiers/N(4)-dataset-id(shannon_fastvar_vn_renyi2_ess).csv",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/data/classifiers/N(5)-dataset-id(shannon_fastvar_vn_renyi2_ess).csv",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/randqc/randqc/entropy.py",
+		"/Users/otanan/Google Drive/Notability/Research - Green/Projects/project_1-finite_time_entropy_rates/notebook/notes/continuous_time/continuous_time.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Green/Projects/project_1-finite_time_entropy_rates/notebook/notes/background_reading_notes/time_reversed_dynamical_entropy/time_reversed_dynamical_entropy.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/legacy_shift/entropy_serialization.py",
+		"/Users/otanan/Downloads/untitled.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/randqc/randqc/qc.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/gibbs_jobs.sh",
+		"/Users/otanan/Downloads/untitled.py\\.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/sftp-config.json",
+		"/Users/otanan/Library/Messages/Attachments/33/03/310C8B44-85F0-4F37-9D2E-980405D95DAF/scratch.py",
+		"/Users/otanan/Downloads/states needed to reach 1000.txt",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/setup.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/gate_convergence.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/.bashrc",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/gibbs-remote/.bash_profile",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/machine_learning/viterbi.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/regularizer_pairs.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/faux_haar_convergence.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/.gitignore",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/classifier.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/gate_convergence.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/gate_classifier/lr_classifier.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/viterbi.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/notes/trace_norm/trace_norm.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/notes/from_states_to_images/from_states_to_images.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/notes/trace_norm/preamble.sty",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/notes/from_states_to_images/From states to images.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/Projects/project_1-ml_classification_of_haar_states/notebook/notes/from_states_to_images/preamble.sty",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/qloader.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/chimera-remote/randqc.py",
+		"/Users/otanan/Google Drive/Notability/Research - Green/Projects/project_1-finite_time_entropy_rates/manuscript/manuscript.tex",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/imager.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/vary_regularizers.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/ml_classifier/regularizers.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/gate_convergence_analysis/gate_convergence_analysis.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/__init__.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/saver.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/tensor_qobj/tensor_qobj.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/tensor_qobj/tensor_qobj_tests.py",
+		"/Users/otanan/Downloads/sample_states/N(12)-q0(zero)-inst[12*(Clx1440,Tx1);Clx1440]-bipart(0)-entropies.txt",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/tests/test_qc.py",
+		"/Users/otanan/Google Drive/Notability/Research - Hamma/mlq/projects/randqc/randqc/tests/test_loader.py"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 361.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/otanan/Google Drive/Academia/Real Analysis/Notebook/notebook.tex",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								979,
+								979
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 123.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SFTP":
+	{
+		"height": 209.0
+	},
+	"output.anaconda_documentation":
+	{
+		"height": 379.0
+	},
+	"output.exec":
+	{
+		"height": 365.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latextools":
+	{
+		"height": 194.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 270.0
+	},
+	"pinned_build_system": "",
+	"project": "Real Analysis.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"projects/randomqc/scripts/randqc.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Google Drive/Programming/Sublime Text 3/Projects & Workspaces/VideoGameOrganizer.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 560.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 291.5,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
