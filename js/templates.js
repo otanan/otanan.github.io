@@ -110,12 +110,12 @@ $('#footer').replaceWith(footer_template)
 $(function() {
 
     // Detect URL hash changes for CV event
-    $(window).bind("hashchange", showCV());
+    $(window).bind("hashchange", checkHashChange());
     
 });
 
 // Helps to show the CV when linking to the About page through the CV button
-function showCV() {
+function checkHashChange() {
     if (window.location.hash == "#cv") 
         $('#cv').slideDown('slow');
     else if (window.location.hash == "#analysis") 
