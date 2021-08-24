@@ -106,18 +106,39 @@ $('#menu').replaceWith(nav_template)
 // Insert the footer
 $('#footer').replaceWith(footer_template)
 
-// Opens CV automatically from footer click
-$(function() {
+/*---------------------- Page behavior ----------------------*/
 
-    // Detect URL hash changes for CV event
-    $(window).bind("hashchange", checkHashChange());
-    
+animStyle = 'slow'
+
+// Clears the hash from the URL
+function clearHash() {
+    history.replaceState(null, null, ' ');
+}
+
+// Makes certain page links automatically trigger hash check
+    // such as with CV link in footer
+$(function() {
+    $(window).bind(
+        'hashchange',
+        $(window.location.hash).slideDown(animStyle)
+    );
 });
 
-// Helps to show the CV when linking to the About page through the CV button
-function checkHashChange() {
-    if (window.location.hash == "#cv") 
-        $('#cv').slideDown('slow');
-    else if (window.location.hash == "#analysis") 
-        $('#analysis').slideDown('slow');
+// Changes/toggles the hash and controls the view of certain elements
+function hashViewChange(hashChange) {
+    currentHash = window.location.hash
+
+    if(currentHash === '') {
+        // There is no current Hash, add and show
+        window.location.hash = hashChange
+        $(hashChange).slideDown(animStyle);
+    } else if(currentHash === hashChange) {
+        // The hash is the same, hide the element
+        $(currentHash).slideUp(animStyle);
+        clearHash();
+    } else {
+        // The hash is different, hide old, show new
+        hashViewChange(currentHash);
+        hashViewChange(hashChange);
+    }
 }

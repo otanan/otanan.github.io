@@ -71,7 +71,7 @@
                     <!-- CV -->
                     <footer style='margin-bottom:-40px'>
                         <ul class="actions special">
-                            <li id='cvbutton'><a href="#cv" class="button large">
+                            <li id='cvbutton'><a onclick='hashViewChange("#cv");' class="button large">
                                 Curriculum Vitae
                             </a></li>
                         </ul>
@@ -139,13 +139,6 @@
 
     <!-- Custom scripts -->
     <script src='js/templates.js'></script>
-
-    <script>
-        // Animate revealing the Cv
-        $('#cvbutton').click(function() {
-            $('#cv').slideDown('slow');
-        });
-    </script>
 
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
