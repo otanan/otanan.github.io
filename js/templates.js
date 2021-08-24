@@ -120,17 +120,17 @@ function clearHash() {
 $(function() {
     $(window).bind(
         'hashchange',
-        $(window.location.hash).slideDown(animStyle)
+        $(location.hash).slideDown(animStyle)
     );
 });
 
 // Changes/toggles the hash and controls the view of certain elements
 function hashViewChange(hashChange) {
-    currentHash = window.location.hash
+    currentHash = location.hash
 
     if(currentHash === '') {
         // There is no current Hash, add and show
-        window.location.hash = hashChange
+        location.hash = hashChange
         $(hashChange).slideDown(animStyle);
     } else if(currentHash === hashChange) {
         // The hash is the same, hide the element
