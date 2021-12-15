@@ -9,7 +9,11 @@ html {
 }
 
 /* Make certain text and images unselectable  */
-.unselectable, span.image > img, section.spotlight > div.image {
+.unselectable,
+span.image > img,
+section.spotlight > div.image,
+li > a /* buttons such as in notes page */
+{
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
