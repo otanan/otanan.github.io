@@ -18,8 +18,6 @@ var nav_template = `
             <li><a href="notes">Notes</a></li>
 
             <li><a href="coding-projects">Coding Projects</a></li>
-
-            <li><a href="contact">Contact</a></li>
         </ul>
     </div>
 </nav>
