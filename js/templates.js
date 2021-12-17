@@ -31,7 +31,7 @@ var pages = `
     <h3>Pages</h3>
     <ul class="contact">
 
-        <a href="contact">
+        <a href="about-me">
             <li class="icon solid fa-envelope">
                 Email
             </li>
