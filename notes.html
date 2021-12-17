@@ -81,27 +81,17 @@
                             <span class="icon solid fa-envelope">
                                 contact me
                             </span>
-                        </a>
-                        me with any corrections or suggestions.
+                        </a> me with any corrections or suggestions.
                     </p>
 
-                    <!-- Notebook buttons -->
+                    <!-- Algebra notebook -->
                     <ul class="actions special">
                         <!-- Reveal button -->
                         <li id='algebraButton'>
                             <!-- Reveal and link through JS -->
                             <a onclick='hashViewChange("#algebra");' class="button large">Abstract Algebra</a>
                         </li>
-
-                        <li id='analysisButton'>
-                            <a onclick='hashViewChange("#analysis");' class="button large">Real Analysis</a>
-                        </li>
-
-                        <li id='complexAnalysisButton'>
-                            <a onclick='hashViewChange("#complexanalysis");' class="button large">Complex Analysis</a>
-                        </li>
                     </ul>
-
                     <!-- Hidden notebook div -->
                     <div id='algebra' style='display:none'>
                         <!-- Anchor for linking -->
@@ -111,6 +101,14 @@
                     </div>
                     <!-- End algebra notebook -->
 
+                    <!-- Analysis notebook -->
+                    <ul class="actions special">
+                        <!-- Reveal button -->
+                        <li id='analysisButton'>
+                            <!-- Reveal and link through JS -->
+                            <a onclick='hashViewChange("#analysis");' class="button large">Real Analysis</a>
+                        </li>
+                    </ul>
                     <!-- Hidden notebook div -->
                     <div id='analysis' style='display:none'>
                         <!-- Anchor for linking -->
@@ -120,11 +118,18 @@
                     </div>
                     <!-- End analysis notebook -->
 
-
+                    <!-- Complex Analysis notebook -->
+                    <ul class="actions special">
+                        <!-- Reveal button -->
+                        <li id='complexAnalysisButton'>
+                            <!-- Reveal and link through JS -->
+                            <a onclick='hashViewChange("#complexAnalysis");' class="button large">Complex Analysis</a>
+                        </li>
+                    </ul>
                     <!-- Hidden notebook div -->
-                    <div id='complexanalysis' style='display:none'>
+                    <div id='complexAnalysis' style='display:none'>
                         <!-- Anchor for linking -->
-                        <a name='complexanalysis'></a>
+                        <a name='complexAnalysis'></a>
 
                         <iframe src="https://drive.google.com/file/d/1zDc6j0mCgjUp6RPBPOb-ZRry52sVSTWE/preview" width="100%" height="800"></iframe>
                     </div>
