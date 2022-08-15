@@ -120,7 +120,6 @@ function contactHighlight() {
 
     // Go to hash
     $(location.hash).slideDown(animStyle);
-    alert('animating!')
     // Highlight the contact info
     $('mark#contact-mark').animate({
         backgroundColor: '#6CA3D8',
