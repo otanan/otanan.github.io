@@ -14,6 +14,21 @@ function getModifiedDateString() {
     return date.toLocaleDateString('en-US', formatting);
 }
 
+function setModifiedDate() {
+  if (document.getElementById('last-modified')) {
+    fetch("https://api.github.com/repos/{{ site.github.owner_name }}/{{ site.github.repository_name }}/commits?path={{ page.path }}")
+      .then((response) => {
+        return response.json();
+      })
+      .then((commits) => {
+        var modified = commits[0]['commit']['committer']['date'].slice(0,10);
+        if(modified != "{{ page.date | date: "%Y-%m-%d" }}") {
+          document.getElementById('last-modified').textContent = "Last Modified: " + modified;
+        }
+      });
+  }
+}
+
 
 /*======================= Navigation Menu =======================*/
 
@@ -99,7 +114,7 @@ var footer_template = `
 <section id="footer">
     <div class="inner">
         <section class="about">
-            <em class='unselectable' style='color:gray;'>Last modified: ${getModifiedDateString()}</em>
+            <!-- <em class='unselectable' style='color:gray;'>Last modified: ${getModifiedDateString()}</em> -->
             <!-- <h3>Acknowledgments</h3> -->
             
             <p>
