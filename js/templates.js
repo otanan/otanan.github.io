@@ -88,7 +88,6 @@ var footer_template = `
 <section id="footer">
     <div class="inner">
         <section class="about">
-            <!-- <em class='unselectable' style='color:gray;'>Last modified: ${getModifiedDateString()}</em> -->
             <!-- <h3>Acknowledgments</h3> -->
             
             <p>
