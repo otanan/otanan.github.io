@@ -30,8 +30,7 @@ function initGitHubLinks() {
         link = repo !== undefined ? hubLink + repo : hubLink;
 
         tag.innerHTML = `
-            <a href="${link}" target='_blank'
-            style='text-decoration:none;'>
+            <a href="${link}" target='_blank' style='text-decoration:none;'>
                 <span class="icon brands fa-github"> GitHub</span></a>`;
     }
 }
@@ -46,7 +45,7 @@ function initContactMe() {
     for (var tag of tags) {
 
         tag.innerHTML = `
-            <a href="about-me" target='_blank' style='text-decoration:none;'>
+            <a href="about-me#contact" target='_blank' style='text-decoration:none;'>
                 <span class="icon solid fa-envelope">
                     contact me
                 </span>
