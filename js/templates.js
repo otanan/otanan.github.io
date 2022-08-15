@@ -1,4 +1,22 @@
-/*---------------------- Nav menu ----------------------*/
+/**
+    * Templates for cross-page features, such as website menu and footer.
+    *
+    * @file   templates.js.
+    * @author Jonathan Delgado.
+ */
+/*======================= Functions =======================*/
+/**
+    * Gets the file's last modified date in a pretty format..
+    */
+function getModifiedDateString() {
+    var date = new Date(document.lastModified);
+    var formatting= { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', formatting);
+}
+
+
+/*======================= Navigation Menu =======================*/
+
 
 var nav_template = `
 <nav id='menu'>
@@ -24,7 +42,7 @@ var nav_template = `
 `
 
 
-/*---------------------- Footer ----------------------*/
+/*======================= Footer =======================*/
 
 var pages = `
 <section>
@@ -81,10 +99,12 @@ var footer_template = `
 <section id="footer">
     <div class="inner">
         <section class="about">
+            <em class='unselectable' style='color:gray;'>Last modified: ${getModifiedDateString()}</em>
             <!-- <h3>Acknowledgments</h3> -->
             
             <p>
                 <!-- Acknowledgments here -->
+
             </p>
             
             <ul class="actions">
