@@ -27,13 +27,30 @@ function initGitHubLinks() {
     for (var tag of tags) {
         // Link to the repo
         repo = $(tag).attr('repo');
-        link = repo != 'undefined' ? hubLink + repo : hubLink;
-
+        link = repo !== undefined ? hubLink + repo : hubLink;
 
         tag.innerHTML = `
             <a href="${link}" target='_blank'
             style='text-decoration:none;'>
                 <span class="icon brands fa-github"> GitHub</span></a>`;
+    }
+}
+
+
+/**
+    * Defines the contact-me tag
+    */
+function initContactMe() {
+    pageLink = 'about-me';
+    tags = $('contact-me');
+    for (var tag of tags) {
+
+        tag.innerHTML = `
+            <a href="about-me" target='_blank' style='text-decoration:none;'>
+                <span class="icon solid fa-envelope">
+                    contact me
+                </span>
+            </a>`;
     }
 }
 
@@ -91,6 +108,38 @@ function initRevealButtons() {
     }
 }
 
+
+/*======================= Functionality =======================*/
+
+/**
+    * Highlights contact me information.
+    */
+function contactHighlight() {
+    // Do nothing if this is not a contact hash
+    if (location.hash !== '#contact') { return; }
+
+    // Go to hash
+    $(location.hash).slideDown(animStyle);
+    alert('animating!')
+    // Highlight the contact info
+    $('mark#contact-mark').animate({
+        backgroundColor: '#6CA3D8',
+    }, 1500)
+    .delay(500)
+    .animate({
+        backgroundColor: 'transparent',
+    }, 1500);
+}
+
+
 /*======================= Entry =======================*/
+$(function() {
+    $(window).bind(
+        'hashchange',
+        contactHighlight()
+    );
+});
+
+initContactMe();
 initGitHubLinks();
 initRevealButtons();
