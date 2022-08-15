@@ -19,6 +19,57 @@ function camelize(str) {
 
 /*======================= Tag Initialization =======================*/
 /**
+    * Defines the Grid Image tag which places images in a grid, allows captions 
+    * and links from clicking the image.
+    */
+customElements.define('grid-image', class GridImage extends HTMLElement {
+    constructor() {
+        super();
+        // Div and span container
+        var container = document.createElement('div');
+        container.className = 'col-4';
+        this.parentElement.appendChild(container);
+        var span = document.createElement('span');
+        span.className = 'image fit';
+        container.appendChild(span);
+
+        var href = this.getAttribute('img-link');
+        if (href != null) {
+            var link = document.createElement('a');
+            link.href = href
+            link.target = '_blank';
+            span.appendChild(link);
+        }
+
+        var img = document.createElement('img');
+        img.src = this.getAttribute('img-src');
+        if (href != null) {
+            link.appendChild(img)
+        } else {
+            span.appendChild(img)
+        }
+
+        var captionText = this.getAttribute('img-caption');
+        if (captionText != null) {
+            // Caption exists
+            var caption = document.createElement('span');
+            caption.textContent = captionText;
+            caption.className = 'col-12 caption';
+            span.appendChild(caption)
+        }
+
+        // Delete own tag since template CSS depends on immediate child
+        this.parentElement.removeChild(this);
+    }
+});
+
+
+
+
+
+
+
+/**
     * Defines the github-link tag
     */
 function initGitHubLinks() {
