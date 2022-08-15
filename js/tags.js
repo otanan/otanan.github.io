@@ -19,6 +19,52 @@ function camelize(str) {
 
 /*======================= Tag Initialization =======================*/
 /**
+    * Defines the contact-me tag.
+    */
+customElements.define('contact-me', class ContactMe extends HTMLElement {
+    constructor() {
+        super();
+
+        var link = document.createElement('a');
+        link.href = 'about-me#contact';
+        link.style.textDecoration = 'none';
+        this.appendChild(link);
+
+        var span = document.createElement('span');
+        span.className = 'icon solid fa-envelope';
+        span.textContent = ' contact me';
+        link.appendChild(span);
+
+        // Delete own tag since template CSS depends on immediate child
+        // this.parentElement.removeChild(this);
+    }
+});
+
+
+/**
+    * Defines the github-link tag
+    */
+customElements.define('github-link', class ContactMe extends HTMLElement {
+    constructor() {
+        super();
+
+        var link = document.createElement('a');
+        link.href = 'https://github.com/otanan/';
+        var repo = this.getAttribute('repo-link');
+        if (repo != null) { link.href += repo; }
+        link.style.textDecoration = 'none';
+        link.target = '_blank';
+        this.appendChild(link);
+
+        var span = document.createElement('span');
+        span.className = 'icon brands fa-github';
+        span.textContent = ' GitHub';
+        link.appendChild(span);
+    }
+});
+
+
+/**
     * Defines the Grid Image tag which places images in a grid, allows captions 
     * and links from clicking the image.
     */
@@ -65,64 +111,6 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
 
 
 
-
-
-
-
-/**
-    * Defines the github-link tag
-    */
-function initGitHubLinks() {
-    hubLink = 'https://github.com/otanan/';
-    tags = $('github-link');
-    for (var tag of tags) {
-        // Link to the repo
-        repo = $(tag).attr('repo');
-        link = repo !== undefined ? hubLink + repo : hubLink;
-
-        tag.innerHTML = `
-            <a href="${link}" target='_blank' style='text-decoration:none;'>
-                <span class="icon brands fa-github"> GitHub</span></a>`;
-    }
-}
-
-
-/**
-    * Defines the contact-me tag
-    */
-function initContactMe() {
-    pageLink = 'about-me';
-    tags = $('contact-me');
-    for (var tag of tags) {
-
-        tag.innerHTML = `
-            <a href="about-me#contact" target='_blank' style='text-decoration:none;'>
-                <span class="icon solid fa-envelope">
-                    contact me
-                </span>
-            </a>`;
-    }
-}
-
-
-/**
-    * Initializes the PDF container for the id associated to
-    * given reveal button.
-    * @param {str} containerAnchor - the anchor to use for linking from another 
-    * button.
-    * @param {str} pdfLink - the link to the pdf to show.
-    */
-function initPDFContainer(containerAnchor, pdfLink) {
-    container = $('#pdfContainer')[0];
-    container.innerHTML += `
-        <div id='${containerAnchor}' style='display:none;'>
-            <a name='${containerAnchor}'></a>
-            <iframe src='${pdfLink}' width='100%' height='800'></iframe>
-        </div>
-    `
-}
-
-
 /**
     * Initializes reveal buttons.
     */
@@ -159,7 +147,27 @@ function initRevealButtons() {
 }
 
 
+/**
+    * Initializes the PDF container for the id associated to
+    * given reveal button.
+    * @param {str} containerAnchor - the anchor to use for linking from another 
+    * button.
+    * @param {str} pdfLink - the link to the pdf to show.
+    */
+function initPDFContainer(containerAnchor, pdfLink) {
+    container = $('#pdfContainer')[0];
+    container.innerHTML += `
+        <div id='${containerAnchor}' style='display:none;'>
+            <a name='${containerAnchor}'></a>
+            <iframe src='${pdfLink}' width='100%' height='800'></iframe>
+        </div>
+    `
+}
+
+
+
 /*======================= Functionality =======================*/
+
 
 /**
     * Highlights contact me information.
@@ -189,6 +197,4 @@ $(function() {
     );
 });
 
-initContactMe();
-initGitHubLinks();
 initRevealButtons();

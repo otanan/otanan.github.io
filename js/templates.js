@@ -4,17 +4,6 @@
     * @file   templates.js.
     * @author Jonathan Delgado.
  */
-/*======================= Functions =======================*/
-/**
-    * Gets the file's last modified date in a pretty format..
-    */
-function getModifiedDateString() {
-    var date = new Date(document.lastModified);
-    var formatting= { year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', formatting);
-}
-
-
 /*======================= Navigation Menu =======================*/
 
 
