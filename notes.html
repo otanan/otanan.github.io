@@ -88,63 +88,22 @@
                     <!-- Notebook buttons -->
                     <ul class="actions special button-container">
                         
-                        <!-- Reveal button -->
-                        <li id='algebraButton'>
-                            <!-- Reveal and link through JS -->
-                            <a onclick='hashViewChange("#algebra");' class="button large">Abstract Algebra</a>
-                        </li>
+                        <reveal-button pdf-link="https://drive.google.com/file/d/1wOUpNdDVzd4GL3cMYohuaZMTiKikI2FA/preview">
+                            Real Analysis
+                        </reveal-button>
 
-                        <li id='analysisButton'>
-                            <a onclick='hashViewChange("#analysis");' class="button large">Real Analysis</a>
-                        </li>
+                        <reveal-button pdf-link="https://drive.google.com/file/d/1zDc6j0mCgjUp6RPBPOb-ZRry52sVSTWE/preview">
+                            Complex Analysis
+                        </reveal-button>
 
-                        <li id='complexAnalysisButton'>
-                            <a onclick='hashViewChange("#complexAnalysis");' class="button large">Complex Analysis</a>
-                        </li>
+                        <reveal-button pdf-link="https://drive.google.com/file/d/1KxYc9EwpbwRNFOxQyp9Ou6RkTw-UHWw3/preview">
+                            Algebra
+                        </reveal-button>
 
                     </ul>
 
-                    <!-- Second row of buttons -->
-                    <!-- <ul class="actions special button-container">
-
-                        <li id='complexAnalysisButton'>
-                            <a onclick='hashViewChange("#complexAnalysis");' class="button large">Complex Analysis</a>
-                        </li>
-
-                        <li id='complexAnalysisButton'>
-                            <a onclick='hashViewChange("#complexAnalysis");' class="button large">Complex Analysis</a>
-                        </li>
-
-                        <li id='complexAnalysisButton'>
-                            <a onclick='hashViewChange("#complexAnalysis");' class="button large">Complex Analysis</a>
-                        </li>
-
-                    </ul> -->
-
-                    <!-- Hidden notebook div -->
-                    <div id='algebra' style='display:none'>
-                        <!-- Anchor for linking -->
-                        <a name='algebra'></a>
-
-                        <iframe src="https://drive.google.com/file/d/1KxYc9EwpbwRNFOxQyp9Ou6RkTw-UHWw3/preview" width="100%" height="800"></iframe>
-                    </div>
-
-
-                    <div id='analysis' style='display:none'>
-                        <a name='analysis'></a>
-
-                        <iframe src="https://drive.google.com/file/d/1wOUpNdDVzd4GL3cMYohuaZMTiKikI2FA/preview" width="100%" height="800"></iframe>
-                    </div>
-
-
-                    <div id='complexAnalysis' style='display:none'>
-                        <a name='complexAnalysis'></a>
-
-                        <iframe src="https://drive.google.com/file/d/1zDc6j0mCgjUp6RPBPOb-ZRry52sVSTWE/preview" width="100%" height="800"></iframe>
-                    </div>
-
-
-
+                    <!-- Places .pdfs revealed with buttons -->
+                    <div id='pdfContainer'></div>
 
                 </div>
             </section>
@@ -162,7 +121,9 @@
     <script src="assets/js/jquery.min.js"></script>
 
     <!-- Custom scripts -->
+    <script src='js/tags.js'></script>
     <script src='js/templates.js'></script>
+    <script src='js/buttons.js'></script>
 
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
