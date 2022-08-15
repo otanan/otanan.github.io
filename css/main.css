@@ -1,6 +1,10 @@
 /*======================= Universal =======================*/
 /* 980px is the width for most content changes */
 /* Use 981px min for desktop, 980px max for mobile */
+:root {
+    /* Define common colors and other variables */
+    --blue: #6CA3D8;
+}
 
 
 /* Smooth scrolling to anchors on page */
@@ -49,6 +53,12 @@ span.image > span.caption {
     padding-top: 12px;
     /* For testing */
     /*border: 3px solid green;*/
+}
+
+/* Highlighting */
+::selection {
+    background: var(--blue);
+    z-index: 1;
 }
 
 
@@ -162,5 +172,5 @@ reveal-button {
 
 /* Defines the color styling for selected reveal buttons */
 reveal-button > a.chosen {
-    background-color: #6CA3D8;
+    background-color: var(--blue);
 }
