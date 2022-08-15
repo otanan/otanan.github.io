@@ -92,7 +92,7 @@ section.spotlight > div.content > footer > a {
 }
 
 
-/*======================= Green Page =======================*/
+/*------------ Green section ------------*/
 
 
 /* Desktop */
@@ -103,7 +103,11 @@ section.spotlight > div.content > footer > a {
     }
 
     section#two {
-        background-image: url(https://jdelgado.net/images/stochastic-thermodynamics/long-ts.webp);
+        /* Fade to the background color for larger monitors */
+        background-image:
+            linear-gradient(to right, rgba(50,56,62,0), rgba(50,56,62,1)),
+            url(https://jdelgado.net/images/stochastic-thermodynamics/long-ts.webp);
+        background-repeat: no-repeat;
         height: 370px;
         background-size: 1280px 370px;
         background-position: 0px 100%;
