@@ -1,12 +1,12 @@
-/*======================= Universal =======================*/
+/*======================= Global =======================*/
 /* 980px is the width for most content changes */
 /* Use 981px min for desktop, 980px max for mobile */
+
 :root {
     /* Define common colors and other variables */
     --blue: #6CA3D8;
     --red:  #bf938e;
 }
-
 
 /* Smooth scrolling to anchors on page */
 html {
@@ -15,11 +15,8 @@ html {
 
 /* Make certain text and images unselectable  */
 .unselectable,
-span.image > img,
-section.spotlight > div.image,
-li > a, /* buttons such as in notes page */
-reveal-button
-{
+img,
+reveal-button {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -42,9 +39,13 @@ a:link {
     border-bottom: none;
 }
 
+/* Highlighting */
+::selection {
+    background: var(--blue);
+}
 
 /* Captions to images */
-span.image > span.caption {
+caption {
     display: block;
     text-align: center;
     font-style: italic;
@@ -52,14 +53,24 @@ span.image > span.caption {
     line-height: 1.1;
     /* Separate caption from image */
     padding-top: 12px;
-    /* For testing */
-    /*border: 3px solid green;*/
 }
 
-/* Highlighting */
-::selection {
-    background: var(--blue);
-    z-index: 1;
+
+/*======================= Custom Tags =======================*/
+
+
+reveal-button {
+    padding: 0px 5px;
+}
+
+/* Defines the color styling for selected reveal buttons */
+a.selected {
+    background-color: var(--blue);
+}
+
+/* Cancel selection color */
+a.selected:hover {
+    background-color: var(--red);
 }
 
 
@@ -143,40 +154,4 @@ section.spotlight > div.content > footer > a {
         /*color: red;*/
     }
 
-    /* For image elements in body */
-/*    span.image img {
-        min-width: 400px;
-        border: 3px solid green;
-    }
-
-    span.image.left img {
-        float: left;
-        display: inline-block;
-        margin-right: 5000px;
-    }
-
-    span.image.right img {
-        float: right;
-        margin-left: 100px;
-    }*/
-
-}
-
-
-/*======================= Notes Page =======================*/
-
-
-reveal-button {
-    padding: 0px 5px;
-}
-
-
-/* Defines the color styling for selected reveal buttons */
-a.selected {
-    background-color: var(--blue);
-}
-
-/* Cancel selection color */
-a.selected:hover {
-    background-color: var(--red);
 }

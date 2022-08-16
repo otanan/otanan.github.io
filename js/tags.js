@@ -127,9 +127,9 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
         var captionText = this.getAttribute('img-caption');
         if (captionText != null) {
             // Caption exists
-            var caption = document.createElement('span');
+            var caption = document.createElement('caption');
             caption.textContent = captionText;
-            caption.className = 'col-12 caption';
+            caption.className = 'col-12';
             container.appendChild(caption)
         }
 
