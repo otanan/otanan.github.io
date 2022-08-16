@@ -171,6 +171,7 @@ reveal-button {
 
 
 /* Defines the color styling for selected reveal buttons */
-reveal-button > a.chosen {
+.chosen {
+    color: red;
     background-color: var(--blue);
 }
