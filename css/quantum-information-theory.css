@@ -1,3 +1,11 @@
+/**
+    * CSS specific to quantum-information-theory.html.
+    *
+    * @file   qinfo.css.
+    * @author Jonathan Delgado.
+ */
+
+
 /* Select the first heading element that follows the content div */
 div + h3 {
     margin-top:-12px;
