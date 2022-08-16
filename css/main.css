@@ -4,6 +4,7 @@
 :root {
     /* Define common colors and other variables */
     --blue: #6CA3D8;
+    --red:  #bf938e;
 }
 
 
@@ -171,7 +172,11 @@ reveal-button {
 
 
 /* Defines the color styling for selected reveal buttons */
-.chosen {
-    color: red;
+a.selected {
     background-color: var(--blue);
+}
+
+/* Cancel selection color */
+a.selected:hover {
+    background-color: var(--red);
 }

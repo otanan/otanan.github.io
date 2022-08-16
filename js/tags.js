@@ -10,8 +10,30 @@ const ANIM_STYLE = 'slow';
 /**
  * Clears the hash from the URL.
  */
-function clearHash() {
-    history.replaceState(null, null, ' ');
+function clearHash() { history.replaceState(null, null, ' '); }
+/**
+    * Updates the location URL hash.
+    * @param {string} hash - the new hash to use.
+    */
+function updateHash(hash) {
+    if (hash[0] !== '#') { hash = '#' + hash; }
+    location.hash = hash;
+}
+/**
+    * Gets the location.hash string.
+    */
+function getHash() { return location.hash.replace('#', ''); }
+
+/**
+    * Gets camelcase version of a string, i.e. Complex Analysis returns
+    * complexAnalysis.
+    * Credit: https://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case.
+    * @param {string} str - the string to make camelcase.
+    */
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
 }
 
 
@@ -19,9 +41,6 @@ function clearHash() {
     * Highlights contact me information.
     */
 function contactHighlight() {
-    // Do nothing if this is not a contact hash
-    if (location.hash !== '#contact') { return; }
-
     // Go to hash
     $(location.hash).slideDown(ANIM_STYLE);
     // Highlight the contact info
@@ -32,18 +51,6 @@ function contactHighlight() {
     .animate({
         backgroundColor: 'transparent',
     }, 1500);
-}
-
-
-/**
-    * Gets camelcase version of string, i.e. Complex Analysis.
-    * complexAnalysis.
-    * @param {arg1 type} arg1 name - arg1 description.
-    */
-function camelize(str) {
-    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-        return index === 0 ? word.toLowerCase() : word.toUpperCase();
-    }).replace(/\s+/g, '');
 }
 
 
@@ -74,7 +81,7 @@ customElements.define('contact-me', class ContactMe extends HTMLElement {
 /**
     * Defines the github-link tag
     */
-customElements.define('github-link', class ContactMe extends HTMLElement {
+customElements.define('github-link', class GitHubLink extends HTMLElement {
     constructor() {
         super();
 
@@ -107,18 +114,15 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
         var href = this.getAttribute('img-link');
         if (href != null) {
             var link = document.createElement('a');
-            link.href = href
+            link.href = href;
             link.target = '_blank';
             container.appendChild(link);
         }
 
         var img = document.createElement('img');
         img.src = this.getAttribute('img-src');
-        if (href != null) {
-            link.appendChild(img)
-        } else {
-            container.appendChild(img)
-        }
+        if (href != null) { link.appendChild(img); }
+        else { container.appendChild(img); }
 
         var captionText = this.getAttribute('img-caption');
         if (captionText != null) {
@@ -214,7 +218,6 @@ class RevealButton extends HTMLElement {
     /**
         * Handles toggle logic by activating and deactivating corresponding 
         * buttons.
-        * @param {arg1 type} arg1 name - arg1 description.
         */
     toggle() {
         if (RevealButton.active == null) {
@@ -233,8 +236,8 @@ class RevealButton extends HTMLElement {
 
     select() {
         RevealButton.active = this;
-        location.hash = '#' + this.pdfAnchor;
-        $(this.link).addClass('chosen');
+        updateHash(this.pdfAnchor);
+        $(this.link).addClass('selected');
         // Show pdf
         $(this.pdfdiv).slideDown(ANIM_STYLE);
     }
@@ -243,7 +246,7 @@ class RevealButton extends HTMLElement {
     deselect() {
         RevealButton.active = null;
         clearHash();
-        $(this.link).removeClass('chosen');
+        $(this.link).removeClass('selected');
         // Hide pdf
         $(this.pdfdiv).slideUp(ANIM_STYLE);
     }
@@ -252,12 +255,13 @@ customElements.define('reveal-button', RevealButton);
 
 
 /*======================= Entry =======================*/
-if (location.hash === '#contact') {
-    contactHighlight();
-}
-// Check hash for a button to start as active
-if (location.hash != '') {
-    var button = RevealButton.buttons[location.hash.replace('#', '')];
+currentHash = getHash();
+// Do nothing on empty hash
+if (currentHash === '') { }
+else if (currentHash === 'contact') { contactHighlight(); }
+else {
+    // Check hash for a button to start as active
+    var button = RevealButton.buttons[currentHash];
     // The button exists, select it
     if (button != undefined) { button.select(); }
 }
