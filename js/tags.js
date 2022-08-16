@@ -115,7 +115,6 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
         if (href != null) {
             var link = document.createElement('a');
             link.href = href;
-            link.target = '_blank';
             container.appendChild(link);
         }
 
