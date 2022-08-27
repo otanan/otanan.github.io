@@ -109,7 +109,7 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
     constructor() {
         super();
 
-        var container = this.makeContainer();
+        var container = this.initContainer();
 
         var href = this.getAttribute('img-link');
         if (href != null) {
@@ -129,7 +129,7 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
             var caption = document.createElement('caption');
             caption.textContent = captionText;
             caption.className = 'col-12';
-            container.appendChild(caption)
+            container.appendChild(caption);
         }
 
         // Delete own tag since template CSS depends on immediate child
@@ -139,7 +139,7 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
         * Make the container with special classes required for proper styling 
         * holding the image.
         */
-    makeContainer() {
+    initContainer() {
         // Div and span container
         var container = document.createElement('div');
         // Make use of template classes
@@ -148,7 +148,7 @@ customElements.define('grid-image', class GridImage extends HTMLElement {
         var span = document.createElement('span');
         span.className = 'image fit';
         container.appendChild(span);
-
+        // The span will serve as the immediate container
         return span;
     }
 });
