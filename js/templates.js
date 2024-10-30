@@ -38,7 +38,7 @@ var pages = `
     <h3>Pages</h3>
     <ul class="contact">
 
-        <a href="about-me">
+        <a href='mailto:?subject=jonathan.delgado%20AT%20uci.edu &body=Remember to replace the "AT" for an @ before attempting to send the email. This is done to prevent bots from scraping personal information and adding this email to a spam list.'>
             <li class="icon solid fa-envelope">
                 Email
             </li>
