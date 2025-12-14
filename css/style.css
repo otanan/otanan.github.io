@@ -35,7 +35,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: radial-gradient(circle at top, var(--bg-glow), transparent 55%), var(--bg);
+  background: radial-gradient(circle 200rem at top, var(--bg-glow), transparent 55%), var(--bg);
   transition: background 0.3s ease;
   scroll-padding-top: var(--scroll-offset);
 }

@@ -35,23 +35,23 @@ const loadHeader = async () => {
   };
 
   const rewriteLocalAnchors = headerEl => {
-    if (!isRootPage) return;
-    const anchors = headerEl.querySelectorAll('a[href^="index.html"]');
+    const anchors = headerEl.querySelectorAll('a[href^="index.html"], a[href^="./index.html"], a[href^="../index.html"]');
     anchors.forEach(link => {
       const href = link.getAttribute('href');
       if (!href) return;
-      if (href === 'index.html') {
-        link.setAttribute('href', '#top');
-        return;
-      }
-      if (href.startsWith('index.html#')) {
-        const replacement = href.replace('index.html', '');
-        if (!replacement) {
+      const url = new URL(href, window.location.origin);
+      const absolute = `${normalizePath(url.pathname)}${url.search}${url.hash}`;
+      if (isRootPage) {
+        if (absolute === '/index.html' || absolute === '/') {
           link.setAttribute('href', '#top');
-        } else {
-          link.setAttribute('href', replacement);
+          return;
+        }
+        if (absolute.startsWith('/index.html#')) {
+          link.setAttribute('href', absolute.replace('/index.html', ''));
+          return;
         }
       }
+      link.setAttribute('href', absolute);
     });
   };
 
@@ -117,7 +117,7 @@ const loadHeader = async () => {
       if (!normalizedBase) return false;
       if (!url) return false;
       const trimmed = url.trim();
-      if (/^(?:[a-zA-Z]+:|\/\/|#|\.{1,2}\/)/.test(trimmed)) {
+      if (/^(?:[a-zA-Z]+:|\/\/|#|\.{1,2}\/|\/)/.test(trimmed)) {
         return false;
       }
       return true;
