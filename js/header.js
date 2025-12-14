@@ -22,6 +22,12 @@ const loadHeader = async () => {
   const { actionLabel, actionHref, activeLink, hideAction, basePath = '', headerPath = 'partials/header.html' } =
     headerPlaceholder.dataset;
   const normalizedBase = basePath.endsWith('/') || basePath === '' ? basePath : `${basePath}/`;
+  const normalizePath = path => {
+    if (!path || path === '/') return '/';
+    const cleaned = path.replace(/index\.html$/, '');
+    return cleaned === '' ? '/' : cleaned;
+  };
+  const isRootPage = normalizePath(window.location.pathname || '/') === '/';
 
   const injectHeader = headerEl => {
     headerPlaceholder.replaceWith(headerEl);
@@ -29,7 +35,7 @@ const loadHeader = async () => {
   };
 
   const rewriteLocalAnchors = headerEl => {
-    if (normalizedBase) return;
+    if (!isRootPage) return;
     const anchors = headerEl.querySelectorAll('a[href^="index.html"]');
     anchors.forEach(link => {
       const href = link.getAttribute('href');
@@ -39,7 +45,12 @@ const loadHeader = async () => {
         return;
       }
       if (href.startsWith('index.html#')) {
-        link.setAttribute('href', href.replace('index.html', ''));
+        const replacement = href.replace('index.html', '');
+        if (!replacement) {
+          link.setAttribute('href', '#top');
+        } else {
+          link.setAttribute('href', replacement);
+        }
       }
     });
   };
@@ -58,12 +69,46 @@ const loadHeader = async () => {
     });
   };
 
-  try {
-    const response = await fetch(`${normalizedBase}${headerPath}`);
-    if (!response.ok) {
-      throw new Error(`Failed to load header (${response.status})`);
+  const buildHeaderPaths = () => {
+    const paths = [];
+    const primaryPath = `${normalizedBase}${headerPath}`;
+    if (primaryPath && !paths.includes(primaryPath)) {
+      paths.push(primaryPath);
     }
-    const markup = await response.text();
+    if (normalizedBase && !paths.includes(headerPath)) {
+      paths.push(headerPath);
+    }
+    const absolutePath = headerPath.startsWith('/') ? headerPath : `/${headerPath.replace(/^\/+/, '')}`;
+    if (!paths.includes(absolutePath)) {
+      paths.push(absolutePath);
+    }
+    return paths;
+  };
+
+  const tryLoadHeader = async () => {
+    const paths = buildHeaderPaths();
+    let lastError = null;
+    for (const path of paths) {
+      try {
+        const response = await fetch(path);
+        if (!response.ok) {
+          lastError = new Error(`Failed to load header (${response.status}) at ${path}`);
+          continue;
+        }
+        const text = await response.text();
+        return text;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    if (lastError) {
+      throw lastError;
+    }
+    throw new Error('Unable to resolve header path');
+  };
+
+  try {
+    const markup = await tryLoadHeader();
     const template = document.createElement('template');
     template.innerHTML = markup.trim();
     const headerEl = template.content.firstElementChild;
