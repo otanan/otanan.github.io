@@ -28,6 +28,22 @@ const loadHeader = async () => {
     return headerEl;
   };
 
+  const rewriteLocalAnchors = headerEl => {
+    if (normalizedBase) return;
+    const anchors = headerEl.querySelectorAll('a[href^="index.html"]');
+    anchors.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+      if (href === 'index.html') {
+        link.setAttribute('href', '#top');
+        return;
+      }
+      if (href.startsWith('index.html#')) {
+        link.setAttribute('href', href.replace('index.html', ''));
+      }
+    });
+  };
+
   const handleActiveState = headerEl => {
     if (!activeLink) return;
     const navLinks = headerEl.querySelectorAll('.site-nav a[data-nav]');
@@ -92,10 +108,12 @@ const loadHeader = async () => {
     }
 
     handleActiveState(headerEl);
+    rewriteLocalAnchors(headerEl);
     return injectHeader(headerEl);
   } catch (error) {
     console.error('Unable to load header component:', error);
     const fallback = createFallbackHeader(normalizedBase);
+    rewriteLocalAnchors(fallback);
     return injectHeader(fallback);
   }
 };

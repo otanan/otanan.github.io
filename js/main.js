@@ -111,6 +111,69 @@ const initScrollSpy = () => {
   sections.forEach(section => observer.observe(section));
 };
 
+const initScrollTopLinks = () => {
+  const topLinks = document.querySelectorAll('a[data-scroll-top], a[href*="#top"]');
+  if (!topLinks.length) return;
+
+  const normalizePath = path => {
+    if (!path || path === '/') return '/';
+    const cleaned = path.replace(/index\.html$/, '');
+    return cleaned === '' ? '/' : cleaned;
+  };
+
+  const scrollToTop = () => {
+    if (typeof window.scrollTo === 'function') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  };
+
+  const resetUrl = () => {
+    if (!window.history || typeof window.history.replaceState !== 'function') {
+      return;
+    }
+    const current = new URL(window.location.href);
+    const normalizedPath = normalizePath(current.pathname);
+    window.history.replaceState(null, '', `${normalizedPath}${current.search}`);
+  };
+
+  const navigateWithoutHash = linkUrl => {
+    const normalizedPath = normalizePath(linkUrl.pathname);
+    const target = `${linkUrl.origin}${normalizedPath}${linkUrl.search}`;
+    window.location.href = target;
+  };
+
+  topLinks.forEach(link => {
+    if (link.dataset.scrollTopBound === 'true') return;
+    link.dataset.scrollTopBound = 'true';
+    link.addEventListener('click', event => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+      let linkUrl;
+      try {
+        linkUrl = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+      if (linkUrl.hash !== '#top') {
+        return;
+      }
+      event.preventDefault();
+      const currentUrl = new URL(window.location.href);
+      const samePath = normalizePath(linkUrl.pathname) === normalizePath(currentUrl.pathname);
+      const sameSearch = linkUrl.search === currentUrl.search;
+      if (samePath && sameSearch) {
+        scrollToTop();
+        resetUrl();
+      } else {
+        navigateWithoutHash(linkUrl);
+      }
+    });
+  });
+};
+
 const initHeroObserver = () => {
   if (!('IntersectionObserver' in window)) {
     return;
@@ -354,6 +417,7 @@ const initResearchModal = () => {
 headerReady.then(() => {
   bindThemeButtons();
   syncToggleState(bodyEl.dataset.theme || 'light');
+  initScrollTopLinks();
   initHeroObserver();
   initScrollSpy();
   initHeaderMode();
