@@ -40,6 +40,30 @@ html {
   scroll-padding-top: var(--scroll-offset);
 }
 
+::selection,
+body ::selection {
+  background: rgba(16, 143, 118, 0.3);
+  color: #0b0f16;
+}
+
+::-moz-selection,
+body ::-moz-selection {
+  background: rgba(16, 143, 118, 0.3);
+  color: #0b0f16;
+}
+
+body[data-theme='dark'] ::selection,
+[data-theme='dark'] ::selection {
+  background: rgba(19, 199, 167, 0.35);
+  color: #f5f7fb;
+}
+
+body[data-theme='dark'] ::-moz-selection,
+[data-theme='dark'] ::-moz-selection {
+  background: rgba(19, 199, 167, 0.35);
+  color: #f5f7fb;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -110,6 +134,11 @@ code {
   transform: translateY(0);
   transition: transform 1.4s ease, width 0.45s ease, margin 0.45s ease, border-radius 0.45s ease, box-shadow 1s ease;
   will-change: transform;
+}
+
+.site-header,
+.site-header * {
+  user-select: none;
 }
 
 .site-header--fallback {
@@ -446,6 +475,11 @@ main {
   padding: 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--border);
+}
+
+.card,
+.card * {
+  user-select: none;
 }
 
 .about-intro {

@@ -14,7 +14,8 @@ const normalizePathname = path => {
   const cleaned = path.replace(/index\.html$/i, '');
   return cleaned === '' ? '/' : cleaned;
 };
-let scrollSpyObserver = null;
+let scrollSpyFrame = null;
+let scrollSpyCleanup = null;
 let heroObserver = null;
 let heroHeaderModeListener = null;
 let headerModeInitialized = false;
@@ -102,40 +103,99 @@ const initScrollSpy = () => {
   const navLinks = document.querySelectorAll('.site-nav a[href*="#"]');
   const sections = [...document.querySelectorAll('main section[id]')];
 
-  if (!('IntersectionObserver' in window) || !navLinks.length || !sections.length) {
-    if (scrollSpyObserver) {
-      scrollSpyObserver.disconnect();
-      scrollSpyObserver = null;
-    }
+  if (scrollSpyCleanup) {
+    scrollSpyCleanup();
+    scrollSpyCleanup = null;
+  }
+  if (!navLinks.length || !sections.length) {
     return;
   }
 
-  if (scrollSpyObserver) {
-    scrollSpyObserver.disconnect();
-    scrollSpyObserver = null;
-  }
-
-  scrollSpyObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            if (link.getAttribute('href') === `#${id}` || link.getAttribute('href') === `index.html#${id}`) {
-              link.classList.add('active');
-            } else {
-              link.classList.remove('active');
-            }
-          });
-        }
-      });
-    },
-    {
-      rootMargin: '-40% 0px -50% 0px'
+  const linkMatchesSection = (link, sectionId) => {
+    const href = link.getAttribute('href');
+    if (!href) return false;
+    const targetHash = `#${sectionId}`;
+    if (href === targetHash || href === `index.html${targetHash}`) {
+      return true;
     }
-  );
+    if (href.startsWith('#')) {
+      return false;
+    }
+    try {
+      const url = new URL(href, window.location.origin);
+      return normalizePathname(url.pathname) === '/' && url.hash === targetHash;
+    } catch {
+      return false;
+    }
+  };
 
-  sections.forEach(section => scrollSpyObserver.observe(section));
+  const heroSection = document.querySelector('.hero');
+
+  const highlightLinks = activeId => {
+    navLinks.forEach(link => {
+      if (activeId && linkMatchesSection(link, activeId)) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  const getActiveSectionId = () => {
+    const focusLine = Math.max(window.innerHeight * 0.25, 140);
+    if (heroSection) {
+      const heroRect = heroSection.getBoundingClientRect();
+      if (heroRect.bottom > focusLine) {
+        return null;
+      }
+    }
+    let activeId = sections[0].id;
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top - focusLine <= 0) {
+        activeId = section.id;
+        if (rect.bottom - focusLine >= 0) {
+          break;
+        }
+      } else {
+        break;
+      }
+    }
+    return activeId;
+  };
+
+  const updateActiveSection = () => {
+    scrollSpyFrame = null;
+    highlightLinks(getActiveSectionId());
+  };
+
+  const scheduleUpdate = () => {
+    if (scrollSpyFrame !== null) return;
+    if (typeof window.requestAnimationFrame === 'function') {
+      scrollSpyFrame = window.requestAnimationFrame(updateActiveSection);
+    } else {
+      scrollSpyFrame = window.setTimeout(updateActiveSection, 0);
+    }
+  };
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  scheduleUpdate();
+
+  scrollSpyCleanup = () => {
+    window.removeEventListener('scroll', scheduleUpdate);
+    window.removeEventListener('resize', scheduleUpdate);
+    if (scrollSpyFrame !== null) {
+      if (typeof window.cancelAnimationFrame === 'function') {
+        window.cancelAnimationFrame(scrollSpyFrame);
+      } else {
+        window.clearTimeout(scrollSpyFrame);
+      }
+      scrollSpyFrame = null;
+    }
+  };
 };
 
 const initScrollTopLinks = () => {
