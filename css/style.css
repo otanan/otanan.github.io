@@ -16,6 +16,7 @@
   --header-bleed: clamp(0.75rem, 3vw, 2.5rem);
   --card-hover-shadow: rgba(31, 42, 42, 0.2);
   --scroll-offset: clamp(5rem, 8vw, 7rem);
+  --font-size-base: 1rem;
 }
 
 [data-theme="dark"] {
@@ -73,6 +74,7 @@ body[data-theme='dark'] ::-moz-selection,
 body {
   font-family: var(--font-body);
   color: var(--text);
+  font-size: var(--font-size-base);
   background: transparent;
   min-height: 100vh;
   line-height: 1.6;
@@ -917,6 +919,18 @@ body.is-modal-open {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --font-size-base: 0.916rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 0.875rem;
   }
 }
 
