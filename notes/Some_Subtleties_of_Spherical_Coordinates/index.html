@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaling of Price's Monotonicity Formula | Jonathan Delgado</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://jdelgado.net/assets/icons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://jdelgado.net/assets/icons/favicon.svg" />
+  <link rel="shortcut icon" href="https://jdelgado.net/assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jdelgado.net/assets/icons/apple-touch-icon.png" />
+
+  <!-- Link previews -->
+  <meta name="description" content="Jonathan Delgado explains how Price's monotonicity formula rescales for minimal surfaces, complete with MathJax examples." />
+  <meta name="twitter:description" content="Jonathan Delgado explains how Price's monotonicity formula rescales for minimal surfaces, complete with MathJax examples." />
+  <meta property="og:description" content="Jonathan Delgado explains how Price's monotonicity formula rescales for minimal surfaces, complete with MathJax examples." />
+
+  <meta name="twitter:title" content="Scaling of Price's Monotonicity Formula | Jonathan Delgado" />
+  <meta property="og:title" content="Scaling of Price's Monotonicity Formula | Jonathan Delgado" />
+
+  <meta name="twitter:url" content="https://jdelgado.net/notes/scaling-prices-monotonicity.html" />
+  <meta property="og:url" content="https://jdelgado.net/notes/scaling-prices-monotonicity.html" />
+
+  <meta name="twitter:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
+  <meta name="twitter:image:alt" content="Jonathan Delgado portrait with site branding." />
+  <meta property="og:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Jonathan Delgado portrait with site branding." />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Jonathan Delgado" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:author" content="Jonathan Delgado" />
+  <meta property="article:section" content="Mathematics Notes" />
+  
+  <link rel="manifest" href="https://jdelgado.net/assets/icons/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="../../css/style.css" />
+
+</head>
+<body class="note-article" data-theme="light" data-mathjax="true">
+  <div id="top"></div>
+  <div
+    data-site-header
+    data-base-path="../../"
+    data-active-link="notes"
+    data-action-label="Back to Notes"
+    data-action-href="/index.html#notes"
+  ></div>
+
+  
+  <main>
+    <header>
+      <p class="eyebrow">
+        2026-01-22
+        <span class="eyebrow-actions">
+          <a href="Delgado-Some_Subtleties_of_Spherical_Coordinates.pdf" target="_blank" rel="noopener">
+            Open as PDF
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+        </span>
+      </p>
+      <h1>Some subtleties of spherical coordinates</h1>
+      <p class="note-meta"><p>The following are some reflections on why the polar angle coordinate <span class="math inline">\(\phi\)</span> does not globally define a 1-form on <span class="math inline">\(S^2\)</span> and hence on <span class="math inline">\(\mathbb{R}^3 \setminus \{0\}\)</span>.</p></p>
+    </header>
+
+    <!-- Pandoc insertion -->
+    <h2 id="review-of-spherical-coordinates">Review of Spherical Coordinates</h2>
+    <p>Recall that any point <span class="math inline">\((x, y, z) \in \mathbb{R}^3\)</span> can be described by its distance from the origin, <span class="math inline">\(\rho = \sqrt{x^2 + y^2 + z^2}\)</span>, its <span style="color: #1ABC9D"><strong>polar angle</strong></span> <span class="math inline">\(\phi\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and its <span style="color: #1ABC9D"><strong>azimuthal angle</strong></span> <span class="math inline">\(\theta\)</span>.</p>
+    <figure data-latex-placement="tph">
+    <img src="../figures/spherical_coordinates.png" style="width:65.0%" />
+    </figure>
+    <p>From this picture we have <span class="math inline">\(\rho \in [0, \infty)\)</span>, <span class="math inline">\(\phi \in [0, \pi]\)</span>, and <span class="math inline">\(\theta \in [0, 2\pi)\)</span>. Despite the care we take with these possible values, we have still introduced several degeneracies: various choices of “coordinates” that represent the same point. For example, at <span class="math inline">\(\rho = 0\)</span>, we identify <span class="math display">\[(0, \phi, \theta) \sim (0, \phi&#39;, \theta&#39;).\]</span> Similarly, on the positive <span class="math inline">\(z\)</span>-axis, <span class="math display">\[(\rho, 0, \theta) \sim (\rho, 0, \theta&#39;)
+        \quad\text{ and }\quad
+        (\rho, \pi, \theta) \sim (\rho, \pi, \theta&#39;).\]</span> As a result, spherical coordinates only really describe a coordinate system in the rigorous sense provided <span class="math display">\[(\rho, \phi, \theta) \in (0, \infty) \times (0, \pi) \times [0, 2\pi).\]</span> This covers <span class="math inline">\(\mathbb{R}^3 \setminus (\text{the $z$-axis})\)</span>, and we can only guarantee the existence of <span class="math inline">\(d\rho\)</span>, <span class="math inline">\(d\phi\)</span>, and <span class="math inline">\(d\theta\)</span>, on this domain.</p>
+    <h2 id="the-problem-of-the-1-form">The problem of the 1-form</h2>
+    <p>From the equation for <span class="math inline">\(z\)</span> we have <span class="math display">\[\phi
+        = \arccos\left( \frac{z}{\rho} \right)
+        = \arccos\left( \frac{z}{\sqrt{x^2 + y^2 + z^2}} \right).\]</span> The domain for <span class="math inline">\(\arccos\)</span> is <span class="math inline">\([-1, 1]\)</span> and the inequality <span class="math inline">\(|z| \leq \rho\)</span> ensures that <span class="math inline">\(\phi\)</span> is a globally defined smooth function on <span class="math inline">\(\mathbb{R}^3 \setminus (\text{the $z$-axis})\)</span>. We have more, however, since this expression for <span class="math inline">\(\phi\)</span> actually shows that it’s well-defined on <span class="math inline">\(\mathbb{R}^3 \setminus \{0\}\)</span>. This makes it tempting to conclude that <span class="math inline">\(d\phi\)</span> exists on <span class="math inline">\(\mathbb{R}^3 \setminus \{0\}\)</span>. It turns out that this is not the case, <span class="math inline">\(d\phi\)</span> is not even a 1-form on <span class="math inline">\(S^2\)</span>.</p>
+    <h3 id="direct-computation">Direct computation</h3>
+    <p>We can argue that <span class="math inline">\(d\phi\)</span> fails to exist on <span class="math inline">\(S^2\)</span> by a direct computation. <span class="math display">\[\begin{align*}
+        d\phi
+        &amp; % alignment on newline for padding
+        = d \arccos\left( \frac{z}{\rho} \right)
+            % &amp; \paren*{ \text{Explanation} }
+        % \\ &amp;
+        = -\frac{1}{\sqrt{1 - \frac{z^2}{\rho^2}}} d\left(\frac{z}{\rho}\right)
+            % &amp; \paren*{ \text{Next} }
+            = -\frac{1}{\sqrt{\frac{x^2 + y^2}{\rho^2}}} \frac{\rho dz - zd\rho}{\rho^2}
+            %    &amp; \paren*{ \text{Next} }
+            % \\ &amp;
+        \\ &amp;
+        = -\frac{1}{\sqrt{\frac{(\rho\sin\phi)^2}{\rho^2}}}
+            \frac{\rho dz - zd\rho}{\rho^2}
+        %    &amp; \paren*{ \text{Next} }
+        % \\ &amp;
+        = -\frac{1}{\sin\phi}
+        \left( \frac{1}{\rho}dz - \frac{z}{\rho^2}d\rho \right)
+        %    &amp; \paren*{ \text{Next} }
+    .
+    \end{align*}\]</span> Since we’re away from the origin, <span class="math inline">\(\rho &gt; 0\)</span> and smooth. So the only possible issue for <span class="math inline">\(d\phi\)</span> happens at <span class="math inline">\(\phi \in \{0, \pi\}\)</span>. Since the factor on the right does not vanish for these values of <span class="math inline">\(\phi\)</span>, it follows that <span class="math inline">\(d\phi\)</span> is not globally defined on <span class="math inline">\(S^2\)</span>.</p>
+    <p>This is not an exceptionally insightful calculation, and is also tedious to do. Instead, we will discuss a more geometric way to see why this 1-form does not exist.</p>
+    <h3 id="a-geometric-argument">A geometric argument</h3>
+    <p>Focusing on the upper <span class="math inline">\(z\)</span>-axis, let’s see what happens as <span class="math inline">\(\phi\)</span> gets close to <span class="math inline">\(0\)</span>.</p>
+    <figure data-latex-placement="tph">
+    <img src="../figures/small_polar_angle.png" style="width:55.0%" />
+    </figure>
+    <p>The distance any given point has from the <span class="math inline">\(z\)</span>-axis is <span class="math inline">\(\rho \sin\phi\)</span>. For small values of <span class="math inline">\(\phi\)</span> the small angle approximation <span class="math inline">\(\sin\phi \approx \phi\)</span> (justified by Taylor expansion) says that the point is approximately <span class="math inline">\(\phi\)</span>-distance away from the axis. On the other hand, spherical coordinates also tell us that <span class="math display">\[\rho\sin\phi = r = \sqrt{x^2 + y^2}.\]</span> Our small angle approximation tells us <span class="math inline">\(\phi \approx r\)</span> and the problem of differentiating <span class="math inline">\(\phi\)</span> near the <span class="math inline">\(z\)</span>-axis is exactly the problem of differentiating <span class="math inline">\(r\)</span> in polar coordinates. In particular <span class="math display">\[\phi \approx \sqrt{x^2 + y^2},\]</span> and the derivative of this explodes at 0, as seen by <span class="math display">\[dr = \frac{1}{\sqrt{x^2 + y^2}} d(x^2 + y^2).\]</span></p>
+    <h2 id="consequences">Consequences</h2>
+    <p>The observation <span class="math inline">\(\phi \approx r = \sqrt{x^2 + y^2}\)</span> for small values of <span class="math inline">\(\phi\)</span> offers a suggested way to smooth it over by instead considering <span class="math inline">\(d\phi^2\)</span>. In this case <span class="math display">\[d\phi^2 = 2\phi d\phi\]</span> and a direct computation shows that <span class="math inline">\(\phi d\phi \to 0\)</span> as <span class="math inline">\(\phi \to 0\)</span> for the same reason <span class="math inline">\(rdr \to 0\)</span> as <span class="math inline">\(r \to 0\)</span>.</p>
+    <p>Notice that this still fails to fix the issue on the negative <span class="math inline">\(z\)</span>-axis since here <span class="math inline">\(\phi \to \pi\)</span> which does not remove the singular behavior of its derivative given by the same picture. To justify the small-angle approximation, we need to instead consider the complementary angle <span class="math inline">\(\psi = \pi - \psi\)</span>. Now <span class="math inline">\(\phi \to \pi\)</span> is the same as considering <span class="math inline">\(\psi \to 0^+\)</span> and our previous argument holds. This means that, away from the positive <span class="math inline">\(z\)</span>-axis, <span class="math display">\[d\psi^2
+        = (\pi - \phi)d(\pi - \phi)
+        = -(\pi - \phi)d\phi\]</span> is well-defined.</p>
+    <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+    <hr />
+    <ol>
+    <li id="fn1"><p>We are following the mathematics convention: <a href="https://en.wikipedia.org/wiki/Spherical_coordinate_system" class="uri">https://en.wikipedia.org/wiki/Spherical_coordinate_system</a>, as opposed to the physics convention which swaps the roles of <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\theta\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+    </ol>
+    </section>
+    
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Jonathan Delgado · Department of Mathematics · University of California Irvine</p>
+    <a href="#top" data-scroll-top>Back to top ↑</a>
+  </footer>
+
+  <script src="../../js/header.js" defer></script>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>
