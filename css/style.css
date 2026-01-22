@@ -832,6 +832,11 @@ body.is-modal-open {
   margin-top: 1.5rem;
 }
 
+.note-article a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .note-article .note-meta {
   font-size: 0.95rem;
   color: var(--text-muted);
