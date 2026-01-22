@@ -82,9 +82,9 @@
     <figure data-latex-placement="tph">
     <img src="../figures/spherical_coordinates.png" style="display:block;margin-left:auto;margin-right:auto;max-width:100%;height:auto;;width:65.0%" />
     </figure>
-    <p>From this picture we have <span class="math inline">\(\rho \in [0, \infty)\)</span>, <span class="math inline">\(\phi \in [0, \pi]\)</span>, and <span class="math inline">\(\theta \in [0, 2\pi)\)</span>. Despite the care we take with these possible values, we have still introduced several degeneracies: various choices of “coordinates” that represent the same point. For example, at <span class="math inline">\(\rho = 0\)</span>, we identify <span class="math display">\[(0, \phi, \theta) \sim (0, \phi&#39;, \theta&#39;).\]</span> Similarly, on the positive <span class="math inline">\(z\)</span>-axis, <span class="math display">\[(\rho, 0, \theta) \sim (\rho, 0, \theta&#39;)
+    <p>From this picture we have <span class="math inline">\(\rho \in [0, \infty)\)</span>, <span class="math inline">\(\phi \in [0, \pi]\)</span>, and <span class="math inline">\(\theta \in [0, 2\pi)\)</span>. Despite the care we take with these possible values, we have still introduced several degeneracies: various choices of “coordinates” that represent the same point. For example, at <span class="math inline">\(\rho = 0\)</span>, we identify <span class="math display">\[(0, \phi, \theta) \sim (0, \phi&#39;, \theta&#39;).\]</span> Similarly, on the <span class="math inline">\(z\)</span>-axis, <span class="math display">\[(\rho, 0, \theta) \sim (\rho, 0, \theta&#39;)
         \quad\text{ and }\quad
-        (\rho, \pi, \theta) \sim (\rho, \pi, \theta&#39;).\]</span> As a result, spherical coordinates only really describe a coordinate system in the rigorous sense provided <span class="math display">\[(\rho, \phi, \theta) \in (0, \infty) \times (0, \pi) \times [0, 2\pi).\]</span> This covers <span class="math inline">\(\mathbb{R}^3 \setminus (\text{the $z$-axis})\)</span>, and we can only guarantee the existence of <span class="math inline">\(d\rho\)</span>, <span class="math inline">\(d\phi\)</span>, and <span class="math inline">\(d\theta\)</span>, on this domain.</p>
+        (\rho, \pi, \theta) \sim (\rho, \pi, \theta&#39;).\]</span> As a result, spherical coordinates only really describe a coordinate system in the precise sense (as charts on a topological manifold) provided <span class="math display">\[(\rho, \phi, \theta) \in (0, \infty) \times (0, \pi) \times [0, 2\pi).\]</span> This covers <span class="math inline">\(\mathbb{R}^3 \setminus (\text{the $z$-axis})\)</span>, and we can only guarantee the existence of <span class="math inline">\(d\rho\)</span>, <span class="math inline">\(d\phi\)</span>, and <span class="math inline">\(d\theta\)</span>, on this domain.</p>
     <h2 id="the-problem-of-the-1-form">The problem of the 1-form</h2>
     <p>From the equation for <span class="math inline">\(z\)</span> we have <span class="math display">\[\phi
         = \arccos\left( \frac{z}{\rho} \right)
@@ -106,11 +106,11 @@
             \frac{\rho dz - zd\rho}{\rho^2}
         %    &amp; \paren*{ \text{Next} }
         % \\ &amp;
-        = -\frac{1}{\sin\phi}
-        \left( \frac{1}{\rho}dz - \frac{z}{\rho^2}d\rho \right)
+        = \frac{1}{\sin\phi}
+        \left( \frac{z}{\rho^2}d\rho - \frac{1}{\rho}dz \right)
         %    &amp; \paren*{ \text{Next} }
     .
-    \end{align*}\]</span> Since we’re away from the origin, <span class="math inline">\(\rho &gt; 0\)</span> and smooth. So the only possible issue for <span class="math inline">\(d\phi\)</span> happens at <span class="math inline">\(\phi \in \{0, \pi\}\)</span>. Since the factor on the right does not vanish for these values of <span class="math inline">\(\phi\)</span>, it follows that <span class="math inline">\(d\phi\)</span> is not globally defined on <span class="math inline">\(S^2\)</span>.</p>
+    \end{align*}\]</span> Since we’re away from the origin, <span class="math inline">\(\rho &gt; 0\)</span> and smooth, the factor on the right is not an issue. So the only problem for <span class="math inline">\(d\phi\)</span> happens at <span class="math inline">\(\phi \in \{0, \pi\}\)</span>. Since the factor on the right does not vanish for these values of <span class="math inline">\(\phi\)</span>, it follows that <span class="math inline">\(d\phi\)</span> is not globally defined on <span class="math inline">\(S^2\)</span>.</p>
     <p>This is not an exceptionally insightful calculation, and is also tedious to do. Instead, we will discuss a more geometric way to see why this 1-form does not exist.</p>
     <h3 id="a-geometric-argument">A geometric argument</h3>
     <p>Focusing on the upper <span class="math inline">\(z\)</span>-axis, let’s see what happens as <span class="math inline">\(\phi\)</span> gets close to <span class="math inline">\(0\)</span>.</p>
