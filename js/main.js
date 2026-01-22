@@ -26,6 +26,8 @@ let mathJaxConfigured = false;
 let mathJaxResizeCleanup = null;
 let mathJaxResizeTimer = null;
 let mathJaxTypesetPromise = null;
+let mathJaxLastWidth = null;
+const mathJaxSourceCache = new WeakMap();
 const pjaxSupported = Boolean(window.history && typeof window.history.pushState === 'function');
 let isPjaxNavigating = false;
 let pjaxInitialized = false;
@@ -542,6 +544,7 @@ const initResearchModal = () => {
   });
 };
 
+// MathJax helpers: keep typesets serialized and restore TeX on resize.
 const queueMathJaxTask = task => {
   const startupPromise =
     window.MathJax && window.MathJax.startup && window.MathJax.startup.promise
@@ -551,45 +554,57 @@ const queueMathJaxTask = task => {
   mathJaxTypesetPromise = basePromise.then(task, task);
 };
 
+const getMathJaxRoot = () => document.querySelector('main') || document.body;
+
 const getMathJaxTargets = () => {
-  const targets = [...document.querySelectorAll('.math')];
-  return targets.length ? targets : [document.body];
+  const root = getMathJaxRoot();
+  if (!root) return [];
+  return [...root.querySelectorAll('.math')];
 };
 
-const cacheMathJaxSources = () => {
-  document.querySelectorAll('.math').forEach(node => {
-    if (!node.dataset.mathjaxSource) {
-      node.dataset.mathjaxSource = node.innerHTML;
+const cacheMathJaxSources = nodes => {
+  nodes.forEach(node => {
+    if (!mathJaxSourceCache.has(node)) {
+      mathJaxSourceCache.set(node, node.innerHTML);
     }
   });
 };
 
-const restoreMathJaxSources = () => {
-  document.querySelectorAll('.math').forEach(node => {
-    const source = node.dataset.mathjaxSource;
+const restoreMathJaxSources = nodes => {
+  nodes.forEach(node => {
+    const source = mathJaxSourceCache.get(node);
     if (source && node.innerHTML !== source) {
       node.innerHTML = source;
     }
   });
 };
 
+const getMathJaxRootWidth = () => {
+  const root = getMathJaxRoot();
+  if (!root) return null;
+  return Math.round(root.getBoundingClientRect().width);
+};
+
 const renderMathJax = () => {
   if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') {
     return;
   }
-  cacheMathJaxSources();
   const targets = getMathJaxTargets();
+  if (!targets.length) return;
+  cacheMathJaxSources(targets);
   queueMathJaxTask(() => window.MathJax.typesetPromise(targets));
+  mathJaxLastWidth = getMathJaxRootWidth();
 };
 
 const rerenderMathJax = () => {
   if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') {
     return;
   }
+  const targets = getMathJaxTargets();
+  if (!targets.length) return;
   queueMathJaxTask(() => {
-    cacheMathJaxSources();
-    restoreMathJaxSources();
-    const targets = getMathJaxTargets();
+    cacheMathJaxSources(targets);
+    restoreMathJaxSources(targets);
     const startup = window.MathJax.startup;
     if (startup && startup.output && typeof startup.output.clearCache === 'function') {
       startup.output.clearCache();
@@ -687,6 +702,12 @@ const initMathJaxResize = () => {
     }
     mathJaxResizeTimer = window.setTimeout(() => {
       mathJaxResizeTimer = null;
+      const nextWidth = getMathJaxRootWidth();
+      // Skip costly re-typesets if the content width is unchanged.
+      if (nextWidth === null || nextWidth === mathJaxLastWidth) {
+        return;
+      }
+      mathJaxLastWidth = nextWidth;
       rerenderMathJax();
     }, 150);
   };

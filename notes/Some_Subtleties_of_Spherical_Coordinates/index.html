@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Some subtleties of spherical coordinates | Jonathan Delgado</title>
-
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="https://jdelgado.net/assets/icons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="https://jdelgado.net/assets/icons/favicon.svg" />
@@ -19,15 +18,16 @@
   <meta name="twitter:title" content="Some subtleties of spherical coordinates | Jonathan Delgado" />
   <meta property="og:title" content="Some subtleties of spherical coordinates | Jonathan Delgado" />
 
-  <meta name="twitter:url" content="https://jdelgado.net/notes/scaling-prices-monotonicity.html" />
-  <meta property="og:url" content="https://jdelgado.net/notes/scaling-prices-monotonicity.html" />
+  <meta name="twitter:url" content="https://jdelgado.net/notes/Some_Subtleties_of_Spherical_Coordinates" />
+  <meta property="og:url" content="https://jdelgado.net/notes/Some_Subtleties_of_Spherical_Coordinates" />
 
-  <meta name="twitter:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
+  <!-- Link preview image -->
+  <!-- <meta name="twitter:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
   <meta name="twitter:image:alt" content="Jonathan Delgado portrait with site branding." />
   <meta property="og:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Jonathan Delgado portrait with site branding." />
+  <meta property="og:image:alt" content="Jonathan Delgado portrait with site branding." /> -->
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content="article" />
@@ -80,7 +80,7 @@
     <h2 id="review-of-spherical-coordinates">Review of Spherical Coordinates</h2>
     <p>Recall that any point <span class="math inline">\((x, y, z) \in \mathbb{R}^3\)</span> can be described by its distance from the origin, <span class="math inline">\(\rho = \sqrt{x^2 + y^2 + z^2}\)</span>, its <span style="color: #1ABC9D"><strong>polar angle</strong></span> <span class="math inline">\(\phi\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and its <span style="color: #1ABC9D"><strong>azimuthal angle</strong></span> <span class="math inline">\(\theta\)</span>.</p>
     <figure data-latex-placement="tph">
-    <img src="../figures/spherical_coordinates.png" style="width:65.0%" />
+    <img src="../figures/spherical_coordinates.png" style="display:block;margin-left:auto;margin-right:auto;max-width:100%;height:auto;;width:65.0%" />
     </figure>
     <p>From this picture we have <span class="math inline">\(\rho \in [0, \infty)\)</span>, <span class="math inline">\(\phi \in [0, \pi]\)</span>, and <span class="math inline">\(\theta \in [0, 2\pi)\)</span>. Despite the care we take with these possible values, we have still introduced several degeneracies: various choices of “coordinates” that represent the same point. For example, at <span class="math inline">\(\rho = 0\)</span>, we identify <span class="math display">\[(0, \phi, \theta) \sim (0, \phi&#39;, \theta&#39;).\]</span> Similarly, on the positive <span class="math inline">\(z\)</span>-axis, <span class="math display">\[(\rho, 0, \theta) \sim (\rho, 0, \theta&#39;)
         \quad\text{ and }\quad
@@ -115,7 +115,7 @@
     <h3 id="a-geometric-argument">A geometric argument</h3>
     <p>Focusing on the upper <span class="math inline">\(z\)</span>-axis, let’s see what happens as <span class="math inline">\(\phi\)</span> gets close to <span class="math inline">\(0\)</span>.</p>
     <figure data-latex-placement="tph">
-    <img src="../figures/small_polar_angle.png" style="width:55.0%" />
+    <img src="../figures/small_polar_angle.png" style="display:block;margin-left:auto;margin-right:auto;max-width:100%;height:auto;;width:55.0%" />
     </figure>
     <p>The distance any given point has from the <span class="math inline">\(z\)</span>-axis is <span class="math inline">\(\rho \sin\phi\)</span>. For small values of <span class="math inline">\(\phi\)</span> the small angle approximation <span class="math inline">\(\sin\phi \approx \phi\)</span> (justified by Taylor expansion) says that the point is approximately <span class="math inline">\(\phi\)</span>-distance away from the axis. On the other hand, spherical coordinates also tell us that <span class="math display">\[\rho\sin\phi = r = \sqrt{x^2 + y^2}.\]</span> Our small angle approximation tells us <span class="math inline">\(\phi \approx r\)</span> and the problem of differentiating <span class="math inline">\(\phi\)</span> near the <span class="math inline">\(z\)</span>-axis is exactly the problem of differentiating <span class="math inline">\(r\)</span> in polar coordinates. In particular <span class="math display">\[\phi \approx \sqrt{x^2 + y^2},\]</span> and the derivative of this explodes at 0, as seen by <span class="math display">\[dr = \frac{1}{\sqrt{x^2 + y^2}} d(x^2 + y^2).\]</span></p>
     <h2 id="consequences">Consequences</h2>
@@ -133,7 +133,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Jonathan Delgado · Department of Mathematics · University of California Irvine</p>
+    <p>© <span id="year"></span> Jonathan Delgado · <jd-email></jd-email></p>
     <a href="#top" data-scroll-top>Back to top ↑</a>
   </footer>
 

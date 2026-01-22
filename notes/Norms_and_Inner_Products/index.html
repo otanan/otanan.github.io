@@ -22,10 +22,12 @@
   <meta name="twitter:url" content="https://jdelgado.net/notes/scaling-prices-monotonicity.html" />
   <meta property="og:url" content="https://jdelgado.net/notes/scaling-prices-monotonicity.html" />
 
-  <meta name="twitter:image" content="https://jdelgado.net/assets/jdelgado.jpg" />
+  <meta name="twitter:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
+  <meta name="twitter:image:alt" content="Jonathan Delgado portrait with site branding." />
   <meta property="og:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Jonathan Delgado portrait with site branding." />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content="article" />
@@ -38,74 +40,56 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="../../css/style.css" />
 
 </head>
 <body class="note-article" data-theme="light" data-mathjax="true">
   <div id="top"></div>
   <div
     data-site-header
-    data-base-path="../"
+    data-base-path="../../"
     data-active-link="notes"
     data-action-label="Back to Notes"
     data-action-href="/index.html#notes"
   ></div>
 
+  
   <main>
     <header>
-      <p class="eyebrow">Sample Note</p>
+      <p class="eyebrow">
+        Sample Note
+        <span class="eyebrow-actions">
+          <a href="Delgado-Norms_and_Inner_Products.pdf" target="_blank" rel="noopener">
+            Open as PDF
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+        </span>
+      </p>
       <h1>Scaling of Price's Monotonicity Formula</h1>
       <p class="note-meta">Demo note showing MathJax rendering inside the new layout.</p>
     </header>
 
-    <section>
-      <p>
-        Price's monotonicity formula is one of the cleanest ways to package how the area ratio of a minimal submanifold reacts to
-        rescaling. For a minimal surface $\Sigma \subset \mathbb{R}^{n}$ passing through the origin, the classical statement is
-        
-        $$\Theta_{\Sigma}(r) = \frac{\operatorname{Area}(\Sigma \cap B_r(0))}{\pi r^2}$$
-        
-        which is nondecreasing in $r$. The numerator scales like $r^{2}$ while the denominator normalizes by the Euclidean area of
-        the ball of radius $r$.
-      </p>
-    </section>
-
-    <section>
-      <h2>Rescaling the Domain</h2>
-      <p>
-        Suppose we consider the dilation $D_{\lambda}(x) = \lambda x$ with $\lambda > 0$. The pushforward surface
-        $D_{\lambda}(\Sigma)$ remains minimal, and its density ratio satisfies
-      </p>
-      <p>
-        $$\Theta_{D_{\lambda}(\Sigma)}(r) = \Theta_{\Sigma}(\lambda r).$$
-      </p>
-      <p>
-        Consequently, the monotonicity can be restated in terms of the rescaled radius $\rho = \lambda r$, making it transparent
-        how blow-ups at a point convert the formula into a statement about tangent cones. For sequences $\lambda_j \to 0$, the
-        quantities $\Theta_{\Sigma}(\lambda_j r)$ converge to the density of the limiting cone.
-      </p>
-    </section>
-
-    <section>
-      <h2>Energy Perspective</h2>
-      <p>
-        Another useful presentation comes from viewing the numerator as an integral involving the mean curvature vector $H$:
-        
-        $$\frac{d}{dr}\Theta_{\Sigma}(r) = \frac{2}{r^{3}}\int_{\Sigma \cap B_r(0)} |(x^{\perp})|^{2} \, d\operatorname{Area}.$$
-        
-        The perpendicular projection $x^{\perp}$ scales quadratically with $r$, so the derivative remains nonnegative. This
-        provides a numerical measure of how far the surface deviates from being conical on each scale.
-      </p>
-    </section>
-
-    <section>
-      <h2>Summary</h2>
-      <p>
-        The monotonicity of $\Theta_{\Sigma}(r)$ is therefore stable under rescalings, and the structure of the derivative shows how
-        curvature concentration affects the limit. This page demonstrates how MathJax renders inline expressions like $x^{\perp}$
-        and display equations inside the site's typography.
-      </p>
-    </section>
+    <!-- Pandoc insertion -->
+    <p>The goal of this note is to explain the relationship between inner products and norms. Along the way, we discuss some of the complexity functional analysis has over (finite-dimensional) linear algebra, and go over some concepts that break down in finite-dimensional spaces.</p>
+    <h1 id="definitions">Definitions</h1>
+    <p>Let <span class="math inline">\(V\)</span> be a <span class="math inline">\(k\)</span>-vector space (not necessarily finite-dimensional). A <span style="color: #1ABC9D"><strong>norm</strong></span> on <span class="math inline">\(V\)</span> is a function <span class="math inline">\(\left\Vert \cdot \right\Vert : V \to \mathbb{R}\)</span> such that</p>
+    <ol>
+    <li><p>(<span style="color: #1ABC9D"><strong>Subadditivity</strong></span>/<span style="color: #1ABC9D"><strong>Triangle Inequality</strong></span>): <span class="math display">\[\left\Vert u + v \right\Vert \leq \left\Vert u \right\Vert + \left\Vert v \right\Vert, \text{ for all } u, v \in V.\]</span></p></li>
+    <li><p>(<span style="color: #1ABC9D"><strong>Absolute Homogeneity</strong></span>): <span class="math display">\[\left\Vert \lambda v \right\Vert = \left\vert \lambda \right\vert\left\Vert v \right\Vert, \text{ for all } \lambda \in k, v \in V.\]</span></p></li>
+    <li><p>(<span style="color: #1ABC9D"><strong>Positive-Definiteness</strong></span>): For all <span class="math inline">\(v \in V\)</span>, if <span class="math display">\[\left\Vert v \right\Vert = 0,\]</span> then <span class="math inline">\(v = 0\)</span>.</p></li>
+    </ol>
+    <figure data-latex-placement="tph">
+    <img src="figures/inscribed_circles_and_squares.svg" style="width:50.0%" />
+    <figcaption>Transition functions determine how sections translate on a <span class="math inline">\(G\)</span>-bundle.</figcaption>
+    </figure>
+    
   </main>
 
   <footer class="site-footer">
@@ -113,7 +97,7 @@
     <a href="#top" data-scroll-top>Back to top ↑</a>
   </footer>
 
-  <script src="../js/header.js" defer></script>
-  <script src="../js/main.js" defer></script>
+  <script src="../../js/header.js" defer></script>
+  <script src="../../js/main.js" defer></script>
 </body>
 </html>
