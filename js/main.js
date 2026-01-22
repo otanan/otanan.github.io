@@ -766,12 +766,51 @@ const updateBodyAttributes = newBody => {
   }
 };
 
-const applyPageContent = doc => {
+const getBaseHrefFromUrl = urlObj => {
+  if (!urlObj) return null;
+  const pathname = urlObj.pathname || '/';
+  if (pathname.endsWith('/')) {
+    return pathname;
+  }
+  const lastSegment = pathname.split('/').pop() || '';
+  const hasExtension = /\.[a-zA-Z0-9]+$/.test(lastSegment);
+  if (hasExtension) {
+    const trimmed = pathname.slice(0, pathname.lastIndexOf('/') + 1);
+    return trimmed || '/';
+  }
+  return `${pathname}/`;
+};
+
+const resolveBaseHref = (href, urlObj) => {
+  if (!href) return null;
+  try {
+    return new URL(href, (urlObj && urlObj.href) || window.location.href).href;
+  } catch {
+    return href;
+  }
+};
+
+const updateBaseHref = (doc, urlObj) => {
+  const incomingBase = doc ? doc.querySelector('base[href]') : null;
+  const rawHref = incomingBase ? incomingBase.getAttribute('href') : getBaseHrefFromUrl(urlObj);
+  if (!rawHref) return;
+  const resolvedHref = resolveBaseHref(rawHref, urlObj);
+  let baseEl = document.querySelector('head base');
+  if (!baseEl) {
+    baseEl = document.createElement('base');
+    document.head.prepend(baseEl);
+  }
+  baseEl.setAttribute('href', resolvedHref);
+};
+
+const applyPageContent = (doc, urlObj) => {
   if (!doc) return;
   const titleEl = doc.querySelector('title');
   if (titleEl) {
     document.title = titleEl.textContent.trim();
   }
+  // Keep relative URLs stable after PJAX navigation.
+  updateBaseHref(doc, urlObj);
   updateBodyAttributes(doc.body);
   const currentMain = document.querySelector('main');
   const incomingMain = doc.querySelector('main');
@@ -833,7 +872,7 @@ const visitWithPjax = async (url, { historyMode = 'push' } = {}) => {
   const finalUrl = `${normalizedPath}${urlObj.search}${urlObj.hash}`;
   try {
     const nextDoc = await fetchPageDocument(urlObj.href);
-    applyPageContent(nextDoc);
+    applyPageContent(nextDoc, urlObj);
     if (historyMode === 'push') {
       window.history.pushState({ url: finalUrl }, '', finalUrl);
     } else if (historyMode === 'replace') {
