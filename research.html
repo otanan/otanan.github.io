@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | Jonathan Delgado</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://jdelgado.net/assets/icons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://jdelgado.net/assets/icons/favicon.svg" />
+  <link rel="shortcut icon" href="https://jdelgado.net/assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jdelgado.net/assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="https://jdelgado.net/assets/icons/site.webmanifest" />
+
+  <!-- Link previews -->
+  <meta name="description" content="Papers and preprints by Jonathan Delgado on primitive Yang–Mills theory, stochastic entropy production, and the resolvent degree of PSL(n,q)." />
+  <meta name="twitter:description" content="Papers and preprints by Jonathan Delgado on primitive Yang–Mills theory, stochastic entropy production, and the resolvent degree of PSL(n,q)." />
+  <meta property="og:description" content="Papers and preprints by Jonathan Delgado on primitive Yang–Mills theory, stochastic entropy production, and the resolvent degree of PSL(n,q)." />
+
+  <meta name="twitter:title" content="Research | Jonathan Delgado" />
+  <meta property="og:title" content="Research | Jonathan Delgado" />
+
+  <meta name="twitter:url" content="https://jdelgado.net/research.html" />
+  <meta property="og:url" content="https://jdelgado.net/research.html" />
+
+  <meta name="twitter:image" content="https://jdelgado.net/assets/jdelgado.jpg" />
+  <meta property="og:image" content="https://jdelgado.net/assets/jdelgado-fb.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jonathan Delgado" />
+  <meta property="og:locale" content="en_US" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-theme="light" data-mathjax="true" data-toc="papers">
+  <div id="top"></div>
+  <div data-site-header data-active-link="research"></div>
+
+  <!--
+    ============================================================
+    THIS PAGE IS THE SINGLE SOURCE OF TRUTH FOR RESEARCH.
+
+    The homepage does not repeat any of it. Add `data-selected` to a
+    <article class="paper"> and main.js pulls a compressed version of
+    that entry onto the homepage automatically — title, status, authors,
+    the summary paragraph, and the arXiv link. Remove the attribute and
+    it disappears from the homepage without touching index.html.
+
+    Structure of an entry (only the title is required):
+
+      <article class="paper" id="slug" data-selected>
+        <h2 class="paper-title">
+          <span class="paper-title__text">…</span>
+          <span class="paper-year">2026</span>     (flush right on the title line)
+        </h2>
+        <p class="paper-authors">…</p>
+        <p class="paper-status">
+          <paper-tag>status</paper-tag>
+          <paper-tag topic primary>Gauge Theory</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+          <p data-summary>…shown on the homepage…</p>
+          <p>…rest of the abstract, this page only…</p>
+        </div>
+        <p class="paper-links">
+          <a data-journal href="…">Journal name, volume (year)</a>
+          <a data-arxiv href="…">arXiv:…</a>
+        </p>
+      </article>
+
+    TAGS. Every paper carries two <paper-tag> elements, in this order:
+
+      1. Status — where it is in the pipeline. No attributes.
+      2. Topic — what the work is about. `topic`, plus `primary` for the main
+         line of research (gauge theory), which is the only tag that gets
+         accent colour. Keep the vocabulary short and reuse existing labels
+         rather than inventing a new one per paper; the point is that the
+         accent chips cluster and the rest read as adjacent work.
+
+    <paper-tag> is a plain custom element — styled in CSS, never registered
+    with JavaScript. Its options are attributes, so a tag reads as what it is.
+
+    Both are carried onto the homepage automatically, since main.js copies the
+    whole .paper-status row.
+
+    Every link inside .paper-links is carried onto the homepage, so DOI,
+    published-PDF or code links work the same way with no code change.
+
+    `data-summary` marks the sentences the homepage shows. Without it the
+    first paragraph of the abstract is used. MathJax works in both places.
+    ============================================================
+  -->
+
+  <main class="page-narrow has-toc">
+    <header class="page-head">
+      <p class="eyebrow">Research</p>
+      <h1>Papers &amp; Preprints</h1>
+      <p>
+        My work is in mathematical gauge theory and geometric analysis.
+        I also enjoy interdisciplinary work. I have done work in algebraic geometry, stochastic thermodynamics, and astrophysics.
+        The <a href="cv.html">curriculum vitae</a> carries the complete record, including talks.
+      </p>
+    </header>
+
+    <!-- Newest first. <ol reversed> numbers downwards, so adding a paper at
+         the top gives it the next highest number and every existing number
+         stays put. Reorder by moving an <li>. -->
+    <ol class="paper-list" reversed>
+
+      <li class="paper" id="cone-yang-mills-reduction" data-selected data-toc-label="Eliminating the Higgs field">
+        <h2 class="paper-title">
+          <span class="paper-title__text">Eliminating the Higgs field and perturbing Yang–Mills connections in cone Yang–Mills theory</span>
+          <span class="paper-year">2026</span>
+        </h2>
+        <p class="paper-authors">
+          <span class="is-me">Jonathan Delgado</span>
+        </p>
+        <p class="paper-status">
+          <paper-tag>In preparation</paper-tag>
+          <paper-tag topic primary>Gauge Theory</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+        </div>
+        <p class="paper-links">
+          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
+          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
+        </p>
+      </li>
+
+      <li class="paper" id="cone-yang-mills-regularity" data-selected data-toc-label="Monotonicity &amp; ε-regularity">
+        <h2 class="paper-title">
+          <span class="paper-title__text">Compactness of Cone Yang-Mills Connections</span>
+          <span class="paper-year">2026</span>
+        </h2>
+        <p class="paper-authors">
+          <span class="is-me">Jonathan Delgado</span>
+        </p>
+        <p class="paper-status">
+          <paper-tag>In preparation</paper-tag>
+          <paper-tag topic primary>Gauge Theory</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+        </div>
+        <p class="paper-links">
+          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
+          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
+        </p>
+      </li>
+
+      <li class="paper" id="primitive-yang-mills" data-selected data-toc-label="Primitive Yang–Mills theory">
+        <h2 class="paper-title">
+          <span class="paper-title__text">Primitive Yang–Mills Theory</span>
+          <span class="paper-year">2026</span>
+        </h2>
+        <p class="paper-authors">
+          <span class="is-me">Jonathan Delgado</span>, Davide Parise, Li-Sheng Tseng, and Jiawei Zhou
+        </p>
+        <p class="paper-status">
+          <paper-tag>In preparation</paper-tag>
+          <paper-tag topic primary>Gauge Theory</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+        </div>
+        <p class="paper-links">
+          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
+          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
+        </p>
+      </li>
+
+      <li class="paper" id="resolvent-degree" data-selected data-toc-label="Resolvent degree of PSL(n,q)">
+        <h2 class="paper-title">
+          <span class="paper-title__text">On the Resolvent Degree of <span class="math inline">\(\mathrm{PSL}(n, q)\)</span></span>
+          <span class="paper-year">2026</span>
+        </h2>
+        <p class="paper-authors">
+          Nawal Baydoun and <span class="is-me">Jonathan Delgado</span>
+        </p>
+        <p class="paper-status">
+          <paper-tag>In preparation</paper-tag>
+          <paper-tag topic>Algebraic Geometry</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+        </div>
+        <p class="paper-links">
+          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
+          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
+        </p>
+      </li>
+
+      <li class="paper" id="entropy-production" data-toc-label="Finite-time entropy production">
+        <h2 class="paper-title">
+          <span class="paper-title__text">Finite-time decomposition of stochastic entropy production</span>
+          <span class="paper-year">2026</span>
+        </h2>
+        <p class="paper-authors">
+          <span class="is-me">Jonathan Delgado</span>, Schuyler B. Nicholson, and Jason R. Green
+        </p>
+        <p class="paper-status">
+          <paper-tag>In preparation</paper-tag>
+          <paper-tag topic>Stochastic Thermodynamics</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+        </div>
+        <p class="paper-links">
+          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
+          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
+        </p>
+      </li>
+      
+      <li class="paper" id="bhex-photon-ring" data-toc-label="BHEX photon-ring inference">
+        <h2 class="paper-title">
+          <span class="paper-title__text">Machine- and deep-learning-driven angular momentum inference from BHEX
+            observations of the <span class="math inline">\(n = 1\)</span> photon ring</span>
+          <span class="paper-year">2025</span>
+        </h2>
+        <p class="paper-authors">
+          Joseph R. Farah, Jordy Davelaar, Daniel Palumbo, Michael D. Johnson, and
+          <span class="is-me">Jonathan Delgado</span>
+        </p>
+        <p class="paper-status">
+          <paper-tag>Published</paper-tag>
+          <paper-tag topic>Astrophysics</paper-tag>
+        </p>
+        <div class="paper-abstract prose">
+          <p data-summary>
+            The <span class="math inline">\(n = 1\)</span> photon ring is an important probe of black hole properties
+            and will be resolved by the Black Hole Explorer (BHEX) for the first time. However, extracting black hole
+            parameters from observations of the <span class="math inline">\(n = 1\)</span> subring is not trivial. We
+            present a framework for the study of <span class="math inline">\(n = 1\)</span> photon-ring behaviour and
+            black hole property measurement from BHEX images.
+          </p>
+          <p>
+            Using KerrBAM we generate a grid of <span class="math inline">\(\gtrsim 10^6\)</span> images of
+            <span class="math inline">\(n = 1\)</span> photon rings spanning the entire space of Kerr spins and
+            inclinations, and extract intensity profiles with a feature-extraction method developed specifically for
+            BHEX, which outperforms existing Event Horizon Telescope methods by a factor of
+            <span class="math inline">\(\sim 3000\)</span>. Testing spin recovery on simulated images with gradient
+            boosting and with an extension of Deep Horizon, we find <span class="math inline">\(\gtrsim 90\%\)</span>
+            correct recovery of black hole properties, and characterize the space of resolution-dependent geometric
+            degeneracies. On general relativistic magnetohydrodynamic simulations of accretion flows, both approaches
+            recover spin accurately at the expected inclination of <span class="math inline">\(\mathrm{M87}^*\)</span>.
+          </p>
+        </div>
+        <p class="paper-links">
+          <a data-journal href="https://doi.org/10.3847/1538-4357/adbbe3" target="_blank" rel="noopener">ApJ 983, 185 (2025)</a>
+          <a data-arxiv href="https://arxiv.org/abs/2411.01060" target="_blank" rel="noopener">arXiv:2411.01060</a>
+        </p>
+      </li>
+
+    </ol>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Jonathan Delgado · Department of Mathematics · UC Irvine</p>
+    <a href="#top" data-scroll-top>Back to top ↑</a>
+  </footer>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

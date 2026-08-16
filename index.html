@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jonathan Delgado | Home</title>
-	
+  <title>Jonathan Delgado | Mathematics, UC Irvine</title>
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="https://jdelgado.net/assets/icons/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="https://jdelgado.net/assets/icons/favicon.svg" />
@@ -14,12 +14,12 @@
   <link rel="manifest" href="https://jdelgado.net/assets/icons/site.webmanifest" />
 
   <!-- Link previews -->
-  <meta name="description" content="Portfolio, research notes, and contact details from Jonathan Delgado, a PhD candidate in pure mathematics at UC Irvine." />
-  <meta name="twitter:description" content="Portfolio, research notes, and contact details from Jonathan Delgado, a PhD candidate in pure mathematics at UC Irvine." />
-  <meta property="og:description" content="Portfolio, research notes, and contact details from Jonathan Delgado, a PhD candidate in pure mathematics at UC Irvine." />
+  <meta name="description" content="Jonathan Delgado is a PhD candidate in pure mathematics at UC Irvine working in gauge theory, symplectic geometry, and geometric analysis. Research, notes, teaching, and CV." />
+  <meta name="twitter:description" content="Jonathan Delgado is a PhD candidate in pure mathematics at UC Irvine working in gauge theory, symplectic geometry, and geometric analysis. Research, notes, teaching, and CV." />
+  <meta property="og:description" content="Jonathan Delgado is a PhD candidate in pure mathematics at UC Irvine working in gauge theory, symplectic geometry, and geometric analysis. Research, notes, teaching, and CV." />
 
-  <meta name="twitter:title" content="Jonathan Delgado | Home" />
-  <meta property="og:title" content="Jonathan Delgado | Home" />
+  <meta name="twitter:title" content="Jonathan Delgado | Mathematics, UC Irvine" />
+  <meta property="og:title" content="Jonathan Delgado | Mathematics, UC Irvine" />
 
   <meta name="twitter:url" content="https://jdelgado.net/" />
   <meta property="og:url" content="https://jdelgado.net/" />
@@ -46,253 +46,143 @@
   />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body data-theme="light" data-mathjax="true">
+<body data-theme="light" data-mathjax="true" data-toc="sections">
   <div id="top"></div>
-  <div data-site-header></div>
+  <div data-site-header data-active-link="home"></div>
 
-  <main>
-    <section class="hero" aria-labelledby="intro-title">
+  <main class="has-toc">
+    <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow">Snapshot</p>
-        <h2 id="intro-title">Jonathan Delgado, UCI</h2>
-        <p>
-          I am a fifth-year PhD candidate at the University of California, Irvine in pure mathematics with a concentration in differential geometry.
-          I am interested in all areas of geometry, but I have a special interest in gauge theory and applications of geometric analysis to Yang-Mills theory.
-          My current work applies the Lefschetz decomposition on symplectic manifolds to study a variant of Yang–Mills connections. My earlier projects explored stochastic thermodynamics and information theory.
-        </p>
-        <br>
-        <p>
-          I received my master's degree in mathematics from UC Irvine in 2023. I received my bachelor's degree in mathematics and physics from the University of Massachusetts Boston in 2021.
-        </p>
-        <br>
-        <p>
-          <!-- I enjoy writing <a href="#notes">blog-style posts</a> on interesting math topics that I have worked on. I prioritize notes on topics that I could not easily find references to in other places with the hope that these notes will be of some use to other math explorers. -->
-          You can always reach me at <jd-email></jd-email>.
-          <!-- if you have questions or suggestions for notes, or to collaborate. -->
-        </p>
+        <h1>Jonathan Delgado</h1>
+        <p class="hero-role">PhD Candidate in Pure Mathematics · University of California, Irvine</p>
+        <div class="prose">
+          <p>
+            I work in differential geometry with a focus on gauge theory.
+            I am especially interested in variants of the Yang-Mills functional, and perturbations of its moduli space.
+            My current work focuses on the cone Yang-Mills functional, a functional which twists the curvature and Higgs field by a closed 2-form.
+          </p>
+          <p>
+            I am also passionate about interdisciplinary work. I have worked on projects including: bounding the resolvent degree of finite simple groups, finite-time typicality in stochastic thermodynamics, and machine learning inference of black hole observables.
+          </p>
+          <p>
+            You can always reach me at <jd-email></jd-email>.
+          </p>
+        </div>
+        <ul class="quick-links">
+          <li><a class="is-primary" href="cv.html">Curriculum Vitae</a></li>
+          <li><a href="research.html">Papers</a></li>
+          <li><a href="https://scholar.google.com/citations?user=Rk_UvEEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0005-8120-8499" target="_blank" rel="noopener">ORCID</a></li>
+          <li><a href="https://github.com/otanan/" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
       </div>
-      <div class="hero-media">
-        <figure class="hero-portrait">
-          <div class="hero-portrait-frame">
-            <img src="assets/jdelgado.webp" alt="Portrait of Jonathan Delgado" loading="lazy" />
-          </div>
-          <figcaption class="visually-hidden">Jonathan Delgado · UC Irvine</figcaption>
-        </figure>
-        <a class="card-link cv-link" href="cv.html">Curriculum Vitae →</a>
+      <figure class="hero-portrait">
+        <img src="assets/jdelgado.webp" alt="Portrait of Jonathan Delgado" />
+      </figure>
+    </section>
+
+    <section class="section" id="research">
+      <div class="section-head">
+        <h2>Selected Papers</h2>
+        <a class="section-more" href="research.html">All research &rarr;</a>
+      </div>
+      <!-- Populated from research.html by main.js: every
+           <article class="paper" data-selected> there is compressed into an
+           entry here. Do not add papers by hand — edit research.html instead.
+           The link below is the fallback if scripting is unavailable. -->
+      <div class="entry-list" data-selected-papers>
+        <p class="entry-fallback">
+          <a href="research.html">See all papers and preprints &rarr;</a>
+        </p>
       </div>
     </section>
 
-    <section id="about" class="panel">
-      <div class="panel-header">
-        <p class="eyebrow">Profile</p>
-        <h2>About Me</h2>
+    <section class="section" id="writings">
+      <div class="section-head">
+        <h2>Selected Writings</h2>
+        <a class="section-more" href="notes.html">All writings &rarr;</a>
       </div>
-      <div class="about-intro">
+      <p class="section-intro">
+        Expository notes, written to fill gaps in the standard references.
+        Each is typeset in LaTeX and available as a web page or a PDF.
+      </p>
+      <!-- Populated from notes.html by main.js: every entry tagged
+           data-selected there is cloned in here. Do not add writings by hand
+           — edit notes.html instead. The link below is the fallback if
+           scripting is unavailable. -->
+      <div class="entry-list" data-selected-writings>
+        <p class="entry-fallback">
+          <a href="notes.html">See all expository writings &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- <section class="section" id="teaching">
+      <div class="section-head">
+        <h2>Teaching</h2>
+        <a class="section-more" href="teaching.html">Full record &rarr;</a>
+      </div>
+      <p class="section-intro">
+        I have been a teaching assistant at UC Irvine since 2021, across calculus, linear algebra, group theory, and the
+        department's programming courses for numerical analysis and data science. I also mentor through the Directed
+        Reading Program and UCI's Math Circle and Math CEO outreach programs.
+      </p>
+      <div class="entry-list">
+
+        <div class="entry entry--static">
+          <div class="entry-meta">Fall 2025</div>
+          <div class="entry-body">
+            <div class="entry-title">Introduction to Programming for Data Science</div>
+          </div>
+        </div>
+
+        <div class="entry entry--static">
+          <div class="entry-meta">2023 &ndash; 2025</div>
+          <div class="entry-body">
+            <div class="entry-title">Introduction to Programming for Numerical Analysis</div>
+          </div>
+        </div>
+
+        <div class="entry entry--static">
+          <div class="entry-meta">Spring 2024</div>
+          <div class="entry-body">
+            <div class="entry-title">Directed Reading Program: Measure Theory</div>
+          </div>
+        </div>
+
+      </div>
+    </section> -->
+
+    <section class="section" id="about">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="prose">
         <p>
-          I grew up in Massachusetts in a Colombian-Cuban family speaking English and Spanish.
-          I have a passion for programming and developing software tools for research and personal use.
-          My code is always open source and can be found on my 
+          I grew up in Massachusetts in a Colombian-Cuban family, speaking English and Spanish. Alongside mathematics I
+          write software (for research and for fun).
+          Everything I write is open source on
           <a href="https://github.com/otanan/" target="_blank" rel="noopener">GitHub</a>.
-          Some of my hobby projects include a <a href="https://github.com/otanan/makeproject" target="_blank">file generator for projects from custom templates</a>, and a <a href="https://github.com/otanan/FinderSessionManager" target="_blank">tab manager for macOS Finder</a>.
+          That includes
+          <a href="https://github.com/otanan/STP" target="_blank" rel="noopener">STP</a>, a Python library for
+          stochastic thermodynamics; <a href="https://github.com/otanan/makeproject" target="_blank" rel="noopener">MakeProject</a>,
+          a project generator driven by YAML templates; and
+          <a href="https://github.com/otanan/FinderSessionManager" target="_blank" rel="noopener">FinderSessionManager</a>,
+          a tab manager for macOS Finder.
         </p>
         <p>
-          I am always happy to talk about math and programming. Feel free to reach out to collaborate, or just to talk:
+          I am always happy to talk about mathematics or programming to collaborate, or just to talk. Reach me at
           <jd-email></jd-email>.
         </p>
-      </div>
-      <!-- <ul class="tag-list compact">
-        <li>Differential geometry</li>
-        <li>Gauge theory</li>
-        <li>Symplectic topology</li>
-        <li>Stochastic thermodynamics</li>
-        <li>Quantum information</li>
-      </ul> -->
-    </section>
-
-    <section id="research" class="panel">
-      <div class="panel-header">
-        <p class="eyebrow">Research</p>
-        <h2>Selected Research Projects</h2>
-        <p>Here is an overview of some of the projects that I have worked on.</p>
-      </div>
-      <div class="card-grid minimal">
-
-        <!-- Gauge Theory -->
-        <article class="card notebook-card research-card" tabindex="0" role="button">
-          <div class="card-meta">UC Irvine · 2024 &ndash; Present</div>
-          <h3>Primitive Yang–Mills Theory</h3>
-          <p class="card-description">
-            My work is on Yang-Mills theory in the context of symplectic geometry. I leverage recent developments on the Hodge theory of primitive forms on symplectic manifolds to study Yang-Mills connections. I am also interested in variants of the Yang-Mills functional and the regularity of their critical points.
-          </p>
-          <a class="card-link research-card__cta" href="https://www.math.uci.edu/~lstseng/home.html" target="_blank">Li-Sheng Tseng's page →</a>
-        </article>
-
-        <!-- Stochastic Thermodynamics -->
-        <article class="card notebook-card research-card" tabindex="0" role="button">
-          <div class="card-meta">UMass Boston · 2018 &ndash; 2022</div>
-          <h3>Stochastic Thermodynamics & Information Theory</h3>
-          <p class="card-description">
-						My work focuses on the second law of thermodynamics and measures of time-reversal asymmetry through information-theoretic quantities. The centerpiece of my work is an algebraic relationship between information rates and physical observables that quantify the amount of irreversible entropy produced in the time-evolution of a thermodynamic process.
-          </p>
-          <div class="research-card__full" hidden>
-            <p>
-              Since Claude Shannon's seminal <a href='http://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf' target='_blank'>work</a> on information, there has been progress relating information theory to thermodynamics. The Shannon entropy, and its relationship to the thermodynamic entropy, is at the core of this. Given the connections between information theory and thermodynamics, one can ask: do there exist decompositions of thermodynamic observables into information-theoretic quantities? My work provides an answer by demonstrating information-theoretic decompositions of thermodynamic observables that track the reversible exchange of entropy between a system and its environment, the irreversible internal production of entropy within a system, and the total change of entropy from these two contributions. My resulting decomposition is entirely in terms of information-theoretic quantities known as finite-time entropy rates. This connection between information theory and thermodynamics holds arbitrarily far from equilibrium and even in the presence of external forces.
-            </p>
-            <p>
-              Since my work focuses on the irreversible production of entropy, it is naturally related to the second law of thermodynamics. I have shown that this irreversible component of the entropy can be seen as a (pre)-measure of time-reversal asymmetry even in the case of discrete-time. I have also illustrated how this decomposition sheds light on ensemble averages versus experimental realizations by building on previous work regarding the (information) typicality of particular paths.
-            </p>
-            <h3 id='stp'>Stochastic Thermodynamics in Python (STP)</h3>
-            <p>
-              STP is a Python library meant to construct random quantities and track their information-theoretic properties. These objects include continuous-time rate matrices, discrete-time transition matrices, and matrices representing 3-state self assembly models. STP also facilitates calculating information-theoretic quantities such as path entropies, entropy rates, the entropy production, and even typical sets from samplings of path spaces.
-            </p>
-            <p>
-              STP is available at <a href='https://pypi.org/project/stp/', target='_blank'>PyPi</a>, documentation is available at <a href='https://stochastic-thermodynamics-in-python.readthedocs.io/en/latest/' target='_blank'>ReadTheDocs</a>. The code is also available directly from my <a href="https://github.com/otanan/STP" target="_blank" rel="noopener">GitHub</a>.
-            </p>
-
-					  <p>
-              You can learn more about this research and the Green research group on information theory and stochastic thermodynamics at UMass Boston by going to
-              <a href='https://www.jasonrgreen.net/' target='_blank'>Jason Green's research page</a>.
-            </p>
-          </div>
-
-          <a class="card-link research-card__cta" href="https://pypi.org/project/stp/" target="_blank" rel="noopener">Explore STP →</a>
-        </article>
-
-        <!-- Quantum Information -->
-        <article class="card notebook-card research-card" tabindex="0" role="button">
-          <div class="card-meta">UMass Boston · 2020 &ndash; 2021</div>
-          <h3>Machine Learning & Quantum Circuits</h3>
-          <p class="card-description">
-            My work focuses on the effects of doping Clifford random quantum circuits with Universal gates. The Universal gates generate the group of all possible quantum logic gates but are costly to implement with current technology. I've constructed a pipeline to manipulate quantum states and circuits for classification by a machine learning algorithm to gain insight on the structure of quantum complexity.
-          </p>
-
-          <div class="research-card__full" hidden>
-            <h3>On quantum computation</h3>
-            <p>
-              The advent of quantum computing places us on the forefront of a revolution in computational power and capability. Quantum computation will have direct impacts on cryptography and cyber-security, the development of pharmaceutical drugs, sustainable energy, novel quantum materials, meteorological forecasting, and more. The greatest obstacle for the construction and use of quantum computers lies in system decoherence–environmental noise and interactions challenge our ability to construct quantum systems with many qubits (> 40). A quantum computer can be built within a circuit model by having access to a minimal “universal” set of gates. Scalable universal quantum computation hinges on the possibility of keeping the error rate of such gates below a certain threshold that is currently hard to achieve. In contrast, Clifford gates are elements of a group of quantum gates that can be implemented with arbitrarily high precision. Not surprisingly, they do not allow for universal quantum computation. Moreover, Clifford circuits can be efficiently simulated on a classical computer, showing that quantum advantage lies outside the Clifford gate model. Since Clifford gates are not universal by themselves, understanding in which ways they fail to be is paramount to understanding to what extent non-Clifford gates are needed.
-            </p>
-            <h3>Haar Versus Clifford</h3>
-            <p>
-              Universal and Clifford circuits exhibit remarkably different behavior. Universal circuits show chaotic behavior and their outputs are random states in a Hilbert space. Instead, Clifford circuits fail to be ergodic and their outputs cover a tiny (finite) portion of the Hilbert space. The chaotic/non-chaotic behavior can be revealed by several properties: Entanglement Spectrum Statistics (ESS), response to disentangling algorithms, or the adherence to moments of the probability distribution over the Haar measure. My work aims to understand the transition between outputs of universal circuits and Clifford circuits by studying how statistics on random quantum circuits affect these figures of merit as functions of the impurity of Clifford circuits through strategic doping of universal gates. I want to improve the understanding on the number and placement of universal gates needed in a quantum circuit to improve resource management and reduce the overall impact of decoherence.
-            </p>
-            <p>
-              A better understanding of this transition has both long-term theoretical significance and immediate practical significance. Chaotic behavior from quantum systems is known to emerge from this transition of Clifford to universal circuits, and a better understanding of this phenomenon will shed light on irreversibility at the quantum level.
-              This goal of this work was also improve our understanding of intelligent circuit design and resource management of the, otherwise difficult to implement, universal gates, while improving stability against decoherence for our quantum computers.
-            </p>
-            <h3 id='randqc'><a href='https://github.com/otanan/RandQC' target='_blank'>
-              Random Quantum Circuits (RandQC)
-            </a></h3>
-            <p>
-              Random Quantum Circuits (RandQC) is a Python library meant to 
-              make use of pseudo-random number generators to facilitate generating random quantum circuits, random quantum states, and track quantities of interest. It also handles input and output for these objects. This way saving and storing them can be automated, easing data gathering and access for analysis.
-              The code is available directly from my <github-link repo="RandQC"></github-link>.
-            </p>
-
-          </div>
-          <a class="card-link research-card__cta" href="https://github.com/otanan/RandQC" target="_blank" rel="noopener">RandQC on GitHub →</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="notes" class="panel panel--split">
-      <div class="panel-header panel-header--narrow">
-        <p class="eyebrow">Notes & Blog</p>
-        <h2>Selected Notes</h2>
-        <p>
-          These are selected notes I've written on some of the topics I find interesting.
-          These were written with the goal of filling in gaps in mathematical exposition.
-        </p>
-        <!-- <a class="card-link" href="notes.html" rel="noopener">See all notes →</a> -->
-      </div>
-      
-      <div class="panel-content panel-content--rows">
-        <div class="card-rows">
-
-        <!-- ==================== Note cards ==================== -->
-
-        <a class="card notebook-card" href="notes/Some_Subtleties_of_Spherical_Coordinates/">
-            <div class="card-meta">Notes</div>
-            <h3>Some subtleties of spherical coordinates</h3>
-            <p><p>The following are some reflections on why the polar angle coordinate <span class="math inline">\(\phi\)</span> does not globally define a 1-form on <span class="math inline">\(S^2\)</span> and hence on <span class="math inline">\(\mathbb{R}^3 \setminus \{0\}\)</span>.</p></p>
-            <span class="card-link-text">Read note →</span>
-        </a>
-
-          <a class="card notebook-card" href="notes/measure-theory-qualifying-exam.html">
-            <div class="card-meta">Solutions</div>
-            <h3>Measure Theory Qualifying Exam Solutions</h3>
-            <p>
-              Worked solutions for UCI Measure Theory qualifying exam questions, with reminders of the techniques used in
-              each proof.
-            </p>
-            <span class="card-link-text">Open solutions →</span>
-          </a>
-          
-          <!-- ==================== /Note cards ==================== -->
-        </div>
-      </div>
-    </section>
-
-    
-    
-    <section id="coding" class="panel panel--split">
-      <div class="panel-header panel-header--narrow">
-        <p class="eyebrow">Coding Projects</p>
-        <h2>Software & Fun Tools</h2>
-        <p>
-          Selected coding projects that I made either for fun, or contributed directly to my work. You can watch video demos of these projects on their GitHub pages.
-        </p>
-      </div>
-      <div class="panel-content panel-content--rows">
-        <div class="card-rows">
-
-        <a class="card notebook-card" href="https://github.com/otanan/makeproject" target="_blank" rel="noopener">
-          <div class="card-meta">Tool</div>
-          <h3>MakeProject</h3>
-          <p>
-            Project template generator using structure definitions provided as .yaml files. Copies existing templates and populates content with provided information.
-          </p>
-          <span class="card-link-text">View on GitHub →</span>
-        </a>
-
-
-        <a class="card notebook-card" href="https://github.com/otanan/STP" target="_blank" rel="noopener">
-          <div class="card-meta">Python Library</div>
-          <h3>Stochastic Thermodynamics in Python (STP)</h3>
-          <p>
-            Constructs rate/transition matrices, samples typical sets, and computes entropy rates or production for discrete and
-            continuous-time processes. Available on PyPI with full docs.
-          </p>
-          <span class="card-link-text">View on GitHub →</span>
-        </a>
-
-        <a class="card notebook-card" href="https://github.com/otanan/FinderSessionManager" target="_blank" rel="noopener">
-          <div class="card-meta">Tool</div>
-          <h3>FinderSessionManager</h3>
-          <p>
-            A tab manager for macOS Finder. Inspired by Workona's tab management system and Sublime Text's Project Manager.
-          </p>
-          <span class="card-link-text">View on GitHub →</span>
-        </a>
-
-
-        <a class="card notebook-card" href="https://github.com/otanan/AutoInk" target="_blank" rel="noopener">
-          <div class="card-meta">Sublime Text Plugin</div>
-          <h3>AutoInk</h3>
-          <p>
-            A tool for quickly opening and editing Inkscape figures, and inserting the relevant \includegraphics markup in LaTeX files.
-          </p>
-          <span class="card-link-text">View on GitHub →</span>
-        </a>
-
-        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Jonathan Delgado · Department of Mathematics · University of California Irvine</p>
+    <p>© <span id="year"></span> Jonathan Delgado · Department of Mathematics · UC Irvine</p>
     <a href="#top" data-scroll-top>Back to top ↑</a>
   </footer>
+
   <script src="js/header.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

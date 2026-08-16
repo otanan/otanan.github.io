@@ -1,108 +1,196 @@
+/* ============================================================
+   Jonathan Delgado — jdelgado.net
+   Design system: typographic, list-driven, minimal chrome.
+   ============================================================ */
+
 :root {
   --bg: #ffffff;
-  --bg-glow: transparent;
-  --surface: #FFF;
-  --surface-muted: #f0f2f7a0;
-  --accent: #1abc9d;
-  --accent-secondary: #1abc9d;
-  --accent-strong: #108f76;
-  --text: #1d2f2d;
-  --text-muted: #56706b;
-  --border: #d5e6e3;
-  --font-display: "Space Grotesk", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Inter", "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --shadow: 0 20px 45px rgba(16, 65, 55, 0.12);
-  --page-gutter: clamp(1.25rem, 3vw, 3rem);
-  --header-bleed: clamp(0.75rem, 3vw, 2.5rem);
-  --card-hover-shadow: rgba(31, 42, 42, 0.2);
-  --scroll-offset: clamp(5rem, 8vw, 7rem);
-  --font-size-base: 1rem;
+  --surface: #ffffff;
+  --surface-muted: #f6f8f8;
+  --accent: #128f76;
+  --accent-soft: rgba(26, 188, 157, 0.12);
+  --text: #14211f;
+  --text-muted: #5c716d;
+  --border: #e2e9e7;
+  --rule: #edf1f0;
+
+  /* Text selection. Deliberately NOT --accent-soft: that token also paints
+     quick-link and toggle hover states, which want a lighter touch than a
+     selection highlight does. */
+  --selection: rgba(18, 143, 118, 0.18);
+
+  /* The only two shadows in the design (mobile TOC button and its popover).
+     Themed, because a shadow tuned for white is invisible on near-black. */
+  --shadow-fab: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --shadow-panel: 0 18px 44px rgba(0, 0, 0, 0.18);
+
+  --font-display: "Inter", "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --page-max: 106rem;
+  --prose-max: 40rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --scroll-offset: 6rem;
+
+  /* Space between the top-level blocks of a page. Sized for pages that stack
+     several distinct sections (the homepage), where the gap has to read as a
+     section break.
+
+     The tight variant is 40% of it, and is what every .page-narrow article
+     page uses: those are a header followed by a list, so the full break is
+     the only gap on the page and reads as a hole under the intro rather than
+     as separation. */
+  --section-gap: clamp(3.5rem, 7vw, 5.5rem);
+  --section-gap-tight: clamp(2.1rem, 4.2vw, 3.3rem);
+
+  /* Vertical padding inside an entry row — and therefore also the distance
+     from the top of a list to its first title. A paper list opens flush
+     (padding-top: 0 on the first entry); an entry list cannot, because the
+     padding draws its hover background, so it is pulled up by this instead.
+     Keep the two in sync by reading both from here. */
+  --entry-pad-y: 1.15rem;
+
+  /* ---------------------------------------------------------------
+     GEOMETRY — currently 8px.
+
+     Every rounded corner on the site reads from these six tokens, so
+     changing the whole design is a one-block edit. Buttons, pictures,
+     panels and media share the main radius; the two smallest elements
+     stay tighter so they don't read as pills at small sizes.
+
+     Previous sets, for reference:
+       12px:  --radius/-pill/-avatar/-control: 12px; --radius-sm: 8px;  --radius-tag: 4px;
+       RECTANGULAR: every token 0px;
+       ROUNDED / ELLIPTIC (the original design):
+         --radius: 10px;   --radius-sm: 6px;     --radius-pill: 999px;
+         --radius-avatar: 50%;  --radius-control: 50%;  --radius-tag: 4px;
+
+     Not token-driven: the mobile hero portrait's `aspect-ratio` is 4/5
+     (it was 1 when the portrait was a circle) in the max-width:860px block.
+     --------------------------------------------------------------- */
+  --radius: 8px;         /* panels, media, portrait, entry hover, TOC panel */
+  --radius-pill: 8px;    /* hero quick-links, "Contents" button */
+  --radius-avatar: 8px;  /* brand mark, mobile hero portrait */
+  --radius-control: 8px; /* theme toggle */
+  --radius-sm: 6px;      /* header nav items — smaller so they stay in proportion */
+  --radius-tag: 4px;     /* tags, inline code, focus ring */
+
+  --step: cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
+/* ---------------------------------------------------------------
+   DARK THEME
+
+   --bg is the blue-black from the original jdelgado.net design.
+   The flat-charcoal value it replaced was #0c0f13; to revert, change
+   that one line back — nothing else here depends on it. The teal
+   --bg-glow radial that the original layered on top is deliberately
+   NOT carried over; the background stays flat.
+
+   surface / surface-muted / border / rule keep their redesign values.
+   They already lean blue in the same direction, so they sit correctly
+   against the restored --bg without retuning.
+   --------------------------------------------------------------- */
+:root[data-theme="dark"],
 [data-theme="dark"] {
   --bg: #0b0f16;
-  --bg-glow: rgba(19, 199, 167, 0.16);
-  --surface: #12141b;
-  --surface-muted: #1c1f28;
-  --accent: #13c7a7;
-  --accent-secondary: #13c7a7;
-  --accent-strong: #0e9c7f;
-  --text: #f5f7fb;
-  --text-muted: #b2bac9;
-  --border: #232631;
-  --shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
-  --card-hover-shadow: rgba(26, 188, 157, 0.25);
+  --surface: #11151a;
+  --surface-muted: #161b21;
+  --accent: #2fd2b2;
+  --accent-soft: rgba(47, 210, 178, 0.14);
+  --text: #eef2f4;
+  --text-muted: #97a5a8;
+  --border: #232a31;
+  --rule: #1b2127;
+
+  --selection: rgba(47, 210, 178, 0.35);
+
+  /* Near-black needs a far heavier shadow to read as elevation at all. */
+  --shadow-fab: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-panel: 0 18px 44px rgba(0, 0, 0, 0.72);
 }
 
-html {
-  scroll-behavior: smooth;
-  background: radial-gradient(circle 200rem at top, var(--bg-glow), transparent 55%), var(--bg);
-  transition: background 0.3s ease;
-  scroll-padding-top: var(--scroll-offset);
-}
-
-::selection,
-body ::selection {
-  background: rgba(16, 143, 118, 0.3);
-  color: #0b0f16;
-}
-
-::-moz-selection,
-body ::-moz-selection {
-  background: rgba(16, 143, 118, 0.3);
-  color: #0b0f16;
-}
-
-body[data-theme='dark'] ::selection,
-[data-theme='dark'] ::selection {
-  background: rgba(19, 199, 167, 0.35);
-  color: #f5f7fb;
-}
-
-body[data-theme='dark'] ::-moz-selection,
-[data-theme='dark'] ::-moz-selection {
-  background: rgba(19, 199, 167, 0.35);
-  color: #f5f7fb;
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-offset);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-body);
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
   color: var(--text);
-  font-size: var(--font-size-base);
-  background: transparent;
-  min-height: 100vh;
-  line-height: 1.6;
-  padding: 2rem var(--page-gutter);
-  max-width: 1200px;
+  background: var(--bg);
+  max-width: var(--page-max);
   margin: 0 auto;
-  transition: background 0.3s ease, color 0.3s ease;
+  padding: 0 var(--gutter) 4rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
 }
 
 a {
-  color: var(--accent-secondary);
+  color: var(--accent);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-tag);
 }
 
 code {
-  font-family: "Space Grotesk", "Fira Code", monospace;
-  font-size: 0.95em;
+  font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+  font-size: 0.9em;
   background: var(--surface-muted);
   padding: 0.1rem 0.35rem;
-  border-radius: 4px;
+  border-radius: var(--radius-tag);
 }
 
-.math {
-  font-family: "Space Grotesk", "Inter", serif;
+::selection {
+  background: var(--selection);
+  color: var(--text);
+}
+
+/* Theme switching is atomic. Without this, each themed surface animates on
+   its own schedule (or not at all) and you see the header and page edges
+   change before the body catches up. main.js adds this class, flips the
+   theme, forces a style flush, and removes it — all in one frame. */
+.is-theme-switching,
+.is-theme-switching *,
+.is-theme-switching *::before,
+.is-theme-switching *::after {
+  transition: none !important;
+}
+
+/* Scroll anchor and sticky-header sentinel. Needs real height so the
+   IntersectionObserver in main.js reports reliably. */
+#top {
+  height: 1px;
+  margin-bottom: -1px;
 }
 
 .visually-hidden {
@@ -117,77 +205,67 @@ code {
   border: 0;
 }
 
+/* ============================================================
+   Header
+   ============================================================ */
+
+/* Chrome tracks the reading column, not the page box. On pages with a TOC the
+   page box is widened to make room for the rail, and without this the header
+   and footer would stretch with it — and visibly resize when navigating
+   between a page that has a rail and one that doesn't. */
+.site-header,
+.site-footer {
+  max-width: 68rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.5rem clamp(1rem, 3vw, 2.5rem);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 1rem;
-  z-index: 10;
-  width: 110%;
-  margin-left: -5%;
-  margin-right: -5%;
-  transform: translateY(0);
-  transition: transform 1.4s ease, width 0.45s ease, margin 0.45s ease, border-radius 0.45s ease, box-shadow 1s ease;
-  will-change: transform;
+  padding: 1rem 0;
+  /* Opaque by design. This was a translucent color-mix + backdrop-blur;
+     content scrolling under the header should be covered, not frosted.
+     To restore: background: color-mix(in srgb, var(--bg) 88%, transparent)
+     plus backdrop-filter: saturate(150%) blur(12px). */
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, padding 0.25s ease;
 }
 
-.site-header,
-.site-header * {
-  user-select: none;
-}
-
-.site-header--fallback {
-  justify-content: center;
-}
-
-.site-header--fallback .brand {
-  justify-content: center;
-  text-align: center;
-}
-
-.site-header.is-compact {
-  position: relative;
-  top: 0;
-  left: auto;
-  right: auto;
-  width: 100%;
-  margin: 0;
-  border-radius: 12px;
-  transform: translateY(-1.35rem);
-  box-shadow: 0 6px 20px rgba(5, 16, 24, 0.12);
-  z-index: 20;
-}
-
-.site-header.is-compact.is-visible {
-  transform: translateY(0);
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+/* Scrolled state tightens the bar and nothing else. The header is opaque,
+   so it needs no edge treatment to separate it from content passing under.
+   To restore the hairline: border-bottom-color: var(--rule). */
+.site-header.is-stuck {
+  padding: 0.65rem 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  text-decoration: none;
+  gap: 0.75rem;
   color: inherit;
-  transition: gap 0.35s ease;
+  min-width: 0;
+}
+
+.brand:hover {
+  text-decoration: none;
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-avatar);
   overflow: hidden;
   flex-shrink: 0;
-  transition: opacity 0.5s ease, transform 0.5s ease, width 0.5s ease;
+  background: var(--surface-muted);
+  transition: opacity 0.35s var(--step), transform 0.35s var(--step), width 0.35s var(--step),
+    margin 0.35s var(--step);
 }
 
 .brand-mark img {
@@ -197,200 +275,247 @@ code {
   display: block;
 }
 
-.brand--compact {
-  gap: 0.25rem;
-}
-
+/* Hidden while the hero portrait is on screen — avoids showing the same face twice. */
 .brand-mark.is-hidden {
   opacity: 0;
-  transform: scale(0.85);
+  transform: scale(0.7);
   width: 0;
-  border-color: transparent;
+  margin-right: -0.75rem;
   pointer-events: none;
 }
 
 .brand-name {
+  font-family: var(--font-display);
   font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .brand-role {
+  font-size: 0.78rem;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .site-nav {
   display: flex;
-  gap: 1rem;
-  font-weight: 500;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.9rem;
 }
 
 .site-nav a {
-  padding: 0.35rem 0.85rem;
-  border-radius: 8px;
+  position: relative;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.18s ease, background 0.18s ease;
 }
 
-.site-nav a.active,
 .site-nav a:hover {
-  background: rgba(26, 188, 157, 0.12);
   color: var(--text);
+  background: var(--surface-muted);
+  text-decoration: none;
+}
+
+.site-nav a.active {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.site-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.1rem;
+  height: 2px;
+  background: var(--accent);
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 .toggle-theme {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
   border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface-muted);
-  color: var(--text);
-  padding: 0.4rem 0.85rem 0.4rem 0.55rem;
-  font-size: 0.85rem;
-  font-weight: 600;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-muted);
   cursor: pointer;
-  transition: background 0.2s ease, border 0.2s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
 .toggle-theme:hover {
-  background: rgba(26, 188, 157, 0.12);
-}
-
-.toggle-track {
-  width: 44px;
-  height: 22px;
-  border-radius: 999px;
-  background: rgba(26, 188, 157, 0.25);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  transition: background 0.2s ease;
-}
-
-.toggle-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #ffffff;
-  position: absolute;
-  top: 1px;
-  left: 2px;
-  transition: transform 0.25s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.toggle-theme[aria-pressed="true"] .toggle-track {
-  background: rgba(19, 199, 167, 0.35);
-}
-
-.toggle-theme[aria-pressed="true"] .toggle-thumb {
-  transform: translateX(20px);
-}
-
-.btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  background: var(--accent);
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.btn.ghost {
-  background: transparent;
-  border: 1px solid var(--border);
   color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
-.btn:hover {
-  background: var(--accent-strong);
-  color: #ffffff;
+.toggle-theme .toggle-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
-.cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+.toggle-theme .icon-sun {
+  display: none;
 }
 
+[data-theme="dark"] .toggle-theme .icon-sun {
+  display: block;
+}
+
+[data-theme="dark"] .toggle-theme .icon-moon {
+  display: none;
+}
+
+/* ============================================================
+   Layout primitives
+   ============================================================ */
+
+/* The page box is wide so a TOC rail has somewhere to live; the reading
+   column is capped here and centred, on every page. */
 main {
-  margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--section-gap);
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  max-width: 68rem;
+  margin-inline: auto;
+  width: 100%;
 }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-head h2 {
+  font-size: 1.4rem;
+}
+
+.section-head .section-more {
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Runs the full width of the section rather than being capped at
+   var(--prose-max), so it lines up with the entry rows underneath instead of
+   stopping two-thirds of the way across. Restore that max-width to revert. */
+.section-intro {
+  color: var(--text-muted);
+  margin: -0.75rem 0 1.75rem;
+}
+
+/* Same treatment for the About copy: full section width, matching the rule
+   above it. Scoped to #about on purpose — the hero at the top of the page
+   uses .prose too and must keep the 40rem measure, since it sits in a narrow
+   column beside the portrait. */
+#about .prose {
+  max-width: none;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.eyebrow-actions {
+  display: flex;
+  gap: 1.1rem;
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.eyebrow-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Inline SVG icons. These replaced a 70KB Font Awesome webfont pulled from a
+   CDN for two glyphs — which also broke under PJAX, since a stylesheet in one
+   page's <head> is never applied when you arrive there by clicking a link. */
+.icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex-shrink: 0;
+}
+
+.prose {
+  max-width: var(--prose-max);
+}
+
+.prose p + p {
+  margin-top: 1rem;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
 
 .hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  padding: clamp(2rem, 4vw, 3.5rem);
-  border-radius: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  grid-template-columns: 1fr minmax(252px, 336px);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  line-height: 1.15;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
+  font-size: clamp(2.1rem, 1.4rem + 2.8vw, 3rem);
+  margin-bottom: 0.4rem;
 }
 
-.hero-card {
-  border-radius: 10px;
-  padding: 1.75rem;
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
+.hero-role {
+  font-family: var(--font-display);
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
 }
 
-.hero-media {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-end;
+.hero-text p + p {
+  margin-top: 1rem;
+}
+
+.hero-text .prose {
+  color: var(--text);
 }
 
 .hero-portrait {
   margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-  width: 100%;
-}
-
-.hero-portrait-frame {
-  position: relative;
+  border-radius: var(--radius);
   overflow: hidden;
-  border-radius: 10px;
   aspect-ratio: 4 / 5;
-  width: 100%;
-}
-
-.hero-portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow:
-    inset 0 35px 45px rgba(0, 0, 0, 0.35),
-    inset 0 -35px 45px rgba(0, 0, 0, 0.25);
+  background: var(--surface-muted);
 }
 
 .hero-portrait img {
@@ -400,462 +525,591 @@ main {
   display: block;
 }
 
-.cv-link {
-  align-self: flex-end;
-}
-
-.hero-card ul {
-  list-style: none;
-  margin: 1rem 0;
-}
-
-.hero-card li + li {
-  margin-top: 0.5rem;
-}
-
-.hero-meta {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
+/* Quick links: the things people come here for. */
+.quick-links {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
   flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+  list-style: none;
 }
 
-.eyebrow-actions {
-  display: flex;
-  gap: 1.25rem;
-  margin-left: auto;
-  font-size: 0.75rem;
-  text-transform: none;
-  letter-spacing: normal;
-}
-
-.eyebrow-actions a {
+.quick-links a {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--accent-secondary);
-}
-
-.eyebrow-actions a:hover {
-  color: var(--accent-strong);
-}
-
-.panel {
-  padding: clamp(2rem, 4vw, 3rem);
-  border-radius: 12px;
-  background: var(--surface);
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-.panel-header {
-  margin-bottom: 1.5rem;
-}
-
-.panel-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.timeline article,
-.card,
-.contact-details article {
-  background: var(--surface-muted);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-
-.card,
-.card * {
-  user-select: none;
-}
-
-.about-intro {
-  display: grid;
-  gap: 1rem;
-}
-
-.tag-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag-list li {
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  background: rgba(31, 42, 42, 0.05);
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--text);
-  font-size: 0.85rem;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s var(--step);
 }
 
-.tag-list.compact {
-  margin-top: 1.5rem;
+.quick-links a:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
-.card-grid {
+/* Label reads from --bg, not a literal white: in dark mode --accent is a
+   light mint, and white-on-mint measures 1.9:1. Resolves to #fff in light
+   mode, so that theme is unchanged. */
+.quick-links a.is-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.quick-links a.is-primary:hover {
+  filter: brightness(1.08);
+  color: var(--bg);
+}
+
+/* ============================================================
+   Entry list — the core scalable pattern.
+   One row per item; the whole row is a link. Scales to any N.
+   ============================================================ */
+
+.entry-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* A head whose rule is followed straight away by a list gives up its bottom
+   margin: each row already carries --entry-pad-y above its title, which is
+   exactly the space that separates a row from the divider above it, so the
+   head's margin on top of that reads as a hole before the first entry. Heads
+   with a .section-intro or any other block in between keep their margin — the
+   gap is measured from that block, not from the rule. */
+.section-head:has(+ .entry-list),
+.teaching-group h2:has(+ .entry-list) {
+  margin-bottom: 0;
+}
+
+/* The same correction where a list opens a page instead of a section. Here
+   the gap is the page's section break, so the row's padding is cancelled
+   outright: the first title then sits exactly where the first paper title
+   sits on research.html, which zeroes padding-top on its first entry. */
+main.page-narrow > .page-head + .entry-list {
+  margin-top: calc(var(--entry-pad-y) * -1);
+}
+
+.entry {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 8.5rem 1fr auto;
+  gap: 0.35rem 1.5rem;
+  align-items: baseline;
+  padding: var(--entry-pad-y) 0.85rem;
+  margin: 0 -0.85rem;
+  border-radius: var(--radius);
+  color: inherit;
+  border-top: 1px solid var(--rule);
+  transition: background 0.2s ease, transform 0.2s var(--step);
 }
 
-.card-grid.minimal {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+.entry:first-child {
+  border-top: 0;
 }
 
-.card-meta {
-  font-size: 0.85rem;
+/* Row hover. A writing row is a link end to end; a paper row is an <article>
+   whose title anchor is stretched across it (see .paper-entry below), because
+   a paper row can also carry arXiv and DOI links and an <a> may not contain
+   another. Both light up as one row, so the two lists read as one pattern. */
+.entry-list a.entry:hover,
+.entry-list .paper-entry:hover {
+  background: var(--surface-muted);
+  text-decoration: none;
+  transform: translateX(3px);
+}
+
+/* …and the title takes the accent with it — the cue paper titles already had
+   when hovered directly, now given to both kinds of row. Paper titles fade
+   via the transition on their own anchor further down. */
+.entry-list a.entry:hover .entry-title,
+.entry-list a.entry:focus-visible .entry-title,
+.entry-list .paper-entry:hover .entry-title__text,
+.entry-list .paper-entry:has(:focus-visible) .entry-title__text {
+  color: var(--accent);
+}
+
+.entry-meta {
+  font-size: 0.82rem;
   color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.15rem;
+}
+
+/* Sits under the kind label in the meta rail — read out of the note itself by
+   hydrateEntryDates(), so it is absent on writings that carry no date. */
+.entry-date {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.entry-body {
+  min-width: 0;
+}
+
+.entry-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.2rem;
+  transition: color 0.22s ease;
+}
+
+.entry-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.entry-authors {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.entry-authors .is-me {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Affordance: an arrow appears only on rows that actually go somewhere. */
+.entry-arrow {
+  color: var(--accent);
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s var(--step);
+  align-self: center;
+}
+
+.entry-list a.entry:hover .entry-arrow,
+.entry-list a.entry:focus-visible .entry-arrow,
+.entry-list .paper-entry:hover .entry-arrow,
+.entry-list .paper-entry:has(:focus-visible) .entry-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Non-linked rows (e.g. manuscripts in preparation) read as plain text. */
+.entry--static {
+  cursor: default;
+}
+
+/* <paper-tag>Published</paper-tag>            outlined, the default
+   <paper-tag topic>Astrophysics</paper-tag>   filled
+   <paper-tag topic primary>…</paper-tag>      filled, in accent
+
+   A custom element rather than a span, so the markup names what it is. It is
+   deliberately NOT registered with customElements.define — an unknown element
+   with a hyphen in its name styles like any other, so this costs no JavaScript
+   and there is nothing to upgrade at runtime. Keep the hyphen: a name without
+   one is not a valid custom element and browsers may treat it differently.
+   Options are attributes, so they read as flags rather than as class soup. */
+paper-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-tag);
+  padding: 0.05rem 0.4rem;
+  margin-left: 0.5rem;
+  vertical-align: 0.12em;
+  white-space: nowrap;
+}
+
+/* Topic tags sit beside the status tag and answer a different question — what
+   the paper is about, rather than where it is in the publishing pipeline — so
+   they are filled where status stays outlined. The primary research area is
+   the only one in accent: scanning the list, that cluster of coloured chips
+   is the through-line of the work, and everything else reads as adjacent. */
+paper-tag[topic] {
+  border-color: transparent;
+  background: var(--surface-muted);
+}
+
+paper-tag[topic][primary] {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ============================================================
+   Article pages (research, teaching)
+   ============================================================ */
+
+/* Article pages read as a single measured column, so the section rules
+   line up with the text rather than spanning the full page width.
+
+   They are a header followed by a list, so they take the tight break rather
+   than the full --section-gap: the head-to-list gap is the only gap on the
+   page, and at full width it reads as a hole under the intro. This used to
+   be set on .has-toc alone, which left notes.html and teaching.html opening
+   two rem lower than research.html for no reason anyone could see. */
+main.page-narrow {
+  max-width: 46rem;
+  margin-inline: auto;
+  width: 100%;
+  gap: var(--section-gap-tight);
+}
+
+main.page-narrow .prose,
+main.page-narrow .page-head {
+  max-width: none;
+}
+
+.page-head {
+  max-width: var(--prose-max);
+}
+
+.page-head h1 {
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem);
+  margin-bottom: 0.75rem;
+}
+
+.page-head p {
+  color: var(--text-muted);
+}
+
+.project {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.project:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.project h2 {
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
 }
 
-.panel--split {
-  display: grid;
-  grid-template-columns: minmax(220px, 35%) 1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-.panel-header--narrow {
-  position: sticky;
-  top: calc(var(--scroll-offset) + 1rem);
-  align-self: start;
-  padding-top: 1rem;
-}
-
-.panel-content--rows {
-  width: 100%;
-}
-
-.card-rows {
+.project-meta {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.card-rows .card {
-  width: 100%;
-}
-
-.card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.75rem;
-  font-weight: 600;
-}
-
-.notebook-card {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
-}
-
-.notebook-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent-secondary);
-  box-shadow: 0 30px 45px var(--card-hover-shadow);
-}
-
-.card.card--linked {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
-}
-
-.card.card--linked:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent-secondary);
-  box-shadow: 0 30px 45px var(--card-hover-shadow);
-}
-
-.card-link-text {
-  color: var(--accent-secondary);
-  font-weight: 600;
-  margin-top: 0.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.research-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  cursor: pointer;
-}
-
-.research-card:focus-visible {
-  outline: 2px solid var(--accent-secondary);
-  outline-offset: 4px;
-}
-
-.research-card__cta {
-  margin-top: auto;
-  padding-top: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  align-self: flex-start;
-  color: var(--accent-secondary);
-  text-decoration: none;
-  font-weight: 600;
-  text-align: left;
-}
-
-.research-card__cta:hover {
-  color: var(--accent-strong);
-}
-
-body.is-modal-open {
-  overflow: hidden;
-}
-
-.research-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(1rem, 4vw, 2.5rem);
-  background: rgba(5, 10, 15, 0.68);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
-  z-index: 60;
-}
-
-.research-overlay.is-visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.research-modal {
-  position: relative;
-  width: min(720px, 100%);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: clamp(1.5rem, 2.2vw, 2.25rem);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
-  transform: translateY(16px) scale(0.98);
-  opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  max-height: min(85vh, 780px);
-  --modal-fade-rgb: 255, 255, 255;
-}
-
-.research-overlay.is-visible .research-modal {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-}
-
-.research-modal__meta {
-  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 0.45rem;
+  margin-bottom: 1.5rem;
 }
 
-.research-modal__title {
-  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
-  line-height: 1.3;
-  margin-bottom: 0.9rem;
-  position: relative;
-  z-index: 1;
+.project h3 {
+  font-size: 1.1rem;
+  margin: 2rem 0 0.6rem;
 }
 
-.research-modal__body {
-  color: var(--text);
-  font-size: 1rem;
-  margin-bottom: 1.25rem;
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 0.75rem;
-  overflow-y: auto;
-  padding-right: 0.5rem;
+.project .prose p + p {
+  margin-top: 1rem;
 }
 
-.research-modal__body::after {
-  content: "";
-  position: sticky;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 60px;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(var(--modal-fade-rgb, 255, 255, 255), 0) 0%,
-    rgba(var(--modal-fade-rgb, 255, 255, 255), 0.9) 85%,
-    rgba(var(--modal-fade-rgb, 255, 255, 255), 1) 100%
-  );
-  opacity: 1;
-  transition: opacity 0.25s ease;
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 500;
 }
 
-.research-modal__body.is-scroll-end::after {
-  opacity: 0;
-}
-
-.research-modal__body::-webkit-scrollbar {
-  width: 6px;
-}
-
-.research-modal__body::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 999px;
-}
-
-.research-modal__body::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 999px;
-}
-
-.research-modal__cta {
+.project-links a {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: var(--accent-secondary);
+}
+
+/* ============================================================
+   Papers — full entries on research.html
+   ============================================================ */
+
+/* Enumerated newest-first. <ol reversed> numbers downwards natively, so the
+   top paper carries the highest number and existing numbers never shift when
+   one is added. (counter(list-item) in ::before does NOT work here — with
+   list-style:none the reversed counter is never seeded and counts 0, -1, -2.) */
+/* Indents the list as a whole — the numbers and the left end of the rules
+   between entries. The gap between a number and its title is separate, and
+   lives on .paper below. */
+.paper-list {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+.paper-list > li::marker {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-top: auto;
-  align-self: flex-end;
+  color: var(--text-muted);
+}
+
+/* data-selected has no visual treatment on this page — it only tells main.js
+   which entries to lift onto the homepage. The accent rail and accent number
+   it used to draw were dropped so accent means one thing here: the topic tag
+   marking the primary research area. */
+
+.paper {
+  padding-top: 2.5rem;
+  /* Keeps the last line (usually the arXiv link) off the rule below it. */
+  padding-bottom: 2.25rem;
+  /* Widens the gap between the list marker and the title. Padding on the <li>
+     is the only reliable lever: counter(list-item) is unusable in ::marker or
+     ::before on a reversed list — it is never seeded and counts 0, -1, -2. */
+  padding-left: 0.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* A paper still in preparation ends at its status tags: no abstract, no links.
+   The padding above is sized for an entry that closes on a line of link text,
+   and around a row of chips it reads as a hole — six such papers make a page
+   mostly of gaps. Close them up.
+
+   :where() keeps the :has() out of the specificity sum, so this stays at one
+   class and .paper:first-of-type below still zeroes the top padding of the
+   first entry. */
+.paper:not(:where(:has(.paper-abstract *, .paper-links a))) {
+  padding-top: 1.75rem;
+  padding-bottom: 1.5rem;
+}
+
+.paper:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.paper-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* The title needs its own element: an inline <span class="math"> inside the
+   flex container would otherwise become a second flex item and get pushed
+   apart from the words around it. */
+.paper-title__text {
+  min-width: 0;
+}
+
+.paper-year {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-title .paper-year {
+  flex-shrink: 0;
+  align-self: baseline;
+}
+
+.paper-authors {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.paper-authors .is-me,
+.entry-authors .is-me {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* No margin below: the space before an abstract is owned by the abstract, so
+   a paper that stops at its tags closes on them rather than on 1rem of air. */
+.paper-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0;
+}
+
+.paper-status paper-tag {
+  margin-left: 0;
+}
+
+.paper-abstract {
+  font-size: 0.94rem;
+  margin-top: 1rem;
+}
+
+/* Papers in preparation carry both blocks empty, holding the commented-out
+   markup for when the paper lands. An empty block is not a free one — the
+   margins above still apply — so take them out of flow until there is
+   something in them. */
+.paper-abstract:not(:has(*)),
+.paper-links:not(:has(a)) {
+  display: none;
+}
+
+.paper-links {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   Papers — compressed entries injected on the homepage
+   ============================================================ */
+
+/* Anchor for the stretched title link below. */
+.paper-entry {
+  position: relative;
+}
+
+.paper-entry .entry-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+/* The base paper-tag carries margin-left for inline use; strip it here or the
+   status sits 0.5rem right of the meta column's left edge. */
+.paper-entry .entry-meta paper-tag {
+  margin-left: 0;
+}
+
+/* Topic tag and year, pinned to the top right of the title line — the year as
+   on research.html, the topic because the meta rail is too narrow to hold it
+   on one line.
+
+   Two grid tracks, not a wrapping flex row. As flex items the pair became a
+   second flex line the moment the title filled the first one, which moved the
+   tags off the title line and pushed the authors down by that line's height —
+   entry one sat visibly lower than entry two. The tags now hold their track
+   whatever the title does, and a long title wraps inside its own. Below 720px
+   the pair drops beneath the title instead (see the media query), where a
+   13.75rem topic name would otherwise leave the title a column two words
+   wide. */
+.paper-entry .entry-title {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 1.5rem;
+  row-gap: 0.35rem;
+  font-size: 1.02rem;
+  margin-bottom: 0.3rem;
+}
+
+.paper-entry .entry-title__text {
+  min-width: 0;
+}
+
+/* Stretched link: the title anchor's ::after covers the row, so a click
+   anywhere on the row opens the paper — the whole-row link a writing entry
+   gets from being an <a>, without nesting the arXiv and DOI anchors inside
+   another one. Keyboard users still tab to the title alone, which is why the
+   row's hover states are mirrored on :has(:focus-visible). */
+.paper-entry a.entry-title__text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.paper-entry .entry-title__meta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+/* The base paper-tag margin is for inline runs of text; the gap above spaces these. */
+.paper-entry .entry-title__meta paper-tag {
+  margin-left: 0;
+}
+
+.paper-entry .entry-title .paper-year {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.paper-entry .entry-title a {
+  color: var(--text);
+  /* No underline on paper titles — the colour fade is the whole hover cue.
+     text-decoration must be restated on :hover to beat the global a:hover. */
   text-decoration: none;
+  transition: color 0.22s ease;
+}
+
+.paper-entry .entry-title a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.paper-entry__summary {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-top: 0.45rem;
+}
+
+/* Raised above the stretched title link, or they would be unclickable. */
+.paper-entry__links a {
   position: relative;
   z-index: 1;
-  transition: color 0.2s ease;
 }
 
-.research-modal__cta:hover {
-  color: var(--accent-strong);
-}
-
-.research-modal__cta:focus-visible {
-  outline: 2px solid var(--accent-secondary);
-  outline-offset: 3px;
-}
-
-.research-modal__close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  border: none;
-  background: transparent;
-  color: var(--text);
-  font-size: 1.4rem;
-  line-height: 1;
-  padding: 0.25rem;
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.research-modal__close:hover {
-  transform: scale(1.1);
-  color: var(--accent-strong);
-}
-
-.research-modal__close:focus-visible {
-  outline: 2px solid var(--accent-secondary);
-  outline-offset: 3px;
-}
-
-/* .research-modal__cta::after {
-  content: "\\2197";
-  font-size: 0.95rem;
-} */
-
-
-.note-feed {
+.paper-entry__links {
+  margin-top: 0.6rem;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
-.note-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+/* Shown only until the papers load, or if scripting is unavailable. */
+.entry-fallback {
+  font-size: 0.92rem;
+  font-weight: 500;
 }
 
-.note-list article {
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.teaching-group + .teaching-group {
+  margin-top: 0rem;
 }
 
-.note-article main {
-  max-width: 720px;
-  margin: 3rem auto;
-  padding: clamp(1.5rem, 4vw, 2.75rem);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+.teaching-group h2 {
+  font-size: 1.25rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
 }
 
-.note-article main h1 {
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  line-height: 1.15;
-}
-
-.note-article main h2 {
-  font-size: 1.35rem;
+.footnote {
+  font-size: 0.88rem;
+  color: var(--text-muted);
   margin-top: 1.5rem;
 }
 
-.note-article a {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.note-article .note-meta {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.note-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
+/* ============================================================
+   Embeds (CV, hosted PDFs)
+   ============================================================ */
 
 .embed-frame {
   width: 100%;
-  border-radius: 18px;
+  border-radius: var(--radius);
   border: 1px solid var(--border);
   overflow: hidden;
-  box-shadow: var(--shadow);
   background: var(--surface-muted);
   aspect-ratio: 8.5 / 11;
-  max-height: 90vh;
+  max-height: 88vh;
+  margin-top: 1.5rem;
 }
 
 .embed-frame iframe {
@@ -864,172 +1118,403 @@ body.is-modal-open {
   border: 0;
 }
 
-.pub-list {
-  list-style: none;
+/* ============================================================
+   Note articles (pandoc output — class names are fixed by
+   templates/note.html, so these selectors must stay stable)
+   ============================================================ */
+
+.note-article main {
+  max-width: 44rem;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-left: 0;
+  gap: 1.5rem;
 }
 
-.pub-list li {
-  background: var(--surface-muted);
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
+.note-article main header {
+  margin-bottom: 0.5rem;
 }
 
-.note {
-  color: var(--text-muted);
+.note-article main h1 {
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.note-article main h2 {
+  font-size: 1.3rem;
+  margin-top: 1.25rem;
+}
+
+.note-article main h3 {
+  font-size: 1.08rem;
   margin-top: 1rem;
 }
 
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+.note-article p + p,
+.note-article figure {
+  margin-top: 0.5rem;
 }
 
-.timeline-meta {
-  font-size: 0.85rem;
+.note-article a {
+  overflow-wrap: anywhere;
+}
+
+.note-article .note-meta,
+.note-meta {
+  font-size: 0.95rem;
   color: var(--text-muted);
-  margin: 0.35rem 0 0.75rem;
 }
 
-.contact {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+.note-article .footnotes {
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
-.contact-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+/* Pandoc opens its footnote section with an <hr> of its own, which landed
+   just under the border above — two lines to divide one thing. The border is
+   the one that stays: it is drawn in --rule like every other divider on the
+   site, and follows the theme, which an unstyled <hr> does not. */
+.footnotes hr {
+  display: none;
 }
+
+/* Legacy panel wrapper — still used by notes/measure-theory-qualifying-exam.html */
+.panel {
+  padding: 0;
+}
+
+.panel-header {
+  margin-bottom: 1rem;
+}
+
+.panel-header h1 {
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 2.5rem);
+}
+
+/* Display math should scroll rather than widen the page. */
+.math.display,
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* ============================================================
+   Table of contents
+   Built by main.js from the page's own sections or headings.
+   It reflects the CURRENT page only — cross-page links live in
+   the header nav, and the two never mix.
+   ============================================================ */
+
+/* The rail must add width rather than steal it, or the reading column
+   narrows on exactly the pages that have the most to say. */
+body[data-toc] {
+  --toc-width: 13rem;
+  --toc-gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Three tracks, not two: an empty one mirrors the rail on the left so the
+   reading column is centred on the page as though the rail were not there.
+   The rail stays in flow, so it can never overlap the text — when the
+   viewport is too narrow to afford both gutters the column simply narrows,
+   and below 1200px the rail collapses to a button entirely. */
+main.has-toc {
+  max-width: none;
+  display: grid;
+  grid-template-columns: var(--toc-width) minmax(0, 68rem) var(--toc-width);
+  justify-content: center;
+  column-gap: var(--toc-gap);
+  row-gap: var(--section-gap);
+  align-items: start;
+}
+
+main.has-toc > *:not(.toc) {
+  grid-column: 2;
+}
+
+.toc {
+  grid-column: 3;
+  grid-row: 1 / -1;
+  position: sticky;
+  top: calc(var(--scroll-offset) + 0.25rem);
+  align-self: start;
+  /* Long lists (a full publication record) scroll inside the rail instead of
+     running past the bottom of the screen. */
+  max-height: calc(100vh - var(--scroll-offset) - 2rem);
+  overflow-y: auto;
+}
+
+.toc-fab {
+  display: none;
+}
+
+.toc-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+}
+
+.toc-list {
+  list-style: none;
+  border-left: 1px solid var(--rule);
+}
+
+.toc-list a {
+  display: block;
+  padding: 0.32rem 0 0.32rem 0.8rem;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.toc-list a:hover {
+  color: var(--text);
+  background: var(--surface-muted);
+  border-left-color: var(--text-muted);
+  text-decoration: none;
+}
+
+.toc-list a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 500;
+}
+
+.toc-list .toc-sub a {
+  padding-left: 1.6rem;
+  font-size: 0.8rem;
+}
+
+/* Article pages keep their narrower measure rather than widening to 68rem.
+   The row-gap only restates what .page-narrow already sets: main.has-toc
+   above matches at the same specificity and comes later, so without this the
+   rail pages would take the full break back. Stays a row-gap so it still
+   applies when the grid collapses to a flex column below 1200px. */
+main.page-narrow.has-toc {
+  max-width: none;
+  grid-template-columns: var(--toc-width) minmax(0, 46rem) var(--toc-width);
+  row-gap: var(--section-gap-tight);
+}
+
+/* Note articles keep their measured reading column and put the rail beside it. */
+.note-article main.has-toc {
+  max-width: none;
+  grid-template-columns: var(--toc-width) minmax(0, 44rem) var(--toc-width);
+  row-gap: 1.5rem;
+}
+
+/* Below this width the rail has nowhere to live, so it becomes a
+   floating button that expands into the same list. */
+@media (max-width: 1200px) {
+  main.has-toc,
+  .note-article main.has-toc {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .note-article main.has-toc {
+    max-width: 44rem;
+  }
+
+  .toc {
+    position: fixed;
+    top: auto;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 40;
+  }
+
+  .toc-fab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-fab);
+  }
+
+  .toc-fab svg {
+    transition: transform 0.2s var(--step);
+  }
+
+  .toc.is-open .toc-fab svg {
+    transform: rotate(180deg);
+  }
+
+  .toc-panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 0.6rem);
+    min-width: 13rem;
+    max-width: min(18rem, calc(100vw - 2.5rem));
+    max-height: min(60vh, 26rem);
+    overflow-y: auto;
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-panel);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s var(--step), visibility 0.2s;
+  }
+
+  .toc.is-open .toc-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
 
 .site-footer {
-  margin: 3rem 0;
-  padding: 1.5rem 2rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  margin-top: clamp(4rem, 8vw, 6rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem 1.5rem;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.site-footer a {
+  color: var(--text-muted);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}
+
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  /* The address is the one link that has to be picked out of a sentence, so
+     it carries weight where other links rely on colour alone. */
+  font-weight: 600;
+}
+
+/* ============================================================
+   PJAX transition — keeps navigation seamless instead of a
+   hard document swap. Only <main> crossfades; chrome stays put.
+   ============================================================ */
+
+main {
+  opacity: 1;
+  transition: opacity 0.16s ease;
+}
+
+body.is-transitioning main {
+  opacity: 0;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-portrait {
+    order: -1;
+    width: min(308px, 63%);
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-avatar);
+  }
+
+  .brand-role {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    /* min-width:0 is required: without it the flex item sizes to its
+       min-content and overflow-x never engages, widening the document. */
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.15rem;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .entry {
+    grid-template-columns: 1fr auto;
+    gap: 0.3rem 1rem;
+  }
+
+  /* A full-width row above the title here, so a label and a date read better
+     side by side than stacked. */
+  .entry-meta {
+    grid-column: 1 / -1;
+    order: -1;
+    padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.5rem;
+  }
+
+  .entry-date {
+    margin-top: 0;
+  }
+
+  /* One track, so the tag and year sit under the title rather than squeezing
+     it into a column a couple of words wide. */
+  .paper-entry .entry-title {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .paper-entry .entry-title__meta {
+    justify-self: start;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
 
-@media (max-width: 720px) {
-  :root {
-    --font-size-base: 0.916rem;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --font-size-base: 0.875rem;
-  }
-}
-
-@media (max-width: 1080px) {
-  .site-header {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    border-radius: 14px;
-  }
-
-  .header-actions {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    width: auto;
-    row-gap: 0.5rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .site-header {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .brand {
-    width: 100%;
-  }
-
-  .site-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .header-actions {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .panel--split {
-    grid-template-columns: 1fr;
-  }
-
-  .panel-header--narrow {
-    position: static;
-  }
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 1.5rem;
-  }
-
-  .site-header {
-    position: static;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .header-actions .btn,
-  .header-actions .toggle-theme {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .research-modal {
-    padding: 1.25rem;
-  }
-
-  .research-modal__cta {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-}
-.email-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-.research-modal {
-  will-change: transform, opacity;
-}
-body[data-theme="dark"] .research-modal {
-  --modal-fade-rgb: 18, 20, 27;
 }

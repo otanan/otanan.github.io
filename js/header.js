@@ -1,167 +1,100 @@
+/* ============================================================
+   Shared header.
+
+   Built here rather than fetched from a partial. Fetching cost more
+   than it bought: it failed whenever the site was not served from a
+   domain root, failed entirely under file://, and flashed an empty
+   bar on every load. The markup below is the single source of truth —
+   edit it here.
+
+   URLs are written relative to the site root and resolved to ABSOLUTE
+   ones before insertion. That matters because PJAX rewrites <base> to
+   the current page's directory while this element survives navigation;
+   relative links would otherwise re-resolve into whatever directory
+   the reader last visited.
+   ============================================================ */
+
+const HEADER_MARKUP = `
+<header class="site-header" data-header-component>
+  <a class="brand" href="index.html" aria-label="Go to homepage">
+    <div class="brand-mark">
+      <img src="assets/jdelgado.webp" alt="" />
+    </div>
+    <div>
+      <p class="brand-name">Jonathan Delgado</p>
+      <p class="brand-role">PhD Candidate · Mathematics · UCI</p>
+    </div>
+  </a>
+  <!-- Every link resolves to its own page. In-page sections belong to the
+       table of contents built by main.js, never to this bar. -->
+  <nav class="site-nav" aria-label="Primary">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="research.html" data-nav="research">Research</a>
+    <a href="notes.html" data-nav="notes">Writings</a>
+    <a href="teaching.html" data-nav="teaching">Teaching</a>
+    <a href="cv.html" data-nav="cv">CV</a>
+  </nav>
+  <div class="header-actions">
+    <button class="toggle-theme" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+      </svg>
+      <span class="toggle-label">Light mode</span>
+    </button>
+  </div>
+</header>
+`;
+
 const headerPlaceholder = document.querySelector('[data-site-header]');
 
-const createFallbackHeader = baseHref => {
-  const fallbackHeader = document.createElement('header');
-  fallbackHeader.className = 'site-header site-header--fallback';
-  fallbackHeader.innerHTML = `
-    <a class="brand" href="${baseHref || ''}index.html#top" aria-label="Go to homepage">
-      <div>
-        <p class="brand-name">Jonathan Delgado</p>
-        <p class="brand-role">PhD Candidate · Pure Mathematics · UCI</p>
-      </div>
-    </a>
-  `;
-  return fallbackHeader;
+const isRelativeUrl = value => Boolean(value) && !/^(?:[a-zA-Z][a-zA-Z\d+\-.]*:|\/\/|\/|#)/.test(value.trim());
+
+/* data-base-path says how far the current page sits below the site root
+   ('' at the root, '../../' inside notes/<note>/). Resolving it against
+   the current URL finds the root in any hosting arrangement — domain
+   root, a subdirectory, or file://. */
+const resolveSiteRoot = basePath => new URL(basePath || './', window.location.href);
+
+const absolutizeUrls = (headerEl, siteRoot) => {
+  headerEl.querySelectorAll('[href], [src]').forEach(el => {
+    ['href', 'src'].forEach(attribute => {
+      const value = el.getAttribute(attribute);
+      if (isRelativeUrl(value)) el.setAttribute(attribute, new URL(value, siteRoot).href);
+    });
+  });
 };
 
-const loadHeader = async () => {
-  if (!headerPlaceholder) {
-    return null;
-  }
-
-  const { actionLabel, actionHref, activeLink, hideAction, basePath = '', headerPath = 'partials/header.html' } =
-    headerPlaceholder.dataset;
-  const normalizedBase = basePath.endsWith('/') || basePath === '' ? basePath : `${basePath}/`;
-  const normalizePath = path => {
-    if (!path || path === '/') return '/';
-    const cleaned = path.replace(/index\.html$/, '');
-    return cleaned === '' ? '/' : cleaned;
-  };
-  const isRootPage = normalizePath(window.location.pathname || '/') === '/';
-
-  const injectHeader = headerEl => {
-    headerPlaceholder.replaceWith(headerEl);
-    return headerEl;
-  };
-
-  const rewriteLocalAnchors = headerEl => {
-    const anchors = headerEl.querySelectorAll('a[href^="index.html"], a[href^="./index.html"], a[href^="../index.html"]');
-    anchors.forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href) return;
-      const url = new URL(href, window.location.origin);
-      const absolute = `${normalizePath(url.pathname)}${url.search}${url.hash}`;
-      if (isRootPage) {
-        if (absolute === '/index.html' || absolute === '/') {
-          link.setAttribute('href', '#top');
-          return;
-        }
-        if (absolute.startsWith('/index.html#')) {
-          link.setAttribute('href', absolute.replace('/index.html', ''));
-          return;
-        }
-      }
-      link.setAttribute('href', absolute);
-    });
-  };
-
-  const handleActiveState = headerEl => {
-    if (!activeLink) return;
-    const navLinks = headerEl.querySelectorAll('.site-nav a[data-nav]');
-    navLinks.forEach(link => {
-      if (link.dataset.nav === activeLink) {
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'page');
-      } else {
-        link.classList.remove('active');
-        link.removeAttribute('aria-current');
-      }
-    });
-  };
-
-  const buildHeaderPaths = () => {
-    const paths = [];
-    const primaryPath = `${normalizedBase}${headerPath}`;
-    if (primaryPath && !paths.includes(primaryPath)) {
-      paths.push(primaryPath);
+const markActiveLink = (headerEl, activeLink) => {
+  if (!activeLink) return;
+  headerEl.querySelectorAll('.site-nav a[data-nav]').forEach(link => {
+    if (link.dataset.nav === activeLink) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
     }
-    if (normalizedBase && !paths.includes(headerPath)) {
-      paths.push(headerPath);
-    }
-    const absolutePath = headerPath.startsWith('/') ? headerPath : `/${headerPath.replace(/^\/+/, '')}`;
-    if (!paths.includes(absolutePath)) {
-      paths.push(absolutePath);
-    }
-    return paths;
-  };
-
-  const tryLoadHeader = async () => {
-    const paths = buildHeaderPaths();
-    let lastError = null;
-    for (const path of paths) {
-      try {
-        const response = await fetch(path);
-        if (!response.ok) {
-          lastError = new Error(`Failed to load header (${response.status}) at ${path}`);
-          continue;
-        }
-        const text = await response.text();
-        return text;
-      } catch (error) {
-        lastError = error;
-      }
-    }
-    if (lastError) {
-      throw lastError;
-    }
-    throw new Error('Unable to resolve header path');
-  };
-
-  try {
-    const markup = await tryLoadHeader();
-    const template = document.createElement('template');
-    template.innerHTML = markup.trim();
-    const headerEl = template.content.firstElementChild;
-
-    const shouldPrefix = url => {
-      if (!normalizedBase) return false;
-      if (!url) return false;
-      const trimmed = url.trim();
-      if (/^(?:[a-zA-Z]+:|\/\/|#|\.{1,2}\/|\/)/.test(trimmed)) {
-        return false;
-      }
-      return true;
-    };
-
-    if (normalizedBase) {
-      headerEl.querySelectorAll('[href]').forEach(link => {
-        const current = link.getAttribute('href');
-        if (shouldPrefix(current)) {
-          link.setAttribute('href', `${normalizedBase}${current}`);
-        }
-      });
-      headerEl.querySelectorAll('[src]').forEach(el => {
-        const current = el.getAttribute('src');
-        if (shouldPrefix(current)) {
-          el.setAttribute('src', `${normalizedBase}${current}`);
-        }
-      });
-    }
-
-    const actionButton = headerEl.querySelector('[data-header-action]');
-    if (actionButton) {
-      if (typeof hideAction !== 'undefined') {
-        actionButton.remove();
-      } else {
-        if (actionLabel) {
-          actionButton.textContent = actionLabel;
-        }
-        if (actionHref) {
-          actionButton.setAttribute('href', actionHref);
-        }
-      }
-    }
-
-    handleActiveState(headerEl);
-    rewriteLocalAnchors(headerEl);
-    return injectHeader(headerEl);
-  } catch (error) {
-    console.error('Unable to load header component:', error);
-    const fallback = createFallbackHeader(normalizedBase);
-    rewriteLocalAnchors(fallback);
-    return injectHeader(fallback);
-  }
+  });
 };
 
-const headerReadyPromise = loadHeader();
-window.__headerReady = headerReadyPromise || Promise.resolve(null);
+const buildHeader = () => {
+  if (!headerPlaceholder) return null;
+
+  const template = document.createElement('template');
+  template.innerHTML = HEADER_MARKUP.trim();
+
+  const headerEl = template.content.firstElementChild;
+  if (!headerEl) return null;
+
+  absolutizeUrls(headerEl, resolveSiteRoot(headerPlaceholder.dataset.basePath));
+  markActiveLink(headerEl, headerPlaceholder.dataset.activeLink);
+  headerPlaceholder.replaceWith(headerEl);
+  return headerEl;
+};
+
+// Synchronous: no fetch, so the header is in place before first paint.
+window.__headerReady = Promise.resolve(buildHeader());
