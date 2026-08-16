@@ -935,10 +935,16 @@ main.page-narrow .page-head {
 
 /* No margin below: the space before an abstract is owned by the abstract, so
    a paper that stops at its tags closes on them rather than on 1rem of air. */
+/* flex-wrap is load-bearing, not decoration. paper-tag is white-space:nowrap
+   and a flex item will not shrink below min-content, so an unwrapped row is
+   as wide as its two tags laid end to end — "In preparation" next to
+   "Stochastic Thermodynamics" overruns a 393px phone and pushes the whole
+   document sideways. .paper-links already wraps for the same reason. */
 .paper-status {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem 0.5rem;
   margin: 0.6rem 0 0;
 }
 
