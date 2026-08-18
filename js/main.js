@@ -1058,10 +1058,51 @@ const initSelectedContent = () => SELECTED_SOURCES.forEach(loadSelectedInto);
    Per-page wiring
    ============================================================ */
 
+/* ============================================================
+   Note back link
+   Notes are reached from the writings index, so every note offers
+   the way back to it. Injected rather than written into the note
+   template: the generated notes predate it, and this keeps the
+   markup identical across every note without a rebuild.
+   ============================================================ */
+
+const NOTE_BACK_LABEL = 'All writings';
+
+// The header nav's own Writings link is already absolutized by header.js,
+// so it knows the way back from any depth — reuse it rather than recompute.
+const notesIndexHref = () =>
+  document.querySelector('.site-nav a[data-nav="notes"]')?.href || 'notes.html';
+
+const buildNoteBackLink = () => {
+  const link = document.createElement('a');
+  link.className = 'note-back';
+  link.href = notesIndexHref();
+  link.innerHTML = `<span class="note-back-arrow" aria-hidden="true">←</span><span>${NOTE_BACK_LABEL}</span>`;
+  return link;
+};
+
+const initNoteBackLink = () => {
+  // PJAX swaps <main> but keeps the header, so a stale copy must be cleared
+  // on every render — including when leaving a note for an ordinary page.
+  document.querySelectorAll('.note-back').forEach(el => el.remove());
+  if (!bodyEl.classList.contains('note-article')) return;
+
+  const main = document.querySelector('main');
+  if (!main) return;
+
+  /* Inside the article's own <header>, not as a sibling of it: on a note with a
+     TOC, main is a grid, and a direct child would take a grid row of its own —
+     a row the rail stretches to its full height, opening a large gap above the
+     title. Nested, the link costs nothing but its own line. */
+  const articleHeader = main.querySelector(':scope > header');
+  (articleHeader || main).prepend(buildNoteBackLink());
+};
+
 function runPageEnhancements() {
   initStickyHeader();
   initHeroObserver();
   initToc();
+  initNoteBackLink();
   initSelectedContent();
   // The writings index itself; the homepage copies are handled as they land.
   hydrateEntryDates(document);

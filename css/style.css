@@ -304,8 +304,12 @@ code {
   font-size: 0.9rem;
 }
 
+/* Nav labels never wrap or shrink — below 720px the bar becomes a horizontal
+   scroller, which only works if the links keep their natural width. */
 .site-nav a {
   position: relative;
+  flex-shrink: 0;
+  white-space: nowrap;
   padding: 0.4rem 0.7rem;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
@@ -1169,8 +1173,43 @@ main.page-narrow .page-head {
   margin-top: 0.5rem;
 }
 
-.note-article a {
+/* Long URLs and inline math labels break mid-word rather than overflow the
+   column. Scoped to the article body on purpose: .note-article sits on <body>,
+   so an unscoped rule also reaches the header nav, where 'anywhere' collapses
+   each link's min-content width and lets the labels wrap mid-word. */
+.note-article main a {
   overflow-wrap: anywhere;
+}
+
+/* Back link to the writings index, injected into every note's header
+   by initNoteBackLink() in js/main.js. */
+
+.note-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.note-back:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.note-back-arrow {
+  transition: transform 0.18s var(--step);
+}
+
+.note-back:hover .note-back-arrow {
+  transform: translateX(-3px);
+}
+
+/* Sits above the date line inside the article header, close enough to read as
+   part of the title block rather than as a section of its own. */
+.note-article main header > .note-back {
+  margin-bottom: 0.55rem;
 }
 
 .note-article .note-meta,
