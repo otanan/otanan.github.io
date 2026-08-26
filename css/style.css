@@ -1277,6 +1277,17 @@ main.has-toc {
   max-width: none;
   display: grid;
   grid-template-columns: var(--toc-width) minmax(0, 68rem) var(--toc-width);
+  /* Load-bearing, and not about the rows themselves. `.toc` below asks for
+     `grid-row: 1 / -1`, but -1 counts back from the end of the EXPLICIT grid
+     — with no template rows there is only line 1, so the rail silently
+     collapsed into row 1 and stretched that row to its own height. On any
+     page whose rail is taller than its <h1> block (research.html: 219px of
+     contents against a 146px header) the whole page below the header was
+     pushed down by the difference, which read as a hole under the intro.
+     Two explicit rows give -1 something to resolve against, and because the
+     rail now spans a flexible track it is excluded from intrinsic row sizing
+     altogether — it can never inflate a row again, however long it gets. */
+  grid-template-rows: auto 1fr;
   justify-content: center;
   column-gap: var(--toc-gap);
   row-gap: var(--section-gap);

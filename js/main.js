@@ -268,19 +268,46 @@ const initToc = () => {
   const links = [...nav.querySelectorAll('.toc-list a')];
   const targets = items.map(item => document.getElementById(item.id));
 
-  /* --- active-section highlighting --- */
+  /* --- active-section highlighting ---
+     The line an entry must cross to count as current is exactly the line a
+     clicked link parks it on — html's scroll-padding-top — and nothing else.
+     This used to be a proportion of the viewport (25%, floor 140px), which
+     sits far below where the scroll actually stops: clicking a link lands the
+     target at 96px, so any entry shorter than the difference is cleared
+     entirely and the NEXT one is already above the line. The rail then names
+     the paper below the one you asked for. On a short window the two lines
+     were close enough to mostly agree; past ~1000px tall every click was off
+     by one. Reading the offset from the same property the scroll uses keeps
+     them in step by construction, at any window size. */
+  const focusLine = () =>
+    // The +1 absorbs sub-pixel rounding, so a target parked exactly on the
+    // line still counts as having reached it.
+    (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 1;
+
   let frame = null;
+  let pinnedIndex = -1;
   const update = () => {
     frame = null;
-    const focusLine = Math.max(window.innerHeight * 0.25, 140);
+    const line = focusLine();
     let activeIndex = -1;
     targets.forEach((target, index) => {
-      if (target && target.getBoundingClientRect().top - focusLine <= 0) activeIndex = index;
+      if (target && target.getBoundingClientRect().top - line <= 0) activeIndex = index;
     });
     // Near the page bottom the last item may never cross the line; force it.
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 4) {
       activeIndex = links.length - 1;
     }
+    // The mirror image at the top: the first entry sits below the line at
+    // scroll 0, so clicking its link scrolls the page up and then highlights
+    // nothing at all. Anywhere below the very top, the first entry is the
+    // one being read.
+    if (activeIndex === -1 && window.scrollY > 0) activeIndex = 0;
+    // A click is a statement of intent, and the page cannot always honour it:
+    // the last few entries share the final screenful, so scrolling stops
+    // before any of them reaches the line and the clamps above answer with
+    // something else. Hold what the reader asked for until they scroll for
+    // themselves.
+    if (pinnedIndex !== -1) activeIndex = pinnedIndex;
     links.forEach((link, index) => {
       const isActive = index === activeIndex;
       link.classList.toggle('active', isActive);
@@ -297,8 +324,23 @@ const initToc = () => {
     frame = requestAnimationFrame(update);
   };
 
+  const SCROLL_KEYS = new Set([
+    'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'
+  ]);
+  // Input events, not 'scroll': the smooth scroll a click starts fires 'scroll'
+  // the whole way down and would release the pin before it ever applied.
+  const releasePin = event => {
+    if (event.type === 'keydown' && !SCROLL_KEYS.has(event.key)) return;
+    if (pinnedIndex === -1) return;
+    pinnedIndex = -1;
+    schedule();
+  };
+
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
+  window.addEventListener('wheel', releasePin, { passive: true });
+  window.addEventListener('touchmove', releasePin, { passive: true });
+  window.addEventListener('keydown', releasePin);
   // Paint the correct entry immediately — rAF would leave a frame unhighlighted,
   // which is visible when landing on a deep link.
   tocUpdate = update;
@@ -343,6 +385,7 @@ const initToc = () => {
         other.removeAttribute('aria-current');
       }
     });
+    pinnedIndex = links.indexOf(event.currentTarget);
 
     target.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
 
@@ -358,6 +401,9 @@ const initToc = () => {
   tocCleanup = () => {
     window.removeEventListener('scroll', schedule);
     window.removeEventListener('resize', schedule);
+    window.removeEventListener('wheel', releasePin);
+    window.removeEventListener('touchmove', releasePin);
+    window.removeEventListener('keydown', releasePin);
     document.removeEventListener('click', onDocumentClick);
     document.removeEventListener('keydown', onKeydown);
     if (frame !== null) cancelAnimationFrame(frame);
