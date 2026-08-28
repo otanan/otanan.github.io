@@ -19,10 +19,14 @@
      selection highlight does. */
   --selection: rgba(18, 143, 118, 0.18);
 
-  /* The only shadow in the design (the mobile TOC popover; the button that
-     opens it is flat). Themed, because a shadow tuned for white is invisible
-     on near-black. */
+  /* The two shadows in the design: the mobile TOC popover (the button that
+     opens it is flat), and the hero portrait. Both themed, because a shadow
+     tuned for white is invisible on near-black. */
   --shadow-panel: 0 18px 44px rgba(0, 0, 0, 0.18);
+  /* Two layers: a tight contact shadow to seat the portrait, and a soft one
+     for the lift. Deliberately short-throw — the darkness carries the
+     elevation, not the reach, so it does not smear across the hero text. */
+  --shadow-portrait: 0 2px 4px rgba(20, 33, 31, 0.26), 0 10px 24px rgba(20, 33, 31, 0.52);
 
   --font-display: "Inter", "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -76,37 +80,62 @@
   --radius-tag: 4px;     /* tags, inline code, focus ring */
 
   --step: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* THE THEME CROSS-FADE, in full. Both values are read by the one rule that
+     drives it (search THEME CROSS-FADE below) and by nothing else, so this is
+     the only place to retune it. Reduced motion is handled in main.js, which
+     skips the animation outright rather than shortening it. */
+  --theme-transition: 320ms;
+  --theme-transition-ease: linear;
 }
 
 /* ---------------------------------------------------------------
    DARK THEME
 
-   --bg is the blue-black from the original jdelgado.net design.
-   The flat-charcoal value it replaced was #0c0f13; to revert, change
-   that one line back — nothing else here depends on it. The teal
-   --bg-glow radial that the original layered on top is deliberately
+   --bg is a neutral charcoal. Previous values, to revert: #0b0f16 (the
+   blue-black from the original jdelgado.net design) and #0c0f13 before
+   that. Change that one line back — nothing else here depends on it. The
+   teal --bg-glow radial that the original layered on top is deliberately
    NOT carried over; the background stays flat.
 
-   surface / surface-muted / border / rule keep their redesign values.
-   They already lean blue in the same direction, so they sit correctly
-   against the restored --bg without retuning.
+   surface / surface-muted / border / rule are neutral greys derived from
+   --bg, each keeping the same L* step above it that it had over the old
+   blue-black (+2.4 / +4.5 / +10.4 / +6.9). They were literally blue before;
+   against a neutral page that tint read as a colour cast, most visibly on
+   the entry-row hover. Retune them WITH --bg, never on their own.
+
+   SCOPED TO :root ON PURPOSE. main.js mirrors data-theme onto <body> too,
+   and this block used to carry a bare [data-theme="dark"] that matched it,
+   so <body> re-declared all ten tokens. A declaration overrides an
+   inherited value, so body's copy sat outside the transition on :root and
+   snapped: switching TO dark, the entire page jumped while only the margin
+   around <body> faded, and hairlines and the papers button flashed their
+   dark values over a still-white page. Switching back merely removed the
+   declaration, so that direction inherited the animation and looked fine —
+   which is why it presented as "dark is instant, light animates".
+
+   The tokens are declared here and nowhere else; everything downstream
+   inherits them. body's data-theme stays, but as a state flag for the
+   toggle and for PJAX to preserve, not as a second source of colour.
+   Descendant rules like [data-theme="dark"] .toggle-theme are unaffected —
+   they match through <html>.
    --------------------------------------------------------------- */
-:root[data-theme="dark"],
-[data-theme="dark"] {
-  --bg: #0b0f16;
-  --surface: #11151a;
-  --surface-muted: #161b21;
+:root[data-theme="dark"] {
+  --bg: #1c1c1c;
+  --surface: #212121;
+  --surface-muted: #262626;
   --accent: #2fd2b2;
   --accent-soft: rgba(47, 210, 178, 0.14);
   --text: #eef2f4;
   --text-muted: #97a5a8;
-  --border: #232a31;
-  --rule: #1b2127;
+  --border: #333333;
+  --rule: #2b2b2b;
 
   --selection: rgba(47, 210, 178, 0.35);
 
   /* Near-black needs a far heavier shadow to read as elevation at all. */
   --shadow-panel: 0 18px 44px rgba(0, 0, 0, 0.72);
+  --shadow-portrait: 0 2px 4px rgba(0, 0, 0, 1), 0 10px 26px rgba(0, 0, 0, 1);
 }
 
 *,
@@ -174,14 +203,65 @@ code {
   color: var(--text);
 }
 
-/* Theme switching is atomic. Without this, each themed surface animates on
-   its own schedule (or not at all) and you see the header and page edges
-   change before the body catches up. main.js adds this class, flips the
-   theme, forces a style flush, and removes it — all in one frame. */
-.is-theme-switching,
-.is-theme-switching *,
-.is-theme-switching *::before,
-.is-theme-switching *::after {
+/* ---------------------------------------------------------------
+   THEME CROSS-FADE
+
+   The browser animates this, not the page. main.js calls
+   document.startViewTransition(), which photographs the page, swaps
+   data-theme, photographs it again, and cross-fades the two images. The rule
+   below only sets how long that takes.
+
+   What animates is therefore a pair of snapshots — never the live document.
+   Nothing on the page is mid-transition while the fade runs, so there is
+   nothing that can lag, retarget, snap or flicker. The cost is one
+   compositor animation over a viewport-sized image, independent of how much
+   is on the page: a note carrying thousands of MathJax glyphs costs exactly
+   what cv.html costs.
+
+   THREE EARLIER APPROACHES FAILED HERE, all of them variations on animating
+   the page itself. Kept as a warning, because each looks reasonable:
+
+   1. Give every element a transition on colour, background-color and the
+      rest. `color` is inherited, so it fires on every element whose inherited
+      value changed — one animation per MathJax glyph. A single short note
+      measured 2,393 concurrent transitions and a ~107ms stall per toggle.
+
+   2. Animate the colour tokens instead, registering them with @property so
+      they interpolate, and freeze per-element transitions meanwhile. One
+      animation, and it scaled — but it needed the freeze lifted at exactly
+      the right moment, and there is no reliable moment. A timer races the
+      first style recalc, which a long task delays arbitrarily; waiting on
+      getAnimations() depends on whether the engine flushes style before
+      returning. Lift it early and every component with a hover transition
+      chases the still-moving token, restarting its own animation each frame.
+      That was the papers button and the writings hairlines animating in hover
+      easing, while research.html — whose rows declare no transition — stayed
+      clean, which is what finally identified it.
+
+   3. The same, with the freeze lifted on the fade's own completion. Closer,
+      but still resting on getAnimations() reporting the fades, and still
+      leaving the page frozen mid-hover for the duration.
+
+   The lesson is that any approach animating live elements has to answer "when
+   is it safe to let the page move again", and every answer is a race. Taking
+   a photograph does not ask the question.
+   --------------------------------------------------------------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--theme-transition);
+  animation-timing-function: var(--theme-transition-ease);
+}
+
+/* The swap itself is instant and happens inside the snapshot, so per-element
+   transitions must not react to it — a component's hover transition fires on
+   any change to the properties it names, and a theme change is one. main.js
+   applies this around the swap and flushes before lifting it, so there is
+   never a frame in which something is animating underneath. It is also what
+   keeps the theme from fading in on first paint. */
+.is-theme-instant,
+.is-theme-instant *,
+.is-theme-instant *::before,
+.is-theme-instant *::after {
   transition: none !important;
 }
 
@@ -370,16 +450,22 @@ code {
   clip: rect(0, 0, 0, 0);
 }
 
-.toggle-theme .icon-sun {
-  display: none;
+/* Both icons share one grid cell and swap by opacity rather than display, so
+   the glyph is part of the cross-fade instead of popping a frame ahead of it.
+   No transition of their own: the snapshot animates them along with the rest
+   of the page. */
+.toggle-theme .icon-sun,
+.toggle-theme .icon-moon {
+  grid-area: 1 / 1;
+}
+
+.toggle-theme .icon-sun,
+[data-theme="dark"] .toggle-theme .icon-moon {
+  opacity: 0;
 }
 
 [data-theme="dark"] .toggle-theme .icon-sun {
-  display: block;
-}
-
-[data-theme="dark"] .toggle-theme .icon-moon {
-  display: none;
+  opacity: 1;
 }
 
 /* ============================================================
@@ -519,6 +605,7 @@ main {
   overflow: hidden;
   aspect-ratio: 4 / 5;
   background: var(--surface-muted);
+  box-shadow: var(--shadow-portrait);
 }
 
 .hero-portrait img {
@@ -1168,8 +1255,11 @@ main.page-narrow .page-head {
   margin-top: 1rem;
 }
 
-.note-article p + p,
-.note-article figure {
+/* Scoped to main for the same reason as the rule below: .note-article sits
+   on <body>, so an unscoped `p + p` also matched the header brand block,
+   pushing .brand-role away from .brand-name and growing the whole bar. */
+.note-article main p + p,
+.note-article main figure {
   margin-top: 0.5rem;
 }
 
@@ -1590,6 +1680,9 @@ body.is-transitioning main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* The theme switch is not shortened here — main.js skips the view
+     transition entirely, because the blanket rule below cannot reach
+     ::view-transition-* pseudo-elements. */
   html {
     scroll-behavior: auto;
   }

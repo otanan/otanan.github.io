@@ -56,22 +56,107 @@ const syncToggleState = theme => {
   });
 };
 
-const applyTheme = (theme, persist = true) => {
-  const normalized = theme === 'dark' ? 'dark' : 'light';
+/* Per-element transitions are suppressed across a theme change.
 
-  // Flip every themed surface in one frame. html, body and the header paint
-  // the same token with different (or no) transitions, so without this the
-  // page edges and header change before the body catches up.
-  rootEl.classList.add('is-theme-switching');
-  bodyEl.dataset.theme = normalized;
-  rootEl.dataset.theme = normalized;
-  // Force a synchronous style flush so the new colours are committed while
-  // transitions are still suppressed; removing the class then animates nothing.
+   Components carry transitions of their own for hover (.quick-links a, .entry,
+   .toggle-theme), and those fire on any change to the properties they name — a
+   theme change included. Left alone, a theme swap animates 33-101 components
+   in hover easing underneath the cross-fade, which is the flicker this whole
+   design exists to remove.
+
+   Applied BEFORE the snapshot is taken, deliberately. `transition: none`
+   cancels transitions already in flight, and the one in flight when someone
+   clicks the toggle is the hover-out of whatever they just moved the cursor
+   away from. Freezing after the capture would leave that element mid-ease in
+   the old snapshot and at rest in the new one, so the cross-fade would ghost
+   it in two places. Freezing first means both snapshots agree.
+
+   The cost is the one artifact I know remains: move the cursor off a row and
+   click the toggle inside ~200ms, and that row finishes its hover-out
+   instantly instead of easing — 3px on a writings row, 1px on the papers
+   button. research.html never shows it because .paper declares no hover.
+
+   Held until after the transition, because the snapshot owns hit-testing while
+   it runs: everything under the cursor loses :hover at the start and regains
+   it at the end, and hit-testing returns a frame AFTER the transition reports
+   finished (measured: finished 378ms, :hover 397ms, hover transition firing
+   at 410ms). Two frames is the standard way to say "after the next paint". */
+let themeFreezeDepth = 0;
+
+const freezeTransitions = () => {
+  themeFreezeDepth += 1;
+  rootEl.classList.add('is-theme-instant');
+};
+
+const thawTransitions = () => {
+  themeFreezeDepth -= 1;
+  if (themeFreezeDepth > 0) return;
+  themeFreezeDepth = 0;
+  // Commit while still frozen, so lifting the class animates nothing.
   void rootEl.offsetWidth;
-  rootEl.classList.remove('is-theme-switching');
+  rootEl.classList.remove('is-theme-instant');
+};
+
+const thawAfterNextPaint = () => {
+  requestAnimationFrame(() => requestAnimationFrame(thawTransitions));
+};
+
+const commitTheme = normalized => {
+  rootEl.dataset.theme = normalized;
+  // body's copy is a state flag for the toggle and for PJAX to preserve. The
+  // colour tokens are declared on :root alone — see the note in style.css.
+  bodyEl.dataset.theme = normalized;
+};
+
+/* `animate: false` is for the application that runs on page load: those
+   colours have to be there at first paint, not fade in from the default. */
+const applyTheme = (theme, persist = true, { animate = true } = {}) => {
+  const normalized = theme === 'dark' ? 'dark' : 'light';
+  const changed = rootEl.dataset.theme !== normalized;
+  const commit = () => {
+    commitTheme(normalized);
+    syncToggleState(normalized);
+  };
 
   if (persist) storeTheme(normalized);
-  syncToggleState(normalized);
+
+  /* The cross-fade belongs to the browser. startViewTransition photographs the
+     page, runs commit(), photographs it again, and animates between the two —
+     so the fade is a pair of images, and no amount of content makes it cost
+     more. See style.css for what this replaced and why.
+
+     finished settles however the transition ends, including when a rapid
+     second toggle skips this one, so the freeze is always released. */
+  if (animate && changed && typeof document.startViewTransition === 'function' && !prefersReducedMotion()) {
+    freezeTransitions();
+    const transition = document.startViewTransition(commit);
+
+    /* Abandon the fade the moment the reader scrolls.
+
+       The snapshots are pinned to the viewport and cannot follow scrolled
+       content, so scrolling mid-fade shows everything doubled — the still
+       image over the moving page. Nothing can fix that while the animation
+       owns the screen, so the animation gives way. skipTransition() ends it at
+       once, and since commit() has already run the theme is simply there.
+
+       wheel and touchmove arrive before the page moves; scroll is the backstop
+       for keyboard, scrollbar and programmatic scrolling. */
+    const abandon = new AbortController();
+    const skip = () => transition.skipTransition();
+    ['wheel', 'touchmove', 'scroll'].forEach(event => {
+      window.addEventListener(event, skip, { passive: true, signal: abandon.signal });
+    });
+
+    transition.finished.finally(() => {
+      abandon.abort();
+      thawAfterNextPaint();
+    });
+    return;
+  }
+
+  freezeTransitions();
+  commit();
+  thawTransitions();
 };
 
 const bindThemeButtons = () => {
@@ -87,7 +172,9 @@ const bindThemeButtons = () => {
 const initTheme = () => {
   const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
   const storedTheme = getStoredTheme();
-  applyTheme(storedTheme || (mediaQuery && mediaQuery.matches ? 'dark' : 'light'), Boolean(storedTheme));
+  applyTheme(storedTheme || (mediaQuery && mediaQuery.matches ? 'dark' : 'light'), Boolean(storedTheme), {
+    animate: false,
+  });
 
   // Follow the OS only while the visitor hasn't made an explicit choice.
   if (mediaQuery && !storedTheme) {
