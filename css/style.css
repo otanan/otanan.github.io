@@ -313,6 +313,12 @@ code {
      To restore: background: color-mix(in srgb, var(--bg) 88%, transparent)
      plus backdrop-filter: saturate(150%) blur(12px). */
   background: var(--bg);
+  /* The box is capped to the reading column, but content that overhangs the
+     column (the portrait's shadow) scrolls under it too. Paint the background
+     full-bleed sideways without widening the layout box; clip-path trims the
+     spread vertically so it can't cover content above or below the bar. */
+  box-shadow: 0 0 0 100vmax var(--bg);
+  clip-path: inset(0 -100vmax);
   border-bottom: 1px solid transparent;
   transition: border-color 0.25s ease, padding 0.25s ease;
 }
