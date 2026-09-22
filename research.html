@@ -54,56 +54,63 @@
 
   <!--
     ============================================================
-    THIS PAGE IS THE SINGLE SOURCE OF TRUTH FOR RESEARCH.
+    THE PAPER LIST IS GENERATED. Do not edit entries here.
 
-    The homepage does not repeat any of it. Add `data-selected` to a
-    <article class="paper"> and main.js pulls a compressed version of
-    that entry onto the homepage automatically — title, status, authors,
-    the summary paragraph, and the arXiv link. Remove the attribute and
-    it disappears from the homepage without touching index.html.
+    ../../Curriculum Vitae/data/papers.yaml is the single source of truth
+    for both the CV and this page; ../generate_research.py renders it into
+    the marked region below. Add, retitle, reorder or withhold a paper
+    there and re-run the script.
 
-    Structure of an entry (only the title is required):
+        python generate_research.py           rewrite this page
+        python generate_research.py --check   fail if this page is stale
 
-      <article class="paper" id="slug" data-selected>
-        <h2 class="paper-title">
-          <span class="paper-title__text">…</span>
-          <span class="paper-year">2026</span>     (flush right on the title line)
-        </h2>
-        <p class="paper-authors">…</p>
-        <p class="paper-status">
-          <paper-tag>status</paper-tag>
-          <paper-tag topic primary>Gauge Theory</paper-tag>
-        </p>
-        <div class="paper-abstract prose">
-          <p data-summary>…shown on the homepage…</p>
-          <p>…rest of the abstract, this page only…</p>
-        </div>
-        <p class="paper-links">
-          <a data-journal href="…">Journal name, volume (year)</a>
-          <a data-arxiv href="…">arXiv:…</a>
-        </p>
-      </article>
+    A papers.yaml entry, with the HTML each key produces:
 
-    TAGS. Every paper carries two <paper-tag> elements, in this order:
+      - id: symplectic-yang-mills     <li class="paper" id="…">, and the
+                                      #fragment this entry is linked by.
+                                      PERMANENT -- never change it after
+                                      publishing, or shared links break.
+        title: Symplectic Yang--Mills Theory
+                                      .paper-title__text. Typst markup:
+                                      `--` becomes an en dash, $…$ becomes
+                                      MathJax.
+        shorttitle: Symplectic Yang–Mills theory
+                                      data-toc-label, for the TOC rail.
+                                      Plain text, NO math -- the rail is
+                                      built before MathJax runs, so TeX
+                                      would land there as raw \(…\).
+        authors: Jonathan Delgado, …  .paper-authors; my own name is
+                                      wrapped in .is-me automatically.
+        date: September 2026          the year goes in .paper-year.
+        tags: [Gauge Theory]          topic <paper-tag>s, in order.
+        arxiv: "2609.16112"           .paper-links; the URL is assembled
+        doi: 10.3847/…                from the bare id, as in the CV.
+        journal: ApJ 983, 185         link text for the doi. Its presence
+                                      is what makes the status Published.
+        selected: true                data-selected -- see below.
+        abstract: |                   .paper-abstract, one <p> per blank
+          First paragraph…            line. The first gets data-summary,
+                                      so it is what the homepage shows.
+          Second paragraph…
 
-      1. Status — where it is in the pipeline. No attributes.
-      2. Topic — what the work is about. `topic`, plus `primary` for the main
-         line of research (gauge theory), which is the only tag that gets
-         accent colour. Keep the vocabulary short and reuse existing labels
-         rather than inventing a new one per paper; the point is that the
-         accent chips cluster and the rest read as adjacent work.
+    THE STATUS TAG IS DERIVED, not stored: a journal reference makes it
+    Published, an arXiv id alone Preprint, neither In preparation. The
+    topic tag that gets accent colour is likewise a constant in the
+    script (PRIMARY_TAGS), since it describes the research program rather
+    than any one paper.
 
-    <paper-tag> is a plain custom element — styled in CSS, never registered
-    with JavaScript. Its options are attributes, so a tag reads as what it is.
+    <paper-tag> is a plain custom element -- styled in CSS, never
+    registered with JavaScript. Its options are attributes, so a tag reads
+    as what it is. Keep the topic vocabulary short and reuse existing
+    labels; the point is that the accent chips cluster and the rest read
+    as adjacent work.
 
-    Both are carried onto the homepage automatically, since main.js copies the
-    whole .paper-status row.
-
-    Every link inside .paper-links is carried onto the homepage, so DOI,
-    published-PDF or code links work the same way with no code change.
-
-    `data-summary` marks the sentences the homepage shows. Without it the
-    first paragraph of the abstract is used. MathJax works in both places.
+    THE HOMEPAGE does not repeat any of this. `selected: true` sets
+    data-selected, and main.js pulls a compressed version of that entry
+    onto the homepage -- title, status, authors, the summary paragraph,
+    and every link in .paper-links (so a DOI, published-PDF or code link
+    works with no code change). Drop the key and it disappears from
+    index.html without either file being touched.
     ============================================================
   -->
 
@@ -119,9 +126,13 @@
 
     <!-- Newest first. <ol reversed> numbers downwards, so adding a paper at
          the top gives it the next highest number and every existing number
-         stays put. Reorder by moving an <li>. -->
-    <ol class="paper-list" reversed>
+         stays put. Reorder by moving an entry in the CV's papers.yaml.
 
+         GENERATED. Everything between the markers is written by
+         ../generate_research.py from ../../Curriculum Vitae/data/papers.yaml.
+         Edits here are overwritten on the next run; edit the YAML instead. -->
+    <ol class="paper-list" reversed>
+      <!-- BEGIN generated: papers -->
       <li class="paper" id="cone-yang-mills-reduction" data-selected data-toc-label="Eliminating the Higgs field">
         <h2 class="paper-title">
           <span class="paper-title__text">Eliminating the Higgs field and perturbing Yang–Mills connections in cone Yang–Mills theory</span>
@@ -137,14 +148,12 @@
         <div class="paper-abstract prose">
         </div>
         <p class="paper-links">
-          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
-          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
         </p>
       </li>
 
-      <li class="paper" id="cone-yang-mills-regularity" data-selected data-toc-label="Monotonicity &amp; ε-regularity">
+      <li class="paper" id="cone-yang-mills-regularity" data-selected data-toc-label="Compactness of cone YM connections">
         <h2 class="paper-title">
-          <span class="paper-title__text">Compactness of Cone Yang-Mills Connections</span>
+          <span class="paper-title__text">Compactness of Cone Yang–Mills Connections</span>
           <span class="paper-year">2026</span>
         </h2>
         <p class="paper-authors">
@@ -157,8 +166,6 @@
         <div class="paper-abstract prose">
         </div>
         <p class="paper-links">
-          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
-          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
         </p>
       </li>
 
@@ -175,23 +182,10 @@
           <paper-tag topic primary>Gauge Theory</paper-tag>
         </p>
         <div class="paper-abstract prose">
-          <p data-summary>
-            On a symplectic manifold, any differential two-form has a natural decomposition into two components: a
-            primitive part and a non-primitive one. Applying this decomposition to the curvature two-form of a
-            principal bundle over a symplectic manifold, we obtain a natural splitting of the Yang–Mills (YM)
-            functional into two functionals that intrinsically depend on the symplectic structure: the primitive
-            Yang–Mills (PYM) functional and the trace Yang–Mills (TYM) functional.
-          </p>
-          <p>
-            We work out the basic properties of the critical solutions of these two functionals. The PYM functional
-            in particular exhibits many of the desirable properties of the YM functional, including the ellipticity
-            of its Euler–Lagrange equations and an algebraic classification of its flat solutions on
-            <span class="math inline">\(G\)</span>-bundles. We also prove a monotonicity formula for the PYM
-            functional as a first step towards characterizing its moduli space of solutions.
-          </p>
+          <p data-summary>On a symplectic manifold, any differential two-form has a natural decomposition into two components: a primitive part and a non-primitive one. Applying this decomposition to the curvature two-form of a principal bundle over a symplectic manifold, we obtain a natural splitting of the Yang–Mills (YM) functional into two functionals that intrinsically depend on the symplectic structure: the primitive Yang–Mills (PYM) functional and the trace Yang–Mills (TYM) functional.</p>
+          <p>We work out the basic properties of the critical solutions of these two functionals. The PYM functional in particular exhibits many of the desirable properties of the YM functional, including the ellipticity of its Euler–Lagrange equations and an algebraic classification of its flat solutions on <span class="math inline">\(G\)</span>-bundles. We also prove a monotonicity formula for the PYM functional as a first step towards characterizing its moduli space of solutions.</p>
         </div>
         <p class="paper-links">
-          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
           <a data-arxiv href="https://arxiv.org/abs/2609.16112" target="_blank" rel="noopener">arXiv:2609.16112</a>
         </p>
       </li>
@@ -211,78 +205,31 @@
         <div class="paper-abstract prose">
         </div>
         <p class="paper-links">
-          <!-- <a data-journal href="https://doi.org/…" target="_blank" rel="noopener">Journal name, 12 (2027) 345–378</a> -->
-          <!-- <a data-arxiv href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">arXiv:0000.00000</a> -->
         </p>
       </li>
 
-      <!-- Withheld, mirroring the commented-out entry in the CV's papers.yaml.
-           Restore by deleting this comment's delimiters and re-adding the
-           placeholder journal/arXiv links from the template at the top of the
-           page. Those two placeholders were REMOVED rather than kept: an HTML
-           comment cannot nest, so an inner closing delimiter would end this
-           one early and leak the rest of the entry back onto the page as live
-           markup. Keep that sequence out of this block if you edit it.
-
-      <li class="paper" id="entropy-production" data-toc-label="Finite-time entropy production">
-        <h2 class="paper-title">
-          <span class="paper-title__text">Finite-time decomposition of stochastic entropy production and the thermodynamic typical set</span>
-          <span class="paper-year">2026</span>
-        </h2>
-        <p class="paper-authors">
-          <span class="is-me">Jonathan Delgado</span>, Schuyler B. Nicholson, and Jason R. Green
-        </p>
-        <p class="paper-status">
-          <paper-tag>In preparation</paper-tag>
-          <paper-tag topic>Stochastic Thermodynamics</paper-tag>
-        </p>
-        <div class="paper-abstract prose">
-        </div>
-        <p class="paper-links">
-        </p>
-      </li>
-      -->
-      
       <li class="paper" id="bhex-photon-ring" data-toc-label="BHEX photon-ring inference">
         <h2 class="paper-title">
-          <span class="paper-title__text">Machine- and deep-learning-driven angular momentum inference from BHEX
-            observations of the <span class="math inline">\(n = 1\)</span> photon ring</span>
+          <span class="paper-title__text">Machine and Deep Learning–driven Angular Momentum Inference from BHEX Observations of the <span class="math inline">\(n = 1\)</span> Photon Ring</span>
           <span class="paper-year">2025</span>
         </h2>
         <p class="paper-authors">
-          Joseph R. Farah, Jordy Davelaar, Daniel Palumbo, Michael D. Johnson, and
-          <span class="is-me">Jonathan Delgado</span>
+          Joseph R. Farah, Jordy Davelaar, Daniel Palumbo, Michael D. Johnson, and <span class="is-me">Jonathan Delgado</span>
         </p>
         <p class="paper-status">
           <paper-tag>Published</paper-tag>
           <paper-tag topic>Astrophysics</paper-tag>
         </p>
         <div class="paper-abstract prose">
-          <p data-summary>
-            The <span class="math inline">\(n = 1\)</span> photon ring is an important probe of black hole properties
-            and will be resolved by the Black Hole Explorer (BHEX) for the first time. However, extracting black hole
-            parameters from observations of the <span class="math inline">\(n = 1\)</span> subring is not trivial. We
-            present a framework for the study of <span class="math inline">\(n = 1\)</span> photon-ring behaviour and
-            black hole property measurement from BHEX images.
-          </p>
-          <p>
-            Using KerrBAM we generate a grid of <span class="math inline">\(\gtrsim 10^6\)</span> images of
-            <span class="math inline">\(n = 1\)</span> photon rings spanning the entire space of Kerr spins and
-            inclinations, and extract intensity profiles with a feature-extraction method developed specifically for
-            BHEX, which outperforms existing Event Horizon Telescope methods by a factor of
-            <span class="math inline">\(\sim 3000\)</span>. Testing spin recovery on simulated images with gradient
-            boosting and with an extension of Deep Horizon, we find <span class="math inline">\(\gtrsim 90\%\)</span>
-            correct recovery of black hole properties, and characterize the space of resolution-dependent geometric
-            degeneracies. On general relativistic magnetohydrodynamic simulations of accretion flows, both approaches
-            recover spin accurately at the expected inclination of <span class="math inline">\(\mathrm{M87}^*\)</span>.
-          </p>
+          <p data-summary>The <span class="math inline">\(n = 1\)</span> photon ring is an important probe of black hole properties and will be resolved by the Black Hole Explorer (BHEX) for the first time. However, extracting black hole parameters from observations of the <span class="math inline">\(n = 1\)</span> subring is not trivial. We present a framework for the study of <span class="math inline">\(n = 1\)</span> photon-ring behaviour and black hole property measurement from BHEX images.</p>
+          <p>Using KerrBAM we generate a grid of <span class="math inline">\(\gtrsim 10^6\)</span> images of <span class="math inline">\(n = 1\)</span> photon rings spanning the entire space of Kerr spins and inclinations, and extract intensity profiles with a feature-extraction method developed specifically for BHEX, which outperforms existing Event Horizon Telescope methods by a factor of <span class="math inline">\(\sim 3000\)</span>. Testing spin recovery on simulated images with gradient boosting and with an extension of Deep Horizon, we find <span class="math inline">\(\gtrsim 90\%\)</span> correct recovery of black hole properties, and characterize the space of resolution-dependent geometric degeneracies. On general relativistic magnetohydrodynamic simulations of accretion flows, both approaches recover spin accurately at the expected inclination of <span class="math inline">\(\mathrm{M87}^*\)</span>.</p>
         </div>
         <p class="paper-links">
           <a data-journal href="https://doi.org/10.3847/1538-4357/adbbe3" target="_blank" rel="noopener">ApJ 983, 185 (2025)</a>
           <a data-arxiv href="https://arxiv.org/abs/2411.01060" target="_blank" rel="noopener">arXiv:2411.01060</a>
         </p>
       </li>
-
+    <!-- END generated: papers -->
     </ol>
   </main>
 
