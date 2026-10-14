@@ -603,6 +603,7 @@ main {
 
 .hero-text .prose {
   color: var(--text);
+  text-align: justify;
 }
 
 .hero-portrait {
@@ -1052,6 +1053,7 @@ main.page-narrow .page-head {
 .paper-abstract {
   font-size: 0.94rem;
   margin-top: 1rem;
+  text-align: justify;
 }
 
 /* Papers in preparation carry both blocks empty, holding the commented-out
@@ -1168,6 +1170,7 @@ main.page-narrow .page-head {
   font-size: 0.92rem;
   line-height: 1.6;
   margin-top: 0.45rem;
+  text-align: justify;
 }
 
 /* Raised above the stretched title link, or they would be unclickable. */
