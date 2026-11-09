@@ -520,9 +520,7 @@ main {
 }
 
 /* Same treatment for the About copy: full section width, matching the rule
-   above it. Scoped to #about on purpose — the hero at the top of the page
-   uses .prose too and must keep the 40rem measure, since it sits in a narrow
-   column beside the portrait. */
+   above it. Other prose keeps its reading measure unless overridden. */
 #about .prose {
   max-width: none;
 }
@@ -579,10 +577,9 @@ main {
    ============================================================ */
 
 .hero {
-  display: grid;
-  grid-template-columns: 1fr minmax(252px, 336px);
-  gap: clamp(2rem, 5vw, 3.5rem);
-  align-items: start;
+  --hero-gap: clamp(2rem, 5vw, 3.5rem);
+  /* Contain the float while letting individual lines flow beneath it. */
+  display: flow-root;
 }
 
 .hero h1 {
@@ -602,12 +599,16 @@ main {
 }
 
 .hero-text .prose {
+  max-width: none;
   color: var(--text);
   text-align: justify;
 }
 
 .hero-portrait {
-  margin: 0;
+  float: right;
+  /* Size against the actual column, which also narrows beside the TOC. */
+  width: min(336px, 38%);
+  margin: 0 0 1.5rem var(--hero-gap);
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 4 / 5;
@@ -1605,13 +1606,10 @@ body.is-transitioning main {
    ============================================================ */
 
 @media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
   .hero-portrait {
-    order: -1;
+    float: none;
     width: min(308px, 63%);
+    margin: 0 0 var(--hero-gap);
     aspect-ratio: 4 / 5;
     border-radius: var(--radius-avatar);
   }
